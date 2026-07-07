@@ -1,0 +1,2461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planejamento de Criativos — Meta Ads Julho 2026 | IV Simpósio Brasileiro de Solos Arenosos</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #E87722;
+  --orange-dark: #CF6A1E;
+  --orange-light: rgba(232,119,34,0.08);
+  --dark: #1A1A1A;
+  --dark-bg: #111111;
+  --white: #FFFFFF;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-500: #6B7280;
+  --gray-600: #4B5563;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  --blue: #3B82F6;
+  --blue-light: rgba(59,130,246,0.06);
+  --green: #00B894;
+  --green-light: rgba(0,184,148,0.06);
+  --red: #E74C3C;
+  --red-light: rgba(231,76,60,0.06);
+  --yellow: #F59E0B;
+  --yellow-light: rgba(245,158,11,0.06);
+  --purple: #8B5CF6;
+  --purple-light: rgba(139,92,246,0.06);
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --font: 'Montserrat', -apple-system, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--gray-50);
+  color: var(--dark);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== BACK BUTTON ========== */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(45,52,54,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 30px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font);
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.back-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ========== HEADER ========== */
+.header {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #2D1B0E 100%);
+  color: var(--white);
+  padding: 72px 0 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(232,119,34,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.header h1 span { color: var(--orange); }
+.header-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  margin-top: 8px;
+}
+.header-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+}
+.header-event-info {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.event-tag {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.8);
+}
+.event-tag strong { color: var(--orange); }
+
+/* ========== LAYOUT ========== */
+.container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 48px 0; }
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .icon { font-size: 1.3rem; }
+.section-title span { color: var(--orange); }
+.section-desc {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  margin-bottom: 28px;
+}
+
+/* ========== SUMMARY NAV ========== */
+.summary-nav {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  box-shadow: var(--shadow);
+}
+.summary-nav-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+.summary-nav ol {
+  list-style: none;
+  counter-reset: nav;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 24px;
+}
+.summary-nav li { counter-increment: nav; }
+.summary-nav li::before {
+  content: counter(nav) ".";
+  font-weight: 700;
+  color: var(--orange);
+  margin-right: 6px;
+  font-size: 0.82rem;
+}
+.summary-nav a {
+  color: var(--gray-700);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.summary-nav a:hover { color: var(--orange); }
+
+/* ========== CARDS ========== */
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  color: var(--dark);
+}
+
+/* ========== FUNNEL STAGE HEADER ========== */
+.funnel-stage {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.funnel-stage-left { display: flex; align-items: center; gap: 14px; }
+.funnel-stage-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.funnel-stage-name { font-weight: 800; font-size: 1.05rem; }
+.funnel-stage-obj { font-size: 0.78rem; color: var(--gray-500); font-weight: 500; margin-top: 2px; }
+.funnel-stage-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.stage-topão .funnel-stage-icon { background: rgba(107,114,128,0.1); color: var(--gray-600); }
+.stage-topão .funnel-stage-badge { background: rgba(107,114,128,0.1); color: var(--gray-600); border: 1px solid rgba(107,114,128,0.2); }
+.stage-topo .funnel-stage-icon { background: var(--blue-light); color: var(--blue); }
+.stage-topo .funnel-stage-badge { background: var(--blue-light); color: var(--blue); border: 1px solid rgba(59,130,246,0.2); }
+.stage-meio .funnel-stage-icon { background: var(--purple-light); color: var(--purple); }
+.stage-meio .funnel-stage-badge { background: var(--purple-light); color: var(--purple); border: 1px solid rgba(139,92,246,0.2); }
+.stage-fundo .funnel-stage-icon { background: var(--orange-light); color: var(--orange); }
+.stage-fundo .funnel-stage-badge { background: var(--orange-light); color: var(--orange); border: 1px solid rgba(232,119,34,0.2); }
+
+/* ========== CREATIVE CARD ========== */
+.creative-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+.creative-card:hover { box-shadow: var(--shadow-md); }
+
+.creative-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.creative-header-left { display: flex; align-items: center; gap: 12px; }
+.creative-id {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--gray-700);
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+.creative-id.topão { background: var(--gray-600); }
+.creative-id.topo { background: var(--blue); }
+.creative-id.meio { background: var(--purple); }
+.creative-id.fundo { background: var(--orange); }
+
+.creative-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.creative-format-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--gray-300);
+  color: var(--gray-600);
+  background: var(--gray-50);
+}
+
+.creative-body { padding: 24px; }
+
+.creative-section {
+  margin-bottom: 20px;
+}
+.creative-section:last-child { margin-bottom: 0; }
+
+.creative-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.creative-section-label .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.creative-text {
+  font-size: 0.88rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+}
+
+.creative-specs {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.spec-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: var(--gray-100);
+  color: var(--gray-600);
+}
+
+/* Script / Roteiro */
+.script-block {
+  background: var(--gray-800);
+  color: rgba(255,255,255,0.9);
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+.script-time {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+.script-line {
+  margin-bottom: 8px;
+}
+.script-line:last-child { margin-bottom: 0; }
+.script-note {
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+  font-size: 0.78rem;
+}
+
+/* Carrossel slides */
+.slide-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.slide-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--gray-50);
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+}
+.slide-number {
+  width: 28px; height: 28px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.slide-content {
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+.slide-content strong { color: var(--dark); }
+
+/* Image text */
+.image-text-block {
+  background: var(--gray-800);
+  color: rgba(255,255,255,0.92);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 2;
+}
+.image-text-block .highlight {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.image-text-block .sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+}
+
+/* Copy block */
+.copy-block {
+  background: var(--green-light);
+  border: 1px solid rgba(0,184,148,0.15);
+  border-radius: 8px;
+  padding: 20px;
+}
+.copy-field {
+  margin-bottom: 12px;
+}
+.copy-field:last-child { margin-bottom: 0; }
+.copy-field-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+.copy-field-text {
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+}
+
+/* Recognition element */
+.recognition-block {
+  background: var(--purple-light);
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 8px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.recognition-icon { font-size: 1.1rem; flex-shrink: 0; }
+.recognition-text {
+  font-size: 0.82rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+.recognition-text strong { color: var(--purple); }
+
+/* Alert */
+.alert {
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.alert-icon { font-size: 1.1rem; flex-shrink: 0; }
+.alert-blue { background: var(--blue-light); color: var(--blue); border: 1px solid rgba(59,130,246,0.15); }
+.alert-yellow { background: var(--yellow-light); color: var(--gray-700); border: 1px solid rgba(245,158,11,0.15); }
+.alert-orange { background: var(--orange-light); color: var(--gray-700); border: 1px solid rgba(232,119,34,0.15); }
+
+/* Overview table */
+.overview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.overview-table th {
+  background: var(--gray-100);
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--gray-200);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-600);
+}
+.overview-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: top;
+}
+.overview-table tr:last-child td { border-bottom: none; }
+.overview-table .text-center { text-align: center; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+.badge-gray { background: rgba(107,114,128,0.1); color: var(--gray-600); }
+.badge-blue { background: var(--blue-light); color: var(--blue); }
+.badge-purple { background: var(--purple-light); color: var(--purple); }
+.badge-orange { background: var(--orange-light); color: var(--orange); }
+
+/* Divider */
+.divider { height: 1px; background: var(--gray-200); margin: 8px 0; }
+
+/* KPI row */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.kpi {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+}
+.kpi-value { font-size: 1.2rem; font-weight: 800; color: var(--dark); }
+.kpi-label { font-size: 0.72rem; color: var(--gray-500); font-weight: 500; margin-top: 2px; }
+
+/* ========== FOOTER ========== */
+.footer {
+  background: var(--dark-bg);
+  color: rgba(255,255,255,0.5);
+  padding: 32px 0;
+  text-align: center;
+  font-size: 0.8rem;
+}
+.footer strong { color: var(--orange); }
+.footer-line { margin-bottom: 4px; }
+
+/* ========== SCROLL TOP ========== */
+.scroll-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: opacity 0.3s;
+}
+.scroll-top:hover { background: var(--orange-dark); }
+
+/* ========== PRINT ========== */
+@media print {
+  .header { padding: 30px 0; }
+  .section { padding: 24px 0; }
+  .scroll-top { display: none !important; }
+  .back-btn { display: none !important; }
+  body { background: #fff; }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.6rem; }
+  .header { padding: 40px 0 36px; }
+  .section { padding: 32px 0; }
+  .summary-nav ol { grid-template-columns: 1fr; }
+  .creative-header { flex-direction: column; align-items: flex-start; }
+  .funnel-stage { flex-direction: column; align-items: flex-start; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .container { padding: 0 16px; }
+  .creative-body { padding: 16px; }
+  .card { padding: 16px; }
+  .script-block { padding: 14px; font-size: 0.78rem; }
+  .copy-block { padding: 14px; }
+  .recognition-block { padding: 12px 14px; }
+  .slide-item { padding: 10px 12px; }
+  .overview-table { font-size: 0.75rem; }
+  .overview-table th, .overview-table td { padding: 8px 10px; }
+  .back-btn { padding: 8px 14px; font-size: 0.72rem; top: 12px; left: 12px; }
+}
+
+@media (max-width: 480px) {
+  .header h1 { font-size: 1.2rem; }
+  .header-subtitle { font-size: 0.85rem; }
+  .header-badge { font-size: 0.6rem; padding: 5px 14px; }
+  .kpi-row { grid-template-columns: 1fr; }
+  .header-meta { flex-direction: column; gap: 8px; font-size: 0.75rem; }
+  .header-event-info { flex-direction: column; }
+  .event-tag { font-size: 0.72rem; padding: 6px 14px; }
+  .creative-specs { flex-direction: column; }
+  .creative-name { font-size: 0.85rem; }
+  .creative-section-label { font-size: 0.65rem; }
+  .creative-text { font-size: 0.82rem; }
+  .section-title { font-size: 1.15rem; }
+  .section-desc { font-size: 0.82rem; }
+  .funnel-stage-name { font-size: 0.92rem; }
+  .funnel-stage-obj { font-size: 0.72rem; }
+  .image-text-block { padding: 14px; font-size: 0.8rem; }
+  .image-text-block .highlight { font-size: 1rem; }
+  .slide-content { font-size: 0.8rem; }
+  .copy-field-text { font-size: 0.8rem; }
+  .alert { font-size: 0.8rem; padding: 12px 14px; }
+  .summary-nav { padding: 16px 18px; }
+  .summary-nav a { font-size: 0.75rem; }
+  .back-btn { padding: 7px 12px; font-size: 0.68rem; top: 8px; left: 8px; gap: 5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="header">
+  <div class="container">
+    <span class="header-badge">Criativos Meta Ads</span>
+    <h1>Planejamento de <span>Criativos</span></h1>
+    <h1 style="font-size:1.3rem; font-weight:600; margin-top:4px;">IV Simpósio Brasileiro de Solos Arenosos</h1>
+    <p class="header-subtitle">Roteiros, copies e diretrizes visuais para cada etapa do funil — Julho 2026</p>
+    <div class="header-meta">
+      <span>&#128197; Julho 2026</span>
+      <span>&#128205; Luís Eduardo Magalhães, BA</span>
+      <span>&#127891; Evento: 01 a 03 de setembro de 2026</span>
+    </div>
+    <div class="header-event-info">
+      <div class="event-tag">Total de peças: <strong>21 criativos</strong> (contando série de 15 Reels individuais como 1)</div>
+      <div class="event-tag">Etapas: <strong>Topão + Topo + Meio + Fundo</strong></div>
+      <div class="event-tag">Plataforma: <strong>Meta Ads</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- BOTAO FLUTUANTE — VOLTAR -->
+<a href="../index.html" class="back-btn">&#8592; Voltar à Central</a>
+
+<div class="container">
+
+<!-- ==================== SUMARIO ==================== -->
+<div class="section" style="padding-bottom: 0; padding-top: 16px;">
+  <nav class="summary-nav">
+    <div class="summary-nav-title">Sumário do Planejamento</div>
+    <ol>
+      <li><a href="#visao-geral">Visão Geral e Resumo</a></li>
+      <li><a href="#topão">Topão — Compra de Dados (3 peças)</a></li>
+      <li><a href="#topo">Topo de Funil — Prospecção Fria (4 peças)</a></li>
+      <li><a href="#meio">Meio de Funil — Audiência Morna (9 peças)</a></li>
+      <li><a href="#fundo">Fundo de Funil — Remarketing (5 peças)</a></li>
+      <li><a href="#diretrizes">Diretrizes Gerais de Produção</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ==================== 1. VISAO GERAL ==================== -->
+<section id="visao-geral" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128200;</span>
+    Visão Geral e Resumo
+  </h2>
+  <p class="section-desc">21 peças (+ série de 15 Reels individuais) distribuídas em 4 etapas do funil, com variação real de formato e ângulo de comunicação.</p>
+
+  <div class="alert alert-orange">
+    <span class="alert-icon">&#9888;&#65039;</span>
+    <div>
+      <strong>Por que criativos novos?</strong> O feed orgânico atual do Instagram é composto quase inteiramente por cards de palestrantes com o mesmo template verde/laranja. Esse material gera fadiga visual e não possui CTA de conversão — não funciona como anúncio pago. Todas as peças abaixo devem ser produzidas do zero, com design diferenciado do feed orgânico.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Resumo por Etapa do Funil</div>
+    <div class="table-wrapper">
+      <table class="overview-table">
+        <thead>
+          <tr>
+            <th>Etapa</th>
+            <th>Peças</th>
+            <th>Formatos</th>
+            <th class="text-center">Tom</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-gray">Topão</span></td>
+            <td>3 criativos</td>
+            <td>Reels + Imagem + Carrossel</td>
+            <td class="text-center">Curiosidade / Educativo</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-blue">Topo</span></td>
+            <td>4 criativos</td>
+            <td>Reels + Carrossel + Imagem + Stories</td>
+            <td class="text-center">Apresentação + CTA</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-purple">Meio</span></td>
+            <td>9 criativos</td>
+            <td>3 Carrosséis + 2 Reels + Imagem + Stories + Série de 15 Reels individuais</td>
+            <td class="text-center">Aprofundamento + Reconhecimento</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">Fundo</span></td>
+            <td>5 criativos</td>
+            <td>2 Imagens + Carrossel + Reels + Imagem</td>
+            <td class="text-center">Urgência + Fechamento</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Ângulos de comunicação -->
+  <div class="card">
+    <div class="card-title">&#127919; Ângulos de Comunicação Mapeados</div>
+    <p class="creative-text" style="margin-bottom: 12px;">Extraídos da análise do vídeo institucional e do briefing do evento. Cada criativo utiliza um ou mais desses ângulos.</p>
+    <div class="table-wrapper">
+      <table class="overview-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Ângulo</th>
+            <th>Frase-chave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Pioneirismo regional</strong></td><td>"Nordeste recebe pela primeira vez"</td></tr>
+          <tr><td>2</td><td><strong>Autoridade científica</strong></td><td>"Maiores nomes da pesquisa em solos do país"</td></tr>
+          <tr><td>3</td><td><strong>Chancela institucional</strong></td><td>SBCS + Embrapa + Fundação Bahia</td></tr>
+          <tr><td>4</td><td><strong>Marco para o agro</strong></td><td>"Não é só um evento técnico, é um marco para a região"</td></tr>
+          <tr><td>5</td><td><strong>Ciência aplicada</strong></td><td>"Não é só teoria. É ciência aplicada no campo"</td></tr>
+          <tr><td>6</td><td><strong>Experiência prática</strong></td><td>"Dia de campo em fazenda da região"</td></tr>
+          <tr><td>7</td><td><strong>3 pilares técnicos</strong></td><td>Fertilidade, física, química e biologia do solo</td></tr>
+          <tr><td>8</td><td><strong>Escassez</strong></td><td>"Vagas limitadas a 400 participantes"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. TOPAO ==================== -->
+<section id="topão" class="section">
+  <div class="funnel-stage stage-topão">
+    <div class="funnel-stage-left">
+      <div class="funnel-stage-icon">&#128218;</div>
+      <div>
+        <div class="funnel-stage-name">TOPÃO — Compra de Dados</div>
+        <div class="funnel-stage-obj">Objetivo: Engajamento / Reconhecimento — Sem CTA de venda</div>
+      </div>
+    </div>
+    <span class="funnel-stage-badge">3 peças</span>
+  </div>
+
+  <div class="alert alert-yellow">
+    <span class="alert-icon">&#128161;</span>
+    <div>
+      <strong>Regra do Topão:</strong> nenhum criativo desta etapa deve ter CTA de compra ou mencionar preço. O objetivo é gerar interação (curtidas, comentários, salvamentos, visualizações) para encher os baldes de público personalizado que serão usados no Meio e Fundo.
+    </div>
+  </div>
+
+  <!-- TOPAO-01 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id topão">TOP-01</span>
+        <span class="creative-name">Teaser "Primeira Vez no Nordeste"</span>
+      </div>
+      <span class="creative-format-badge">&#127909; Reels 9:16</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">Vertical 1080x1920</span>
+          <span class="spec-tag">15 a 25 segundos</span>
+          <span class="spec-tag">Legendas dinâmicas</span>
+          <span class="spec-tag">Música de fundo</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Reeditar o vídeo já existente no perfil do Instagram, cortando o trecho mais impactante. Abrir com o gancho de pioneirismo ("Nordeste recebe pela primeira vez"), manter ritmo dinâmico com legendas animadas e encerrar com tela institucional — sem CTA de compra. O objetivo é gerar visualizações e engajamento para alimentar os baldes de público.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Roteiro Sugerido</div>
+        <div class="script-block">
+          <div class="script-line"><span class="script-time">0-3s</span> — <span class="script-note">[Imagem aérea da região/fazenda + texto na tela]</span> "PELA PRIMEIRA VEZ NO NORDESTE"</div>
+          <div class="script-line"><span class="script-time">3-10s</span> — "O Simpósio Brasileiro de Solos Arenosos chega a Luís Eduardo Magalhães"</div>
+          <div class="script-line"><span class="script-time">10-18s</span> — "Ciência aplicada no campo. Dia de campo em fazenda. Os maiores nomes da pesquisa em solos."</div>
+          <div class="script-line"><span class="script-time">18-25s</span> — <span class="script-note">[Tela final: logo do evento + "1 a 3 de setembro" + "Saiba mais"]</span></div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">O Nordeste vai receber pela primeira vez um dos principais eventos de ciência do solo do Brasil. De 1 a 3 de setembro, Luís Eduardo Magalhães recebe o IV Simpósio Brasileiro de Solos Arenosos — com dia de campo, workshops e os maiores pesquisadores do país.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">IV Simpósio Brasileiro de Solos Arenosos</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPAO-02 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id topão">TOP-02</span>
+        <span class="creative-name">Save the Date Institucional</span>
+      </div>
+      <span class="creative-format-badge">&#128247; Imagem 1:1</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">Imagem estática</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Visual limpo e institucional. Foto da região (paisagem agrícola do Oeste baiano) com overlay escuro. Logo do evento centralizado. Data e local em destaque. Logos dos realizadores na base (SBCS, Embrapa, Fundação Bahia). Sem preço, sem urgência — apenas "Saiba mais". Design <strong>diferente</strong> dos cards verdes do feed orgânico.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo da Imagem</div>
+        <div class="image-text-block">
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;">SAVE THE DATE</div>
+          <div class="highlight">IV Simpósio Brasileiro de Solos Arenosos</div>
+          <div style="margin: 8px 0;">1 a 3 de setembro de 2026</div>
+          <div>Luís Eduardo Magalhães — BA</div>
+          <div class="sub" style="margin-top: 12px;">SBCS &bull; Embrapa &bull; Fundação Bahia</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Marque na agenda. De 1 a 3 de setembro, Luís Eduardo Magalhães recebe o IV Simpósio Brasileiro de Solos Arenosos. Ciência do solo aplicada no campo, com os maiores nomes da pesquisa brasileira.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">1 a 3 de setembro — Luís Eduardo Magalhães, BA</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPAO-03 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id topão">TOP-03</span>
+        <span class="creative-name">Carrossel Educativo "5 Fatos sobre Solos Arenosos"</span>
+      </div>
+      <span class="creative-format-badge">&#128218; Carrossel</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">5 cards</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Conteúdo de valor que gera salvamento e compartilhamento. A capa já abre com o gancho local (Luís Eduardo Magalhães sediando o evento) mesclado com a promessa de conteúdo (5 fatos). Os cards seguintes trazem fatos relevantes sobre solos arenosos — técnico o suficiente para filtrar o público-alvo, mas acessível o bastante para engajar. Linguagem educativa, sem pressão de venda.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo dos Cards</div>
+        <ul class="slide-list">
+          <li class="slide-item">
+            <span class="slide-number">1</span>
+            <div class="slide-content"><strong>Capa:</strong> "Luís Eduardo Magalhães vai sediar o maior evento de solos arenosos do Brasil. Aqui estão 5 fatos que todo profissional do agro precisa saber."</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">2</span>
+            <div class="slide-content">"Solos arenosos representam mais de 20% das áreas agrícolas do Brasil — e estão em expansão"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">3</span>
+            <div class="slide-content">"O manejo correto da fertilidade, física e biologia desses solos pode aumentar a produtividade em até 40%"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">4</span>
+            <div class="slide-content">"A região MATOPIBA (MA, TO, PI, BA) é a nova fronteira agrícola brasileira — e grande parte dos solos são arenosos"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">5</span>
+            <div class="slide-content"><strong>CTA:</strong> "Quer entender na prática como transformar solos arenosos em alta produtividade? O IV Simpósio Brasileiro de Solos Arenosos acontece de 1 a 3 de setembro em Luís Eduardo Magalhães — BA. Clique em Saiba Mais e conheça o evento."</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Solos arenosos são um dos maiores desafios do agro brasileiro — e também uma das maiores oportunidades. O IV Simpósio Brasileiro de Solos Arenosos reúne os maiores pesquisadores do país em Luís Eduardo Magalhães — BA, de 1 a 3 de setembro. Deslize e descubra 5 fatos que todo profissional do agro precisa saber.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Solos arenosos: desafio ou oportunidade?</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. TOPO DE FUNIL ==================== -->
+<section id="topo" class="section">
+  <div class="funnel-stage stage-topo">
+    <div class="funnel-stage-left">
+      <div class="funnel-stage-icon">&#127919;</div>
+      <div>
+        <div class="funnel-stage-name">TOPO DE FUNIL — Prospecção Fria</div>
+        <div class="funnel-stage-obj">Objetivo: Conversão (evento Purchase) — Pixel ativo — Público frio</div>
+      </div>
+    </div>
+    <span class="funnel-stage-badge">4 peças</span>
+  </div>
+
+  <div class="alert alert-blue">
+    <span class="alert-icon">&#128161;</span>
+    <div>
+      <strong>Regra do Topo:</strong> a pessoa nunca ouviu falar do evento. Cada criativo precisa <strong>apresentar + convencer + converter</strong> na mesma peça. CTA direto para inscrição. Preço aparece como informação, não como pressão.
+    </div>
+  </div>
+
+  <!-- TP-01 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id topo">TP-01</span>
+        <span class="creative-name">Apresentação Completa do Evento</span>
+      </div>
+      <span class="creative-format-badge">&#127909; Reels 9:16</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">Vertical 1080x1920</span>
+          <span class="spec-tag">20 a 30 segundos</span>
+          <span class="spec-tag">Legendas dinâmicas</span>
+          <span class="spec-tag">Cortes rápidos</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Versão completa e editada com ritmo dinâmico. Apresentar o evento do zero: o que é, quando, onde, por que participar. Encerrar com preço e CTA direto de inscrição. Ângulos utilizados: pioneirismo regional + ciência aplicada + experiência prática.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Roteiro Sugerido</div>
+        <div class="script-block">
+          <div class="script-line"><span class="script-time">0-3s</span> — <span class="script-note">[Gancho — texto na tela + corte rápido]</span> "Se você é do agro, esse evento não dá pra ignorar."</div>
+          <div class="script-line"><span class="script-time">3-10s</span> — "O IV Simpósio Brasileiro de Solos Arenosos acontece de 1 a 3 de setembro em Luís Eduardo Magalhães."</div>
+          <div class="script-line"><span class="script-time">10-18s</span> — "Dia de campo em fazenda, workshops práticos, os maiores nomes da pesquisa em solos — Embrapa, SBCS, Fundação Bahia."</div>
+          <div class="script-line"><span class="script-time">18-24s</span> — "Não é só teoria. É ciência aplicada no campo."</div>
+          <div class="script-line"><span class="script-time">24-30s</span> — <span class="script-note">[Tela final com preço]</span> "Inscrições a partir de R$ 180. Vagas limitadas. Clique em Saiba Mais."</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Se você trabalha com solos arenosos, esse é o evento do ano. O IV Simpósio Brasileiro de Solos Arenosos reúne os maiores pesquisadores do Brasil em 3 dias de ciência aplicada no campo — com dia de campo em fazenda, workshops e networking de alto nível.<br><br>Luís Eduardo Magalhães — BA<br>1 a 3 de setembro<br>2º Lote: inscrições a partir de R$ 180. Vagas limitadas. Clique em Saiba Mais.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Vagas limitadas — clique em Saiba Mais</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TP-02 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id topo">TP-02</span>
+        <span class="creative-name">Carrossel "5 Razões para Participar"</span>
+      </div>
+      <span class="creative-format-badge">&#128218; Carrossel</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">6 cards</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Cada card apresenta uma razão concreta para participar do evento. Visual consistente com iconografia ou imagens, mas <strong>diferente do template verde do feed orgânico</strong>. A capa já situa o público com nome completo do evento e localização. Último card traz preço e CTA com chamada para "Saiba Mais". Ângulos: ciência aplicada + experiência prática + autoridade + networking + pioneirismo.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo dos Cards</div>
+        <ul class="slide-list">
+          <li class="slide-item">
+            <span class="slide-number">1</span>
+            <div class="slide-content"><strong>Capa:</strong> "5 razões para participar do IV Simpósio Brasileiro de Solos Arenosos — de 1 a 3 de setembro em Luís Eduardo Magalhães, Bahia"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">2</span>
+            <div class="slide-content"><strong>Ciência aplicada:</strong> "Dia de campo em fazenda da região com demonstrações práticas — não é só teoria em auditório"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">3</span>
+            <div class="slide-content"><strong>Autoridade:</strong> "Os maiores nomes da pesquisa em solos do Brasil — pesquisadores da Embrapa, universidades e empresas de referência"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">4</span>
+            <div class="slide-content"><strong>Imersão:</strong> "3 dias de imersão total — conferências, workshops e dinâmicas de campo nos 3 pilares: fertilidade, física e biologia do solo"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">5</span>
+            <div class="slide-content"><strong>Networking:</strong> "Conecte-se com pesquisadores, agrônomos, produtores e profissionais do agro de todo o Brasil"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">6</span>
+            <div class="slide-content"><strong>CTA:</strong> "2º Lote aberto — inscrições a partir de R$ 180. Vagas limitadas a 400 participantes. Clique em Saiba Mais e garanta sua vaga."</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Pela primeira vez no Nordeste: o IV Simpósio Brasileiro de Solos Arenosos chega a Luís Eduardo Magalhães — BA, com 3 dias de ciência aplicada no campo. De 1 a 3 de setembro. Deslize e veja por que você não pode ficar de fora.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">5 razões para participar — vagas limitadas</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TP-03 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id topo">TP-03</span>
+        <span class="creative-name">Card de Preço + Escassez</span>
+      </div>
+      <span class="creative-format-badge">&#128247; Imagem 1:1</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">Imagem estática</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Card direto e objetivo para público frio. Fundo escuro ou com foto do local do evento. Preço do 2º Lote em destaque grande. Informação clara de lote vigente. CTA claro. Ideal para quem precisa ver rapidamente: o que é, quando, quanto custa. Ângulos: escassez + preço acessível.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo da Imagem</div>
+        <div class="image-text-block">
+          <div style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5);">2º LOTE</div>
+          <div style="font-size: 0.85rem; font-weight: 600; margin-top: 8px;">IV Simpósio Brasileiro de Solos Arenosos</div>
+          <div style="margin: 6px 0; font-size: 0.85rem;">1 a 3 de setembro — Luís Eduardo Magalhães, BA</div>
+          <div class="highlight" style="margin: 12px 0;">Inscrições a partir de R$ 180</div>
+          <div style="font-size: 0.85rem; font-weight: 600;">Vagas limitadas — clique em Saiba Mais</div>
+          <div class="sub" style="margin-top: 12px;">SBCS &bull; Embrapa &bull; Fundação Bahia</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">O maior evento de solos arenosos do Brasil acontece de 1 a 3 de setembro em Luís Eduardo Magalhães — BA. Conferências, workshops, dia de campo em fazenda — 3 dias de ciência aplicada com os maiores pesquisadores do país. 2º Lote aberto: inscrições a partir de R$ 180.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">2º Lote aberto — inscrições a partir de R$ 180</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TP-04 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id topo">TP-04</span>
+        <span class="creative-name">Chamada Visual Direta</span>
+      </div>
+      <span class="creative-format-badge">&#128247; Stories 9:16</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1920 px</span>
+          <span class="spec-tag">Imagem vertical</span>
+          <span class="spec-tag">Stories + Reels Feed</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Visual de alto impacto com foto da região ou do local do evento (paisagem agrícola, campo aberto, solo). Texto mínimo sobre a imagem. CTA direto. Foco em parar o scroll com a força da imagem e da mensagem curta. Ângulo: pioneirismo regional.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo da Imagem</div>
+        <div class="image-text-block">
+          <div style="font-size: 0.78rem; color: rgba(255,255,255,0.5);">O Nordeste recebe pela primeira vez</div>
+          <div class="highlight" style="margin: 8px 0;">IV Simpósio Brasileiro de Solos Arenosos</div>
+          <div style="font-size: 0.9rem;">1 a 3 de setembro</div>
+          <div style="font-size: 0.85rem; margin-top: 4px;">Luís Eduardo Magalhães — Bahia</div>
+          <div style="margin-top: 16px; font-size: 0.8rem; font-weight: 600;">Saiba Mais &#8595;</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Pela primeira vez no Nordeste. O IV Simpósio Brasileiro de Solos Arenosos chega a Luís Eduardo Magalhães com dia de campo, workshops e os maiores nomes da pesquisa em solos. Inscrições abertas.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Clique em Saiba Mais</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. MEIO DE FUNIL ==================== -->
+<section id="meio" class="section">
+  <div class="funnel-stage stage-meio">
+    <div class="funnel-stage-left">
+      <div class="funnel-stage-icon">&#128172;</div>
+      <div>
+        <div class="funnel-stage-name">MEIO DE FUNIL — Audiência Morna</div>
+        <div class="funnel-stage-obj">Objetivo: Conversão (evento Purchase) — Público que já conhece o evento</div>
+      </div>
+    </div>
+    <span class="funnel-stage-badge">9 peças</span>
+  </div>
+
+  <div class="alert alert-yellow">
+    <span class="alert-icon">&#128161;</span>
+    <div>
+      <strong>Público do Meio:</strong> engajadores do Instagram nos últimos 30 dias, visitantes do perfil, Lookalike 1-3% dos compradores. <strong>Essas pessoas já sabem que o evento existe.</strong> A comunicação deve reconhecer isso — aprofundar, detalhar e empurrar para a decisão, sem repetir a apresentação básica.
+    </div>
+  </div>
+
+  <!-- ME-01A — Carrossel Palestrantes Parte 1 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-01A</span>
+        <span class="creative-name">Carrossel Palestrantes — Parte 1 de 3</span>
+      </div>
+      <span class="creative-format-badge">&#128218; Carrossel</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">7 cards (capa + 5 palestrantes + CTA)</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Primeiro de 3 carrosséis que apresentam os 15 palestrantes confirmados. Design <strong>completamente diferente</strong> dos cards verdes do feed orgânico — layout premium com fundo escuro e tipografia sofisticada. Cada card traz foto, nome, instituição e tema. A capa usa elemento de reconhecimento. Ângulo: autoridade científica.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo dos Cards</div>
+        <ul class="slide-list">
+          <li class="slide-item">
+            <span class="slide-number">1</span>
+            <div class="slide-content"><strong>Capa:</strong> "Conheça os palestrantes do IV Simpósio Brasileiro de Solos Arenosos — Parte 1 de 3" + "1 a 3 de setembro — Luís Eduardo Magalhães, Bahia" + Logo do evento</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">2</span>
+            <div class="slide-content"><strong>Palestrante 1:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">3</span>
+            <div class="slide-content"><strong>Palestrante 2:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">4</span>
+            <div class="slide-content"><strong>Palestrante 3:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">5</span>
+            <div class="slide-content"><strong>Palestrante 4:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">6</span>
+            <div class="slide-content"><strong>Palestrante 5:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">7</span>
+            <div class="slide-content"><strong>CTA:</strong> "Esses são apenas 5 dos 15 palestrantes confirmados. Clique em Saiba Mais e veja a programação completa."</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Você já conhece o IV Simpósio Brasileiro de Solos Arenosos. Agora conheça quem vai estar lá. Deslize e veja os primeiros 5 palestrantes confirmados — nomes de referência nacional em ciência do solo.<br><br>1 a 3 de setembro — Luís Eduardo Magalhães, BA</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Palestrantes confirmados — Parte 1 de 3</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"Você já conhece o evento. Agora conheça quem vai estar lá."</strong> — Essa frase na capa do carrossel e na copy reconhece que a pessoa já interagiu com o conteúdo e avança a conversa para o próximo nível: os detalhes que justificam a decisão.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ME-01B — Carrossel Palestrantes Parte 2 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-01B</span>
+        <span class="creative-name">Carrossel Palestrantes — Parte 2 de 3</span>
+      </div>
+      <span class="creative-format-badge">&#128218; Carrossel</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">7 cards (capa + 5 palestrantes + CTA)</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Segundo carrossel da série de palestrantes. Mesmo layout premium do ME-01A — fundo escuro, tipografia sofisticada, foto + nome + instituição + tema por card. Continuidade visual para quem já viu a Parte 1. Ângulo: autoridade científica.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo dos Cards</div>
+        <ul class="slide-list">
+          <li class="slide-item">
+            <span class="slide-number">1</span>
+            <div class="slide-content"><strong>Capa:</strong> "Conheça os palestrantes do IV Simpósio Brasileiro de Solos Arenosos — Parte 2 de 3" + "1 a 3 de setembro — Luís Eduardo Magalhães, Bahia" + Logo do evento</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">2</span>
+            <div class="slide-content"><strong>Palestrante 6:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">3</span>
+            <div class="slide-content"><strong>Palestrante 7:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">4</span>
+            <div class="slide-content"><strong>Palestrante 8:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">5</span>
+            <div class="slide-content"><strong>Palestrante 9:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">6</span>
+            <div class="slide-content"><strong>Palestrante 10:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">7</span>
+            <div class="slide-content"><strong>CTA:</strong> "Ainda faltam 5 palestrantes. Clique em Saiba Mais e veja a programação completa."</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Mais 5 palestrantes confirmados no IV Simpósio Brasileiro de Solos Arenosos. Pesquisadores de referência nacional em fertilidade, física e biologia de solos arenosos. Deslize e conheça cada um deles.<br><br>1 a 3 de setembro — Luís Eduardo Magalhães, BA</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Palestrantes confirmados — Parte 2 de 3</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"Você já conhece o evento. Agora conheça quem vai estar lá."</strong> — Continuidade da série. Quem viu a Parte 1 reconhece o formato e avança. Quem não viu, é impactado pela autoridade dos nomes apresentados.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ME-01C — Carrossel Palestrantes Parte 3 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-01C</span>
+        <span class="creative-name">Carrossel Palestrantes — Parte 3 de 3</span>
+      </div>
+      <span class="creative-format-badge">&#128218; Carrossel</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">7 cards (capa + 5 palestrantes + CTA)</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Terceiro e último carrossel da série de palestrantes. Mesmo layout premium. CTA final mais forte, fechando a série com urgência: "Agora que você conhece quem vai palestrar, garanta sua vaga." Ângulo: autoridade científica + fechamento.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo dos Cards</div>
+        <ul class="slide-list">
+          <li class="slide-item">
+            <span class="slide-number">1</span>
+            <div class="slide-content"><strong>Capa:</strong> "Conheça os palestrantes do IV Simpósio Brasileiro de Solos Arenosos — Parte 3 de 3" + "1 a 3 de setembro — Luís Eduardo Magalhães, Bahia" + Logo do evento</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">2</span>
+            <div class="slide-content"><strong>Palestrante 11:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">3</span>
+            <div class="slide-content"><strong>Palestrante 12:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">4</span>
+            <div class="slide-content"><strong>Palestrante 13:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">5</span>
+            <div class="slide-content"><strong>Palestrante 14:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">6</span>
+            <div class="slide-content"><strong>Palestrante 15:</strong> Foto + Nome + Instituição + Tema da palestra</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">7</span>
+            <div class="slide-content"><strong>CTA:</strong> "15 palestrantes confirmados. A programação completa está no link. Clique em Saiba Mais e garanta sua vaga."</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Os últimos 5 palestrantes confirmados no IV Simpósio Brasileiro de Solos Arenosos. São 15 nomes de referência nacional reunidos em Luís Eduardo Magalhães — BA, de 1 a 3 de setembro. Deslize e conheça todos.<br><br>Clique em Saiba Mais e garanta sua vaga — vagas limitadas a 400 participantes.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Palestrantes confirmados — Parte 3 de 3</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"Você já conhece o evento. Agora conheça quem vai estar lá."</strong> — Fechamento da série. O CTA é mais direto porque a pessoa já consumiu conteúdo sobre os palestrantes — o empurrão final é para a conversão.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ME-01D — Reels Compilação Palestrantes -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-01D</span>
+        <span class="creative-name">Reels Compilação — 15 Palestrantes</span>
+      </div>
+      <span class="creative-format-badge">&#127909; Reels 9:16</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">Vertical 1080x1920</span>
+          <span class="spec-tag">30 a 45 segundos</span>
+          <span class="spec-tag">Legendas dinâmicas</span>
+          <span class="spec-tag">Cortes rápidos</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Vídeo compilação rápido mostrando todos os 15 palestrantes com cortes dinâmicos. Cada palestrante aparece por 1,5 a 2 segundos com foto, nome e instituição. Trilha sonora envolvente. Encerra com tela final de CTA. Funciona como "trailer" da programação científica do evento. Ângulo: autoridade científica + volume de nomes.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Roteiro Sugerido</div>
+        <div class="script-block">
+          <div class="script-line"><span class="script-time">0-3s</span> — <span class="script-note">[Gancho — texto na tela]</span> "15 palestrantes confirmados no IV Simpósio Brasileiro de Solos Arenosos"</div>
+          <div class="script-line"><span class="script-time">3-35s</span> — <span class="script-note">[Sequência rápida: foto + nome + instituição de cada palestrante, ~2s cada, com transições dinâmicas e legendas animadas]</span></div>
+          <div class="script-line"><span class="script-time">35-40s</span> — "1 a 3 de setembro — Luís Eduardo Magalhães, Bahia"</div>
+          <div class="script-line"><span class="script-time">40-45s</span> — <span class="script-note">[Tela final]</span> "Clique em Saiba Mais e garanta sua vaga."</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">15 palestrantes de referência nacional em ciência do solo. Todos confirmados no IV Simpósio Brasileiro de Solos Arenosos — de 1 a 3 de setembro em Luís Eduardo Magalhães, Bahia. Assista e conheça cada um deles.<br><br>Clique em Saiba Mais e garanta sua vaga. Vagas limitadas a 400 participantes.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">15 palestrantes confirmados — conheça todos</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"Você já conhece o evento. Agora conheça quem vai estar lá."</strong> — O formato vídeo com cortes rápidos gera impacto pela velocidade e volume de nomes. Complementa os carrosséis para quem prefere consumir vídeo no feed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ME-01E — Série de 15 Reels Individuais -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-01E</span>
+        <span class="creative-name">Série de 15 Reels Individuais — 1 por Palestrante</span>
+      </div>
+      <span class="creative-format-badge">&#127909; Reels 9:16 (x15)</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">Vertical 1080x1920</span>
+          <span class="spec-tag">10 a 15 segundos cada</span>
+          <span class="spec-tag">15 vídeos (1 por palestrante)</span>
+          <span class="spec-tag">Legendas dinâmicas</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Série de 15 Reels curtos — cada um apresentando 1 palestrante individualmente. Formato: foto do palestrante + nome + instituição + tema da palestra + breve bio (1-2 frases). Encerra com tela do evento e CTA. Permite segmentar por interesse (ex.: quem se interessa por fertilidade vê o Reels do palestrante de fertilidade). Ângulo: autoridade científica + personalização.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Roteiro Padrão (aplicar a cada palestrante)</div>
+        <div class="script-block">
+          <div class="script-line"><span class="script-time">0-2s</span> — <span class="script-note">[Foto do palestrante + nome em destaque]</span> "Conheça [Nome do Palestrante]"</div>
+          <div class="script-line"><span class="script-time">2-7s</span> — "[Instituição] — [Tema da palestra]" + breve bio (1-2 frases sobre a trajetória ou especialidade)</div>
+          <div class="script-line"><span class="script-time">7-12s</span> — "Confirmado no IV Simpósio Brasileiro de Solos Arenosos — 1 a 3 de setembro, Luís Eduardo Magalhães — Bahia"</div>
+          <div class="script-line"><span class="script-time">12-15s</span> — <span class="script-note">[Tela final]</span> "Clique em Saiba Mais e garanta sua vaga."</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal (modelo — adaptar para cada palestrante)</div>
+            <div class="copy-field-text">[Nome do Palestrante], [instituição], está confirmado no IV Simpósio Brasileiro de Solos Arenosos. Tema: [tema da palestra]. De 1 a 3 de setembro em Luís Eduardo Magalhães — BA.<br><br>Clique em Saiba Mais e garanta sua vaga. Vagas limitadas a 400 participantes.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">[Nome do Palestrante] confirmado — veja o tema</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"Você já conhece o evento. Agora conheça quem vai estar lá."</strong> — Os Reels individuais permitem testar qual palestrante gera mais engajamento e escalar os de melhor performance. Ideais para segmentação por interesse técnico.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ME-02 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-02</span>
+        <span class="creative-name">Carrossel Programação dos 3 Dias</span>
+      </div>
+      <span class="creative-format-badge">&#128218; Carrossel</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">5 cards</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Mostrar o que acontece em cada dia do evento. Visual de agenda/timeline com layout limpo. Detalhar conferências, workshops e dia de campo. Para quem já sabe o básico, a programação é o empurrão que falta para decidir. Ângulo: experiência prática + 3 pilares técnicos.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo dos Cards</div>
+        <ul class="slide-list">
+          <li class="slide-item">
+            <span class="slide-number">1</span>
+            <div class="slide-content"><strong>Capa:</strong> "3 dias que vão transformar a forma como você enxerga solos arenosos — IV Simpósio Brasileiro de Solos Arenosos, Luís Eduardo Magalhães — Bahia"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">2</span>
+            <div class="slide-content"><strong>DIA 1:</strong> Conferências de abertura + workshops sobre fertilidade e física do solo (detalhar horários e palestrantes principais)</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">3</span>
+            <div class="slide-content"><strong>DIA 2:</strong> Workshops de biologia do solo + mesas-redondas com pesquisadores de referência</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">4</span>
+            <div class="slide-content"><strong>DIA 3:</strong> Dia de campo em fazenda da região — ciência aplicada na prática, demonstrações em campo, visita técnica</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">5</span>
+            <div class="slide-content"><strong>CTA:</strong> "A programação completa está no link. Clique em Saiba Mais e garanta sua vaga — IV Simpósio Brasileiro de Solos Arenosos, 1 a 3 de setembro, Luís Eduardo Magalhães — BA."</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Você já sabe que o IV Simpósio Brasileiro de Solos Arenosos acontece de 1 a 3 de setembro em Luís Eduardo Magalhães — BA. Mas sabe o que te espera em cada dia? Deslize e veja a programação completa — de conferências a dia de campo em fazenda.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Veja a programação dos 3 dias</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"Você já sabe que o evento acontece. Agora veja o que te espera."</strong> — A copy parte do pressuposto de que a pessoa já tem a informação básica e avança direto para o conteúdo que gera decisão: a programação detalhada.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ME-03 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-03</span>
+        <span class="creative-name">"Não é Só Teoria" — Diferencial Prático</span>
+      </div>
+      <span class="creative-format-badge">&#127909; Reels 9:16</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">Vertical 1080x1920</span>
+          <span class="spec-tag">15 a 25 segundos</span>
+          <span class="spec-tag">Legendas dinâmicas</span>
+          <span class="spec-tag">Imagens de campo</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Vídeo que explora o grande diferencial do evento: ciência aplicada no campo, não apenas palestras em auditório. Se houver depoimento de palestrante ou organizador disponível, utilizar. Caso contrário, montar com imagens da região, de fazendas e do local do evento. Ângulos: ciência aplicada + experiência prática + 3 pilares.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Roteiro Sugerido</div>
+        <div class="script-block">
+          <div class="script-line"><span class="script-time">0-3s</span> — <span class="script-note">[Gancho]</span> "O que diferencia o IV Simpósio Brasileiro de Solos Arenosos de todos os outros eventos do agro?"</div>
+          <div class="script-line"><span class="script-time">3-10s</span> — "Não é só palestra em auditório. É dia de campo em fazenda. É colocar a mão na terra."</div>
+          <div class="script-line"><span class="script-time">10-18s</span> — "Os 3 pilares — fertilidade, física e biologia — discutidos na prática, com quem mais entende do assunto no Brasil."</div>
+          <div class="script-line"><span class="script-time">18-25s</span> — <span class="script-note">[Tela final]</span> "1 a 3 de setembro — Luís Eduardo Magalhães, Bahia. Clique em Saiba Mais."</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Você já ouviu falar do IV Simpósio Brasileiro de Solos Arenosos. Agora entenda por que ele é diferente. Não é só teoria em auditório — é ciência aplicada no campo, com dia de campo em fazenda e os maiores pesquisadores do país.<br><br>1 a 3 de setembro — Luís Eduardo Magalhães, BA. Clique em Saiba Mais.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Ciência aplicada no campo — clique em Saiba Mais</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"Você já ouviu falar. Agora entenda por que é diferente."</strong> — Reconhece o contato anterior e oferece uma razão nova para considerar: o formato prático e o dia de campo, que é o maior diferencial competitivo do evento.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ME-04 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-04</span>
+        <span class="creative-name">Card de Prova Social</span>
+      </div>
+      <span class="creative-format-badge">&#128247; Imagem 1:1</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">Imagem estática</span>
+          <span class="spec-tag">Feed + Explorar</span>
+          <span class="spec-tag">Atualizar semanalmente</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Card com número atualizado de inscritos em destaque grande. Gatilho de pertencimento: "Eles já garantiram. E você?" Fundo escuro com o número em laranja ou branco. Atualizar o número a cada semana conforme novas inscrições entram. Ângulo: prova social + escassez.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo da Imagem</div>
+        <div class="image-text-block">
+          <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.15em;">IV Simpósio Brasileiro de Solos Arenosos</div>
+          <div class="highlight" style="font-size: 2rem; margin: 16px 0;">Mais de [X] profissionais</div>
+          <div style="font-size: 0.95rem;">já confirmaram presença</div>
+          <div style="margin-top: 20px; font-size: 0.9rem; font-weight: 600;">E você? Garanta sua vaga.</div>
+          <div class="sub" style="margin-top: 8px;">1 a 3 de setembro — Luís Eduardo Magalhães, BA</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Agrônomos, pesquisadores e produtores de todo o Brasil já garantiram presença no IV Simpósio Brasileiro de Solos Arenosos. A cada dia, o número cresce. A pergunta é: você vai ficar de fora? Inscrições abertas — vagas limitadas a 400 participantes.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Eles já garantiram. E você?</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"Eles já garantiram. E você?"</strong> — Para quem já viu o evento e está considerando, ver que dezenas de profissionais já se inscreveram reduz a incerteza e aciona o gatilho de pertencimento. O número deve ser atualizado semanalmente.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ME-05 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id meio">ME-05</span>
+        <span class="creative-name">Bastidores — O Evento Está Tomando Forma</span>
+      </div>
+      <span class="creative-format-badge">&#128247; Stories 9:16</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1920 px</span>
+          <span class="spec-tag">Imagem ou vídeo curto</span>
+          <span class="spec-tag">Stories + Reels</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Mostrar a preparação do evento: local sendo organizado, equipe trabalhando, região de Luís Eduardo Magalhães, estrutura montada. Gera proximidade, realidade e senso de que o evento é concreto e está acontecendo. Ideal para Stories por ter tom informal e de bastidores. Ângulo: experiência prática + marco regional.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo da Imagem / Vídeo</div>
+        <div class="image-text-block">
+          <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.15em;">BASTIDORES</div>
+          <div class="highlight" style="margin: 12px 0;">O evento está tomando forma</div>
+          <div style="font-size: 0.85rem;">IV Simpósio Brasileiro de Solos Arenosos</div>
+          <div style="font-size: 0.82rem; margin-top: 4px;">1 a 3 de setembro — Luís Eduardo Magalhães, Bahia</div>
+          <div style="margin-top: 16px; font-size: 0.8rem; font-weight: 600;">Garanta sua vaga &#8593;</div>
+          <div class="sub" style="margin-top: 8px;">[Foto/vídeo do local, equipe ou região ao fundo]</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Os bastidores do IV Simpósio Brasileiro de Solos Arenosos estão a todo vapor. O evento está tomando forma em Luís Eduardo Magalhães. Garanta sua vaga antes que as inscrições encerrem.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Garanta sua vaga</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128172;</span>
+          <div class="recognition-text"><strong>"O evento está tomando forma. Você vai estar lá?"</strong> — Bastidores criam senso de realidade e proximidade. Para quem já acompanha, ver o evento saindo do papel é um empurrão emocional para finalizar a inscrição.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5. FUNDO DE FUNIL ==================== -->
+<section id="fundo" class="section">
+  <div class="funnel-stage stage-fundo">
+    <div class="funnel-stage-left">
+      <div class="funnel-stage-icon">&#128176;</div>
+      <div>
+        <div class="funnel-stage-name">FUNDO DE FUNIL — Remarketing + Conversão</div>
+        <div class="funnel-stage-obj">Objetivo: Conversão (evento Purchase) — Público que quase comprou</div>
+      </div>
+    </div>
+    <span class="funnel-stage-badge">5 peças</span>
+  </div>
+
+  <div class="alert alert-orange">
+    <span class="alert-icon">&#128165;</span>
+    <div>
+      <strong>Público do Fundo:</strong> visitantes do site, quem iniciou checkout e não finalizou, engajadores dos últimos 7 dias. <strong>Essas pessoas quase compraram.</strong> Não apresente o evento de novo. Vá direto ao ponto: urgência, escassez, preço, facilidade. A comunicação deve reconhecer que a pessoa já sabe tudo e só precisa do empurrão final.
+    </div>
+  </div>
+
+  <!-- FU-01 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id fundo">FU-01</span>
+        <span class="creative-name">Card de Preço com Urgência</span>
+      </div>
+      <span class="creative-format-badge">&#128247; Imagem 1:1</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">Imagem estática</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Card direto com preço do lote atual em destaque grande. Fundo escuro, cor laranja nos destaques de preço e urgência. Gatilho: "2º Lote por tempo limitado" ou "Garanta antes que mude". Sem explicar o que é o evento — a pessoa já sabe. Apenas preço + urgência + CTA. Ângulo: escassez + fechamento.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo da Imagem</div>
+        <div class="image-text-block">
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5);">2º LOTE</div>
+          <div class="highlight" style="font-size: 2rem; margin: 12px 0;">A partir de R$ 180</div>
+          <div style="font-size: 0.85rem; font-weight: 600;">IV Simpósio Brasileiro de Solos Arenosos</div>
+          <div style="font-size: 0.82rem; margin-top: 4px;">1 a 3 de setembro — Luís Eduardo Magalhães, BA</div>
+          <div style="font-size: 0.85rem; margin-top: 12px;">2º Lote — condição por tempo limitado</div>
+          <div style="margin-top: 16px; font-size: 0.85rem; font-weight: 700;">Clique em Saiba Mais</div>
+          <div class="sub" style="margin-top: 8px;">Sócios da Sociedade Brasileira de Ciência do Solo: 20% de desconto</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Você já visitou a página do IV Simpósio Brasileiro de Solos Arenosos. O 2º Lote ainda está disponível — a partir de R$ 180 — mas não por muito tempo. Garanta sua inscrição agora e economize. As vagas são limitadas a 400 participantes.<br><br>1 a 3 de setembro — Luís Eduardo Magalhães, BA. Clique em Saiba Mais.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">2º Lote ainda disponível — clique em Saiba Mais</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128176;</span>
+          <div class="recognition-text"><strong>"Você já visitou a página. O lote atual ainda está disponível."</strong> — Reconhece a visita ao site e cria urgência em torno do preço. A pessoa sabe que estava quase lá — o criativo só precisa reativar a intenção.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FU-02 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id fundo">FU-02</span>
+        <span class="creative-name">Countdown — Contagem Regressiva</span>
+      </div>
+      <span class="creative-format-badge">&#128247; Imagem 1:1</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">Imagem estática</span>
+          <span class="spec-tag">Feed + Stories</span>
+          <span class="spec-tag">Atualizar semanalmente</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Contagem regressiva visual com o número de dias faltando em destaque grande. Gera senso de urgência temporal. Atualizar semanalmente ou quando o número mudar significativamente. Fundo escuro com número em laranja. Ângulo: escassez temporal.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo da Imagem</div>
+        <div class="image-text-block">
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4);">CONTAGEM REGRESSIVA</div>
+          <div class="highlight" style="font-size: 3rem; margin: 12px 0;">FALTAM [X] DIAS</div>
+          <div style="font-size: 0.85rem; font-weight: 600;">IV Simpósio Brasileiro de Solos Arenosos</div>
+          <div style="font-size: 0.82rem; margin-top: 4px;">1 a 3 de setembro — Luís Eduardo Magalhães, BA</div>
+          <div style="margin-top: 16px; font-size: 0.85rem; font-weight: 700;">Clique em Saiba Mais e garanta sua vaga</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">A contagem regressiva começou. Faltam [X] dias para o IV Simpósio Brasileiro de Solos Arenosos. Não deixe para a última hora — as inscrições podem encerrar antes do evento.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Faltam [X] dias — garanta sua vaga</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128176;</span>
+          <div class="recognition-text"><strong>"O evento está chegando. Você vai estar lá?"</strong> — A urgência temporal funciona melhor com quem já conhece o evento. A contagem regressiva transforma "vou ver depois" em "preciso decidir agora".</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FU-03 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id fundo">FU-03</span>
+        <span class="creative-name">Carrossel "O Que Você Recebe"</span>
+      </div>
+      <span class="creative-format-badge">&#128218; Carrossel</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">6 cards</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Comparativo de valor percebido. Cada card mostra um benefício concreto incluso na inscrição. O último card traz o preço total — criando a percepção de que o investimento é muito inferior ao valor que a pessoa recebe. Para quem está na dúvida, esse criativo destrava a decisão pelo racional. Ângulo: valor tangível + preço.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo dos Cards</div>
+        <ul class="slide-list">
+          <li class="slide-item">
+            <span class="slide-number">1</span>
+            <div class="slide-content"><strong>Capa:</strong> "Veja tudo que está incluso na sua inscrição do IV Simpósio Brasileiro de Solos Arenosos — 1 a 3 de setembro, Luís Eduardo Magalhães, Bahia"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">2</span>
+            <div class="slide-content"><strong>Conferências:</strong> "Palestras com os maiores nomes da ciência do solo do Brasil — Embrapa, universidades, centros de pesquisa"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">3</span>
+            <div class="slide-content"><strong>Workshops:</strong> "4 workshops práticos — fertilidade, física, química e biologia do solo"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">4</span>
+            <div class="slide-content"><strong>Dia de campo:</strong> "Visita técnica em fazenda da região — ciência aplicada na prática, demonstrações em campo"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">5</span>
+            <div class="slide-content"><strong>Networking:</strong> "3 dias de conexão com pesquisadores, agrônomos e produtores de todo o Brasil"</div>
+          </li>
+          <li class="slide-item">
+            <span class="slide-number">6</span>
+            <div class="slide-content"><strong>CTA:</strong> "Tudo isso a partir de R$ 180 — 2º Lote. Clique em Saiba Mais e garanta sua vaga."</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Conferências, workshops, dia de campo, networking — tudo isso em 3 dias de imersão no IV Simpósio Brasileiro de Solos Arenosos. E o melhor: a partir de R$ 180 (2º Lote). Deslize e veja o que está incluso na sua inscrição. Vagas limitadas a 400 participantes.<br><br>1 a 3 de setembro — Luís Eduardo Magalhães, BA. Clique em Saiba Mais.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Tudo isso por R$ 180 — clique em Saiba Mais</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128176;</span>
+          <div class="recognition-text"><strong>"Você já sabe o que é o evento. Agora veja o que está incluso."</strong> — O comparativo de valor funciona para destravar quem está travado no preço. Ao mostrar tudo que está incluso antes de revelar o valor, cria a percepção de que o investimento é baixo para o que se recebe.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FU-04 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id fundo">FU-04</span>
+        <span class="creative-name">Card Desconto Sócios da Sociedade Brasileira de Ciência do Solo</span>
+      </div>
+      <span class="creative-format-badge">&#128247; Imagem 1:1</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">1080x1080 px</span>
+          <span class="spec-tag">Imagem estática</span>
+          <span class="spec-tag">Feed + Explorar</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Card específico para sócios da Sociedade Brasileira de Ciência do Solo. Destaque para o desconto de 20%. Segmentação por perfil — quem é sócio da Sociedade Brasileira de Ciência do Solo é o público mais qualificado possível para esse evento. Design que transmita exclusividade. Ângulo: benefício exclusivo + preço.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conteúdo da Imagem</div>
+        <div class="image-text-block">
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5);">CONDIÇÃO EXCLUSIVA</div>
+          <div style="font-size: 0.9rem; margin: 8px 0;">Sócios da Sociedade Brasileira de Ciência do Solo</div>
+          <div class="highlight" style="font-size: 2rem; margin: 8px 0;">20% de desconto</div>
+          <div style="font-size: 0.85rem;">na inscrição do IV Simpósio Brasileiro de Solos Arenosos</div>
+          <div style="font-size: 0.82rem; margin-top: 4px;">1 a 3 de setembro — Luís Eduardo Magalhães, BA</div>
+          <div style="margin-top: 16px; font-size: 0.85rem; font-weight: 700;">Clique em Saiba Mais e garanta seu desconto</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Se você é sócio da Sociedade Brasileira de Ciência do Solo, tem 20% de desconto na inscrição do IV Simpósio Brasileiro de Solos Arenosos. Condição exclusiva para membros ativos. De 1 a 3 de setembro em Luís Eduardo Magalhães — BA. Clique em Saiba Mais e garanta sua vaga com desconto.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Sócios da Sociedade Brasileira de Ciência do Solo: 20% de desconto</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128176;</span>
+          <div class="recognition-text"><strong>Segmentação por perfil.</strong> Este criativo fala diretamente com um segmento específico: sócios da Sociedade Brasileira de Ciência do Solo. A exclusividade do desconto cria senso de privilégio e reduz a barreira de preço para o público mais qualificado.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FU-05 -->
+  <div class="creative-card">
+    <div class="creative-header">
+      <div class="creative-header-left">
+        <span class="creative-id fundo">FU-05</span>
+        <span class="creative-name">CTA Direto — "Falta Só Um Passo"</span>
+      </div>
+      <span class="creative-format-badge">&#127909; Reels 9:16</span>
+    </div>
+    <div class="creative-body">
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Especificações</div>
+        <div class="creative-specs">
+          <span class="spec-tag">Vertical 1080x1920</span>
+          <span class="spec-tag">10 a 15 segundos</span>
+          <span class="spec-tag">Ritmo rápido</span>
+          <span class="spec-tag">CTA direto</span>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Conceito</div>
+        <div class="creative-text">
+          Vídeo curtíssimo, sem apresentação do evento. Vai direto ao ponto: "Você já sabe tudo. A inscrição leva 2 minutos." Para quem já sabe tudo sobre o evento e só precisa do empurrão final. Ritmo rápido, sem enrolação. Ângulo: facilidade + urgência + fechamento.
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Roteiro Sugerido</div>
+        <div class="script-block">
+          <div class="script-line"><span class="script-time">0-3s</span> — <span class="script-note">[Direto, olhando para câmera ou texto na tela]</span> "Você já sabe tudo sobre o IV Simpósio Brasileiro de Solos Arenosos."</div>
+          <div class="script-line"><span class="script-time">3-8s</span> — "A inscrição leva 2 minutos. O lote atual ainda está disponível."</div>
+          <div class="script-line"><span class="script-time">8-12s</span> — "Não deixe pra última hora."</div>
+          <div class="script-line"><span class="script-time">12-15s</span> — <span class="script-note">[Tela final]</span> "Clique em Saiba Mais. Leva 2 minutos."</div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Copy do Anúncio</div>
+        <div class="copy-block">
+          <div class="copy-field">
+            <div class="copy-field-label">Texto Principal</div>
+            <div class="copy-field-text">Você já viu a programação, os palestrantes, o dia de campo. Falta só um passo. O 2º Lote ainda está disponível — a partir de R$ 180. A inscrição leva 2 minutos. Clique em Saiba Mais e garanta sua vaga agora.</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">Título</div>
+            <div class="copy-field-text">Falta só um passo — clique em Saiba Mais</div>
+          </div>
+          <div class="copy-field">
+            <div class="copy-field-label">CTA</div>
+            <div class="copy-field-text">Saiba mais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-section">
+        <div class="creative-section-label"><span class="dot"></span> Elemento de Reconhecimento</div>
+        <div class="recognition-block">
+          <span class="recognition-icon">&#128176;</span>
+          <div class="recognition-text"><strong>"Você já sabe tudo. Falta só um passo."</strong> — O criativo mais direto do funil inteiro. Não explica nada, não apresenta nada. Apenas reconhece que a pessoa já tem toda a informação e remove a última barreira: a percepção de que inscrever-se é complicado ("leva 2 minutos").</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 6. DIRETRIZES GERAIS ==================== -->
+<section id="diretrizes" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128209;</span>
+    Diretrizes Gerais de Produção
+  </h2>
+  <p class="section-desc">Regras que se aplicam a todas as peças criativas.</p>
+
+  <div class="card">
+    <div class="card-title">&#127912; Identidade Visual dos Criativos</div>
+    <div class="creative-text">
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">1.</span> <strong>Design diferente do feed orgânico.</strong> O feed atual usa template verde/laranja repetido. Os criativos de ads devem ter identidade visual própria — fundo escuro, tipografia moderna, layout limpo. Nunca reutilizar o template verde dos cards de palestrantes.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">2.</span> <strong>Paleta sugerida para ads:</strong> fundo escuro (#111 ou #1A1A1A), laranja do evento (#E87722) para destaques e CTAs, branco para texto principal. Fotos da região e do local como imagens de apoio.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">3.</span> <strong>Tipografia:</strong> Montserrat em todos os criativos. Títulos em peso 700-800, corpo em 400-500.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">4.</span> <strong>Logo do evento</strong> presente em todas as peças, preferêncialmente no canto superior ou na tela final (vídeos).</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">5.</span> <strong>Logos dos realizadores</strong> (SBCS, Embrapa, Fundação Bahia) presentes em peças de Topão e Topo. Opcional em Meio e Fundo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">&#127909; Regras para Vídeos (Reels)</div>
+    <div class="creative-text">
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">1.</span> <strong>Gancho nos primeiros 3 segundos.</strong> O scroll é implacável. Os 3 primeiros segundos decidem se a pessoa para ou passa. Comece com pergunta, afirmação forte ou imagem impactante.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">2.</span> <strong>Legendas dinâmicas obrigatórias.</strong> 85% das pessoas assistem sem som. Sem legenda, sem mensagem.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">3.</span> <strong>Formato vertical (9:16).</strong> Todos os vídeos devem ser produzidos nativamente em vertical. Nunca reaproveitar horizontal com bordas pretas.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">4.</span> <strong>Tela final com CTA.</strong> Todo vídeo deve encerrar com tela contendo CTA claro, preço (quando aplicável) e logo do evento.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">5.</span> <strong>Duração máxima: 30 segundos.</strong> Vídeos de ads não devem ultrapassar 30s. O ideal é entre 15 e 25 segundos.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">6.</span> <strong>Respeitar a safe zone do Meta Ads (9:16).</strong> Em anúncios de Reels, o Meta exibe o botão de CTA ("Saiba Mais") na parte inferior da tela, além do nome do perfil, descrição do anúncio e ícones de interação nas laterais. <strong>Nenhum texto, legenda ou informação importante pode estar posicionado nessas áreas</strong>, sob risco de ser coberto e ficar ilegível. O designer deve consultar a safe zone atualizada do Meta Ads antes de posicionar qualquer elemento de texto. Como regra geral: manter todo o conteúdo de texto concentrado no <strong>centro vertical da tela</strong>, evitando os 250px inferiores (onde fica o CTA + descrição) e os 150px superiores (onde fica a interface do app). As legendas dinâmicas também devem respeitar essa margem.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">&#128218; Regras para Carrosséis</div>
+    <div class="creative-text">
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">1.</span> <strong>Primeiro card é o mais importante.</strong> Funciona como capa — deve ter gancho forte que motive o deslize. Evitar textos longos na capa.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">2.</span> <strong>Último card = CTA.</strong> Sempre encerrar com call-to-action claro, preço e link.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">3.</span> <strong>Máximo de 7 cards.</strong> Acima disso, a taxa de visualização do último card cai drasticamente.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">4.</span> <strong>Consistência visual entre os cards.</strong> Mesma paleta, mesma tipografia, mesma estrutura. Variar apenas o conteúdo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">&#128247; Regras para Imagens Estáticas</div>
+    <div class="creative-text">
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">1.</span> <strong>Menos de 20% de texto na imagem.</strong> O Meta penaliza imagens com excesso de texto. Manter a mensagem curta e direta.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">2.</span> <strong>Hierarquia visual clara.</strong> Um elemento principal (preço, número, frase) em destaque. O restante como apoio.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">3.</span> <strong>Contraste alto.</strong> Texto legível em qualquer tela, inclusive mobile com brilho baixo.</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">4.</span> <strong>CTA visual.</strong> Incluir botão ou destaque visual que simule um clicável (ex.: "Saiba Mais" com fundo laranja).</li>
+        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--orange); font-weight: 700;">5.</span> <strong>Safe zone em formato 9:16 (Stories).</strong> Imagens estáticas no posicionamento de Stories também recebem o botão de CTA do Meta Ads na parte inferior. A mesma regra dos Reels se aplica: <strong>nenhum texto ou informação essencial nos 250px inferiores nem nos 150px superiores</strong>. Concentrar todo o conteúdo de texto na região central da imagem. O designer deve validar a safe zone atualizada do Meta Ads para garantir que nenhum elemento de texto fique coberto pelo botão "Saiba Mais" do anúncio.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert alert-orange" style="background: rgba(231,76,60,0.08); border: 1px solid rgba(231,76,60,0.2); color: var(--gray-700);">
+    <span class="alert-icon">&#9888;&#65039;</span>
+    <div>
+      <strong>ATENÇÃO — Cronograma acelerado.</strong> Estamos no dia 07 de julho. O cronograma original previa início no dia 01/07, mas a produção dos criativos ainda não começou. As peças das Fases 1 e 2 abaixo são <strong>prioridade máxima e imediata</strong> — precisam ser produzidas e entregues o mais rápido possível para que as campanhas entrem no ar sem mais atraso. Cada dia sem campanha ativa é um dia a menos para vender os 314 ingressos restantes.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">&#128203; Cronograma de Produção — Acelerado</div>
+    <div class="table-wrapper">
+      <table class="overview-table">
+        <thead>
+          <tr>
+            <th>Fase</th>
+            <th>Peças a Produzir</th>
+            <th class="text-center">Prioridade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(231,76,60,0.04);">
+            <td><strong>Fase 1 — Imediato</strong><br><small style="color: var(--red); font-weight: 600;">07 a 10/07</small><br><small style="color: var(--gray-400);">Produzir agora</small></td>
+            <td>
+              <strong>Topão + Topo (7 peças):</strong><br>
+              TOP-01 (Reels teaser) + TOP-02 (Save the Date) + TOP-03 (Carrossel educativo) +
+              TP-01 (Reels completo) + TP-02 (5 razões) + TP-03 (Card preço 2º Lote) + TP-04 (Stories)<br>
+              <small style="color: var(--gray-500);">Essas peças permitem lançar Topão + Topo + campanhas do Google no mesmo dia em que ficarem prontas.</small>
+            </td>
+            <td class="text-center"><span class="badge badge-orange" style="background: rgba(231,76,60,0.15); color: var(--red); font-weight: 800;">IMEDIATA</span></td>
+          </tr>
+          <tr style="background: rgba(231,76,60,0.04);">
+            <td><strong>Fase 2 — Urgente</strong><br><small style="color: var(--red); font-weight: 600;">10 a 14/07</small><br><small style="color: var(--gray-400);">Em paralelo com Fase 1</small></td>
+            <td>
+              <strong>Meio de Funil (9 peças):</strong><br>
+              ME-01A/B/C (3 carrosséis palestrantes) + ME-01D (Reels compilação 15 palestrantes) + ME-01E (15 Reels individuais) +
+              ME-02 (Programação) + ME-03 (Reels diferencial) + ME-04 (Prova social) + ME-05 (Bastidores)<br>
+              <small style="color: var(--gray-500);">Priorizar ME-01A (1º carrossel palestrantes) + ME-04 (prova social) + ME-03 (Reels diferencial) primeiro. Restante pode vir em seguida.</small>
+            </td>
+            <td class="text-center"><span class="badge badge-orange" style="background: rgba(231,76,60,0.15); color: var(--red); font-weight: 800;">IMEDIATA</span></td>
+          </tr>
+          <tr>
+            <td><strong>Fase 3</strong><br><small style="color: var(--gray-400);">14 a 18/07</small></td>
+            <td>
+              <strong>Fundo de Funil (5 peças):</strong><br>
+              FU-01 (Card preço urgência) + FU-02 (Countdown) + FU-03 (O que recebe) + FU-04 (Desconto sócios SBCS) + FU-05 (CTA direto)<br>
+              <small style="color: var(--gray-500);">Lançar Fundo assim que as peças ficarem prontas — o Topão e Topo já estarão enchendo os baldes de remarketing desde a Fase 1.</small>
+            </td>
+            <td class="text-center"><span class="badge badge-orange">Alta</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contínuo</strong><br><small style="color: var(--gray-400);">Semanal</small></td>
+            <td>
+              Atualizar ME-04 (número de inscritos) + FU-02 (countdown) + pausar criativos fracos + escalar vencedores + produzir novas variações com base em performance
+            </td>
+            <td class="text-center"><span class="badge badge-blue">Contínua</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-line"><strong>ADS Company</strong> — Davidson Pereira</p>
+    <p class="footer-line">Planejamento de Criativos — Meta Ads — IV Simpósio Brasileiro de Solos Arenosos</p>
+    <p class="footer-line">Julho 2026</p>
+    <p class="footer-line" style="margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3);">Documento confidencial — uso exclusivo do cliente</p>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" id="scrollTop">&#8593;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('scrollTop');
+  if (window.scrollY > 400) {
+    btn.style.display = 'flex';
+  } else {
+    btn.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>

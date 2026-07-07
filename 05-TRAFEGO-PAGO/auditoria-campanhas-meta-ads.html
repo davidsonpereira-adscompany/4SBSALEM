@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoria de Campanhas Meta Ads — IV SBSA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange: #E87722;
+  --orange-light: #FF9A56;
+  --orange-dark: #C45E10;
+  --dark: #2D3436;
+  --dark-bg: #1A1D1E;
+  --card-bg: #FFFFFF;
+  --gray-100: #F8F9FA;
+  --gray-200: #E9ECEF;
+  --gray-300: #DEE2E6;
+  --gray-400: #CED4DA;
+  --gray-500: #ADB5BD;
+  --gray-600: #6C757D;
+  --gray-700: #495057;
+  --green: #00B894;
+  --green-light: #E8F8F5;
+  --red: #E74C3C;
+  --red-light: #FDEDEC;
+  --yellow: #F39C12;
+  --yellow-light: #FEF5E7;
+  --blue: #3498DB;
+  --blue-light: #EBF5FB;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--gray-100);
+  color: var(--dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========== HEADER / CAPA ========== */
+.header {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #2D3436 50%, var(--orange-dark) 100%);
+  color: #fff;
+  padding: 60px 0 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(232,119,34,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.header-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.header h1 span {
+  color: var(--orange);
+}
+
+.header-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 24px;
+}
+
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.header-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-event-info {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.event-tag {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.event-tag strong {
+  color: var(--orange-light);
+}
+
+/* ========== SEÇÕES ========== */
+.section {
+  padding: 48px 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title .icon {
+  width: 36px;
+  height: 36px;
+  background: var(--orange);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.section-desc {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  margin-bottom: 32px;
+  padding-left: 48px;
+}
+
+/* ========== CARDS ========== */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========== VELOCIMETRO / META ========== */
+.gauge-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.gauge-container {
+  position: relative;
+  width: 280px;
+  height: 160px;
+  margin-bottom: 24px;
+}
+
+.gauge-bg {
+  position: absolute;
+  width: 280px;
+  height: 140px;
+  border-radius: 140px 140px 0 0;
+  background: var(--gray-200);
+  overflow: hidden;
+}
+
+.gauge-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 280px;
+  height: 140px;
+  border-radius: 140px 140px 0 0;
+  background: linear-gradient(90deg, var(--red), var(--yellow), var(--green));
+  transform-origin: bottom center;
+  transform: rotate(-180deg);
+  animation: gaugeAnim 1.5s ease-out forwards;
+}
+
+@keyframes gaugeAnim {
+  to { transform: rotate(-141.3deg); }
+}
+
+.gauge-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  background: var(--card-bg);
+  border-radius: 100px 100px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+}
+
+.gauge-value {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+}
+
+.gauge-label {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.gauge-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.gauge-stat {
+  text-align: center;
+  padding: 16px;
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+}
+
+.gauge-stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.gauge-stat-value.sold { color: var(--orange); }
+.gauge-stat-value.remaining { color: var(--red); }
+.gauge-stat-value.days { color: var(--blue); }
+
+.gauge-stat-label {
+  font-size: 0.75rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ========== RESUMO EXECUTIVO ========== */
+.exec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.exec-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  text-align: center;
+  border-top: 4px solid var(--gray-300);
+}
+
+.exec-card.critical { border-top-color: var(--red); }
+.exec-card.warning { border-top-color: var(--yellow); }
+.exec-card.neutral { border-top-color: var(--blue); }
+.exec-card.positive { border-top-color: var(--green); }
+
+.exec-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.exec-label {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.exec-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.exec-tag.bad { background: var(--red-light); color: var(--red); }
+.exec-tag.ok { background: var(--yellow-light); color: var(--yellow); }
+.exec-tag.good { background: var(--green-light); color: var(--green); }
+
+/* ========== TABELAS ========== */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+thead th {
+  background: var(--dark);
+  color: #fff;
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+thead th:first-child {
+  border-radius: var(--radius-sm) 0 0 0;
+}
+
+thead th:last-child {
+  border-radius: 0 var(--radius-sm) 0 0;
+}
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-200);
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: var(--gray-100);
+}
+
+tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 var(--radius-sm);
+}
+
+tbody tr:last-child td:last-child {
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.badge-green { background: var(--green-light); color: var(--green); }
+.badge-red { background: var(--red-light); color: var(--red); }
+.badge-yellow { background: var(--yellow-light); color: var(--yellow); }
+.badge-blue { background: var(--blue-light); color: var(--blue); }
+
+/* ========== BARRAS VISUAIS ========== */
+.bar-chart {
+  margin: 20px 0;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.bar-label {
+  width: 180px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: right;
+  flex-shrink: 0;
+  color: var(--dark);
+}
+
+.bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  transition: width 1s ease-out;
+}
+
+.bar-fill.orange { background: linear-gradient(90deg, var(--orange), var(--orange-light)); }
+.bar-fill.green { background: linear-gradient(90deg, var(--green), #55efc4); }
+.bar-fill.red { background: linear-gradient(90deg, var(--red), #e77c73); }
+.bar-fill.blue { background: linear-gradient(90deg, var(--blue), #74b9ff); }
+.bar-fill.dark { background: linear-gradient(90deg, var(--dark), var(--gray-700)); }
+
+.bar-value {
+  width: 90px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--dark);
+  flex-shrink: 0;
+}
+
+/* ========== MINI BARRAS INLINE ========== */
+.mini-bar {
+  display: inline-block;
+  width: 60px;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.mini-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* ========== DIAGNÓSTICO ========== */
+.diagnostic-item {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 16px;
+  border-left: 5px solid var(--gray-400);
+  display: flex;
+  gap: 16px;
+}
+
+.diagnostic-item.critical { border-left-color: var(--red); }
+.diagnostic-item.warning { border-left-color: var(--yellow); }
+.diagnostic-item.info { border-left-color: var(--blue); }
+
+.diagnostic-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.diagnostic-item.critical .diagnostic-icon {
+  background: var(--red-light);
+  color: var(--red);
+}
+
+.diagnostic-item.warning .diagnostic-icon {
+  background: var(--yellow-light);
+  color: var(--yellow);
+}
+
+.diagnostic-item.info .diagnostic-icon {
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+.diagnostic-content {
+  flex: 1;
+}
+
+.diagnostic-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.diagnostic-text {
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+/* ========== RECOMENDAÇÕES ========== */
+.reco-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.reco-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  border-top: 4px solid var(--orange);
+  position: relative;
+}
+
+.reco-number {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gray-200);
+}
+
+.reco-priority {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.reco-priority.high { background: var(--red-light); color: var(--red); }
+.reco-priority.medium { background: var(--yellow-light); color: var(--yellow); }
+.reco-priority.low { background: var(--blue-light); color: var(--blue); }
+
+.reco-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--dark);
+}
+
+.reco-text {
+  font-size: 0.82rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+/* ========== CAMPANHA STATUS ========== */
+.campaign-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.campaign-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.campaign-objective {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-top: 2px;
+}
+
+.status-badge {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-paused {
+  background: var(--yellow-light);
+  color: var(--yellow);
+}
+
+.status-completed {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+/* ========== KPI ROW ========== */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.kpi {
+  padding: 14px;
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.kpi-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.kpi-label {
+  font-size: 0.7rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.kpi-value.alert { color: var(--red); }
+.kpi-value.success { color: var(--green); }
+.kpi-value.warn { color: var(--yellow); }
+
+/* ========== COMPARATIVO CONJUNTOS ========== */
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.comparison-card {
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--gray-200);
+}
+
+.comparison-card.winner {
+  border-color: var(--green);
+  background: var(--green-light);
+}
+
+.comparison-card.loser {
+  border-color: var(--red);
+  background: var(--red-light);
+}
+
+.comparison-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  color: var(--gray-600);
+}
+
+.comparison-card.winner .comparison-label { color: var(--green); }
+.comparison-card.loser .comparison-label { color: var(--red); }
+
+.comparison-metric {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.82rem;
+}
+
+.comparison-metric:last-child { border-bottom: none; }
+
+.comparison-metric-label { color: var(--gray-600); }
+.comparison-metric-value { font-weight: 700; }
+
+/* ========== DISTRIBUIÇÃO VERBA ========== */
+.verba-distribution {
+  display: flex;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.verba-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background: var(--dark-bg);
+  color: rgba(255,255,255,0.5);
+  padding: 32px 0;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.footer strong {
+  color: var(--orange);
+}
+
+.footer-line {
+  margin-bottom: 4px;
+}
+
+/* ========== DIVIDER ========== */
+.divider {
+  height: 1px;
+  background: var(--gray-200);
+  margin: 8px 0;
+}
+
+/* ========== ALERT BOX ========== */
+.alert {
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin: 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.alert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+.alert-red {
+  background: var(--red-light);
+  color: var(--red);
+  border: 1px solid rgba(231,76,60,0.2);
+}
+
+.alert-yellow {
+  background: var(--yellow-light);
+  color: var(--yellow);
+  border: 1px solid rgba(243,156,18,0.2);
+}
+
+/* ========== SCROLL TOP ========== */
+.scroll-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: opacity 0.3s;
+}
+
+.scroll-top:hover { background: var(--orange-dark); }
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(45,52,54,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 30px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.back-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(232,119,34,0.4);
+}
+
+/* ========== SUMÁRIO ========== */
+.summary-nav {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+
+.summary-nav-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.summary-nav ol {
+  list-style: none;
+  counter-reset: nav-counter;
+}
+
+.summary-nav li {
+  counter-increment: nav-counter;
+  margin-bottom: 6px;
+}
+
+.summary-nav a {
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.summary-nav a:hover { color: var(--orange); }
+
+.summary-nav a::before {
+  content: counter(nav-counter, decimal-leading-zero);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--orange);
+  width: 24px;
+}
+
+/* ========== PRINT ========== */
+@media print {
+  .header { padding: 30px 0; }
+  .section { padding: 24px 0; }
+  .scroll-top { display: none !important; }
+  body { background: #fff; }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.6rem; }
+  .header { padding: 40px 0 36px; }
+  .section { padding: 32px 0; }
+  .exec-grid { grid-template-columns: repeat(2, 1fr); }
+  .comparison { grid-template-columns: 1fr; }
+  .reco-grid { grid-template-columns: 1fr; }
+  .bar-label { width: 100px; font-size: 0.72rem; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .gauge-container { width: 220px; height: 130px; }
+  .gauge-bg { width: 220px; height: 110px; border-radius: 110px 110px 0 0; }
+  .gauge-fill { width: 220px; height: 110px; border-radius: 110px 110px 0 0; }
+  .gauge-center { width: 160px; height: 80px; border-radius: 80px 80px 0 0; }
+  .gauge-value { font-size: 2.2rem; }
+  .diagnostic-item { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .header h1 { font-size: 1.3rem; }
+  .exec-grid { grid-template-columns: 1fr; }
+  .kpi-row { grid-template-columns: 1fr; }
+  .header-meta { flex-direction: column; gap: 8px; }
+  .header-event-info { flex-direction: column; }
+  .gauge-stats { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- BOTÃO FLUTUANTE — VOLTAR -->
+<a href="../index.html" class="back-btn">&#8592; Voltar à Central</a>
+
+<!-- ==================== HEADER / CAPA ==================== -->
+<header class="header">
+  <div class="container header-content">
+    <span class="header-badge">Auditoria de Campanhas</span>
+    <h1>Relatório de Auditoria <span>Meta Ads</span></h1>
+    <h1 style="font-size:1.3rem; font-weight:600; margin-top:4px;">IV Simpósio Brasileiro de Solos Arenosos</h1>
+    <p class="header-subtitle">Análise completa de desempenho — período de 01/06 a 29/06/2026</p>
+    <div class="header-meta">
+      <span>&#128197; 29 de junho de 2026</span>
+      <span>&#128205; Luís Eduardo Magalhães, BA</span>
+      <span>&#127891; 01 a 03 de setembro de 2026</span>
+    </div>
+    <div class="header-event-info">
+      <div class="event-tag">Período analisado: <strong>29 dias</strong></div>
+      <div class="event-tag">Campanhas: <strong>3 ativas</strong></div>
+      <div class="event-tag">Investimento total: <strong>R$ 1.757,02</strong></div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ==================== SUMÁRIO ==================== -->
+<div class="section" style="padding-bottom: 0;">
+  <nav class="summary-nav">
+    <div class="summary-nav-title">Sumário do Relatório</div>
+    <ol>
+      <li><a href="#resumo">Resumo Executivo e Meta de Ingressos</a></li>
+      <li><a href="#financeiro">Visão Geral Financeira</a></li>
+      <li><a href="#topo">Análise do Topo de Funil</a></li>
+      <li><a href="#meio">Análise do Meio de Funil</a></li>
+      <li><a href="#fundo">Análise do Fundo de Funil</a></li>
+      <li><a href="#diagnostico">Diagnóstico: Erros Identificados</a></li>
+      <li><a href="#recomendacoes">Recomendações Estratégicas</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ==================== 1. RESUMO EXECUTIVO ==================== -->
+<section id="resumo" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128202;</span>
+    Resumo Executivo
+  </h2>
+  <p class="section-desc">Panorama geral da operação de tráfego pago para o IV SBSA.</p>
+
+  <!-- Velocímetro de Meta -->
+  <div class="card">
+    <div class="card-title">&#127919; Velocímetro de Meta — Ingressos</div>
+    <div class="gauge-wrapper">
+      <div class="gauge-container">
+        <div class="gauge-bg">
+          <div class="gauge-fill"></div>
+        </div>
+        <div class="gauge-center">
+          <div class="gauge-value">21,5%</div>
+          <div class="gauge-label">da meta atingida</div>
+        </div>
+      </div>
+      <div class="gauge-stats">
+        <div class="gauge-stat">
+          <div class="gauge-stat-value sold">86</div>
+          <div class="gauge-stat-label">Ingressos vendidos</div>
+        </div>
+        <div class="gauge-stat">
+          <div class="gauge-stat-value remaining">314</div>
+          <div class="gauge-stat-label">Ingressos faltantes</div>
+        </div>
+        <div class="gauge-stat">
+          <div class="gauge-stat-value">400</div>
+          <div class="gauge-stat-label">Meta total</div>
+        </div>
+        <div class="gauge-stat">
+          <div class="gauge-stat-value days">63</div>
+          <div class="gauge-stat-label">Dias restantes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      <span class="alert-icon">&#9888;&#65039;</span>
+      <div>
+        <strong>Ritmo insuficiente.</strong> Para atingir a meta de 400 ingressos em 63 dias, será necessário vender aproximadamente <strong>5 ingressos por dia</strong>. O ritmo atual (29 dias analisados) entregou apenas <strong>2,97 ingressos/dia</strong>, e nenhuma venda foi rastreada como proveniente das campanhas pagas.
+      </div>
+    </div>
+  </div>
+
+  <!-- KPIs Resumo -->
+  <div class="exec-grid">
+    <div class="exec-card critical">
+      <div class="exec-value">R$ 1.757,02</div>
+      <div class="exec-label">Total investido</div>
+      <span class="exec-tag bad">Zero vendas rastreadas</span>
+    </div>
+    <div class="exec-card critical">
+      <div class="exec-value">0</div>
+      <div class="exec-label">Compras atribuídas</div>
+      <span class="exec-tag ok">Pixel instalado — sem evento de compra configurado nas campanhas</span>
+    </div>
+    <div class="exec-card neutral">
+      <div class="exec-value">12.807</div>
+      <div class="exec-label">Cliques no link (total)</div>
+      <span class="exec-tag ok">Custo médio R$ 0,14</span>
+    </div>
+    <div class="exec-card neutral">
+      <div class="exec-value">89.434</div>
+      <div class="exec-label">Alcance total</div>
+      <span class="exec-tag ok">144.242 impressões</span>
+    </div>
+    <div class="exec-card warning">
+      <div class="exec-value">3.602</div>
+      <div class="exec-label">Visualizações de página</div>
+      <span class="exec-tag ok">Custo médio R$ 0,26</span>
+    </div>
+    <div class="exec-card warning">
+      <div class="exec-value">ROAS 0</div>
+      <div class="exec-label">Retorno sobre investimento</div>
+      <span class="exec-tag bad">Impossível calcular</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. VISÃO GERAL FINANCEIRA ==================== -->
+<section id="financeiro" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128176;</span>
+    Visão Geral Financeira
+  </h2>
+  <p class="section-desc">Distribuição de investimento entre os estágios do funil.</p>
+
+  <div class="card">
+    <div class="card-title">Distribuição de Verba por Estágio</div>
+
+    <!-- Barra de distribuição -->
+    <div class="verba-distribution">
+      <div class="verba-segment" style="width:47.5%; background: var(--blue);">Topo 47,5%</div>
+      <div class="verba-segment" style="width:24%; background: var(--yellow);">Meio 24%</div>
+      <div class="verba-segment" style="width:28.5%; background: var(--orange);">Fundo 28,5%</div>
+    </div>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Topo de Funil</div>
+        <div class="bar-track">
+          <div class="bar-fill blue" style="width:47.5%;">R$ 835,48</div>
+        </div>
+        <div class="bar-value">47,5%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Fundo de Funil</div>
+        <div class="bar-track">
+          <div class="bar-fill orange" style="width:28.5%;">R$ 499,76</div>
+        </div>
+        <div class="bar-value">28,5%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Meio de Funil</div>
+        <div class="bar-track">
+          <div class="bar-fill dark" style="width:24%;">R$ 421,78</div>
+        </div>
+        <div class="bar-value">24,0%</div>
+      </div>
+    </div>
+
+    <div class="alert alert-yellow">
+      <span class="alert-icon">&#128161;</span>
+      <div>
+        <strong>Inversão de prioridade.</strong> Quase metade da verba (47,5%) foi direcionada ao Topo de Funil (visitas ao perfil), que não gera conversões diretas. O Fundo de Funil, responsável pela conversão, recebeu apenas 28,5%.
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabela resumo campanhas -->
+  <div class="card">
+    <div class="card-title">Comparativo entre Campanhas</div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Campanha</th>
+            <th class="text-right">Investimento</th>
+            <th class="text-right">Alcance</th>
+            <th class="text-right">Cliques</th>
+            <th class="text-right">CTR</th>
+            <th class="text-right">CPC</th>
+            <th class="text-right">CPM</th>
+            <th class="text-right">Frequência</th>
+            <th class="text-center">Compras</th>
+            <th class="text-center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Topo — Tráfego</strong></td>
+            <td class="text-right">R$ 835,48</td>
+            <td class="text-right">67.382</td>
+            <td class="text-right">6.411</td>
+            <td class="text-right">7,10%</td>
+            <td class="text-right">R$ 0,13</td>
+            <td class="text-right">R$ 9,25</td>
+            <td class="text-right">1,34</td>
+            <td class="text-center"><span class="badge badge-red">0</span></td>
+            <td class="text-center"><span class="status-badge status-paused">Pausada</span></td>
+          </tr>
+          <tr>
+            <td><strong>Meio — Tráfego Site</strong></td>
+            <td class="text-right">R$ 421,78</td>
+            <td class="text-right">4.150</td>
+            <td class="text-right">2.485</td>
+            <td class="text-right">10,71%</td>
+            <td class="text-right">R$ 0,17</td>
+            <td class="text-right">R$ 18,18</td>
+            <td class="text-right" style="color:var(--red); font-weight:700;">5,59</td>
+            <td class="text-center"><span class="badge badge-red">0</span></td>
+            <td class="text-center"><span class="status-badge status-paused">Pausada</span></td>
+          </tr>
+          <tr>
+            <td><strong>Fundo — Vendas</strong></td>
+            <td class="text-right">R$ 499,76</td>
+            <td class="text-right">17.824</td>
+            <td class="text-right">3.903</td>
+            <td class="text-right">12,71%</td>
+            <td class="text-right">R$ 0,13</td>
+            <td class="text-right">R$ 16,27</td>
+            <td class="text-right">1,72</td>
+            <td class="text-center"><span class="badge badge-red">0</span></td>
+            <td class="text-center"><span class="status-badge status-completed">Finalizada</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. TOPO DE FUNIL ==================== -->
+<section id="topo" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128640;</span>
+    Topo de Funil — Tráfego
+  </h2>
+  <p class="section-desc">Campanha de visitas ao perfil do Instagram e página do Facebook.</p>
+
+  <div class="card">
+    <div class="campaign-header">
+      <div>
+        <div class="campaign-name">TOPO FUNIL — Tráfego</div>
+        <div class="campaign-objective">Objetivo: Tráfego (visitas ao perfil e à página)</div>
+      </div>
+      <span class="status-badge status-paused">Pausada</span>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">R$ 835,48</div>
+        <div class="kpi-label">Investimento</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">980</div>
+        <div class="kpi-label">Visitas ao perfil</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">R$ 0,85</div>
+        <div class="kpi-label">Custo por visita</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">67.382</div>
+        <div class="kpi-label">Alcance</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value success">7,10%</div>
+        <div class="kpi-label">CTR</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value success">R$ 0,13</div>
+        <div class="kpi-label">CPC</div>
+      </div>
+    </div>
+
+    <!-- Comparativo Story vs Feed -->
+    <h3 style="font-size:0.95rem; font-weight:700; margin: 24px 0 16px;">Comparativo: Story vs. Feed</h3>
+
+    <div class="comparison">
+      <div class="comparison-card loser">
+        <div class="comparison-label">&#10060; Story (perdedor)</div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">Investimento</span>
+          <span class="comparison-metric-value">R$ 592,24 (70,9%)</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">Visitas ao perfil</span>
+          <span class="comparison-metric-value">90 (9,2%)</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">Custo por visita</span>
+          <span class="comparison-metric-value" style="color:var(--red);">R$ 6,58</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">CTR</span>
+          <span class="comparison-metric-value">12,69%</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">CPC</span>
+          <span class="comparison-metric-value">R$ 0,11</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">Views de página</span>
+          <span class="comparison-metric-value" style="color:var(--red);">3</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">CPM</span>
+          <span class="comparison-metric-value">R$ 13,50</span>
+        </div>
+      </div>
+
+      <div class="comparison-card winner">
+        <div class="comparison-label">&#9989; Feed (vencedor)</div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">Investimento</span>
+          <span class="comparison-metric-value">R$ 243,24 (29,1%)</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">Visitas ao perfil</span>
+          <span class="comparison-metric-value">890 (90,8%)</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">Custo por visita</span>
+          <span class="comparison-metric-value" style="color:var(--green);">R$ 0,27</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">CTR</span>
+          <span class="comparison-metric-value">1,81%</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">CPC</span>
+          <span class="comparison-metric-value">R$ 0,29</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">Views de página</span>
+          <span class="comparison-metric-value" style="color:var(--green);">86</span>
+        </div>
+        <div class="comparison-metric">
+          <span class="comparison-metric-label">CPM</span>
+          <span class="comparison-metric-value">R$ 5,24</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      <span class="alert-icon">&#9888;&#65039;</span>
+      <div>
+        <strong>Desproporção crítica.</strong> O conjunto Story consumiu 70,9% da verba mas gerou apenas 9,2% das visitas ao perfil. O CTR alto do Story (12,69%) indica muitos cliques no link, porém esses cliques não se convertem em visitas ao perfil. O Feed é 24x mais eficiente nessa métrica.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. MEIO DE FUNIL ==================== -->
+<section id="meio" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128270;</span>
+    Meio de Funil — Tráfego Site
+  </h2>
+  <p class="section-desc">Campanha de cards de palestrantes direcionando para a página de inscrições.</p>
+
+  <div class="card">
+    <div class="campaign-header">
+      <div>
+        <div class="campaign-name">MEIO DE FUNIL — Tráfego Site</div>
+        <div class="campaign-objective">Objetivo: Tráfego para site (views de página de destino) — Público: visitantes do perfil (180 dias)</div>
+      </div>
+      <span class="status-badge status-paused">Pausada</span>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">R$ 421,78</div>
+        <div class="kpi-label">Investimento</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">1.529</div>
+        <div class="kpi-label">Views de página</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value success">R$ 0,28</div>
+        <div class="kpi-label">Custo por view</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value alert">4.150</div>
+        <div class="kpi-label">Alcance (baixo)</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value alert">5,59</div>
+        <div class="kpi-label">Frequência</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value alert">0</div>
+        <div class="kpi-label">Compras</div>
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      <span class="alert-icon">&#128680;</span>
+      <div>
+        <strong>Frequência de 5,59 — público saturado.</strong> O público utilizado foi um <strong>público personalizado de visitantes do perfil nos últimos 180 dias</strong>, o que resultou em apenas 4.150 pessoas — um universo muito pequeno. Cada pessoa viu os anúncios quase 6 vezes. O público está completamente esgotado, gerando fadiga de anúncio, aumento de custo e queda de efetividade.
+      </div>
+    </div>
+
+    <!-- Tabela de anúncios -->
+    <h3 style="font-size:0.95rem; font-weight:700; margin: 24px 0 16px;">Desempenho por Anúncio (15 Cards de Palestrantes)</h3>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Palestrante</th>
+            <th class="text-right">Investimento</th>
+            <th class="text-right">% Verba</th>
+            <th class="text-right">Views</th>
+            <th class="text-right">Custo/View</th>
+            <th class="text-right">CTR</th>
+            <th class="text-right">CPC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: var(--red-light);">
+            <td>1</td>
+            <td><strong>Dr. Guilherme Chaer</strong></td>
+            <td class="text-right">R$ 276,15</td>
+            <td class="text-right" style="color:var(--red); font-weight:700;">65,5%</td>
+            <td class="text-right">1.055</td>
+            <td class="text-right">R$ 0,26</td>
+            <td class="text-right">11,88%</td>
+            <td class="text-right">R$ 0,16</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Eng. Valmor dos Santos</td>
+            <td class="text-right">R$ 31,67</td>
+            <td class="text-right">7,5%</td>
+            <td class="text-right">105</td>
+            <td class="text-right">R$ 0,30</td>
+            <td class="text-right">9,26%</td>
+            <td class="text-right">R$ 0,19</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Dr. Wenceslau Teixeira</td>
+            <td class="text-right">R$ 28,08</td>
+            <td class="text-right">6,7%</td>
+            <td class="text-right">107</td>
+            <td class="text-right">R$ 0,26</td>
+            <td class="text-right">10,31%</td>
+            <td class="text-right">R$ 0,16</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Dr. Paulo Sérgio Pavinato</td>
+            <td class="text-right">R$ 23,36</td>
+            <td class="text-right">5,5%</td>
+            <td class="text-right">71</td>
+            <td class="text-right">R$ 0,33</td>
+            <td class="text-right">8,57%</td>
+            <td class="text-right">R$ 0,20</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Dra. Maria Eugênia Escobar</td>
+            <td class="text-right">R$ 10,74</td>
+            <td class="text-right">2,5%</td>
+            <td class="text-right">30</td>
+            <td class="text-right">R$ 0,36</td>
+            <td class="text-right">10,61%</td>
+            <td class="text-right">R$ 0,15</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Dra. Cláudia Jantalia</td>
+            <td class="text-right">R$ 8,98</td>
+            <td class="text-right">2,1%</td>
+            <td class="text-right">13</td>
+            <td class="text-right" style="color:var(--red);">R$ 0,69</td>
+            <td class="text-right" style="color:var(--red);">4,68%</td>
+            <td class="text-right">R$ 0,31</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Dr. Estêvão Mellis</td>
+            <td class="text-right">R$ 8,45</td>
+            <td class="text-right">2,0%</td>
+            <td class="text-right">32</td>
+            <td class="text-right">R$ 0,26</td>
+            <td class="text-right">11,61%</td>
+            <td class="text-right">R$ 0,16</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Dr. Alexandre Rezende</td>
+            <td class="text-right">R$ 7,00</td>
+            <td class="text-right">1,7%</td>
+            <td class="text-right">19</td>
+            <td class="text-right">R$ 0,37</td>
+            <td class="text-right">6,77%</td>
+            <td class="text-right">R$ 0,23</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Dr. Nilton Curi</td>
+            <td class="text-right">R$ 6,66</td>
+            <td class="text-right">1,6%</td>
+            <td class="text-right">24</td>
+            <td class="text-right">R$ 0,28</td>
+            <td class="text-right">7,26%</td>
+            <td class="text-right">R$ 0,21</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Dr. Eduardo Caires</td>
+            <td class="text-right">R$ 6,45</td>
+            <td class="text-right">1,5%</td>
+            <td class="text-right">12</td>
+            <td class="text-right" style="color:var(--red);">R$ 0,54</td>
+            <td class="text-right" style="color:var(--red);">6,01%</td>
+            <td class="text-right">R$ 0,29</td>
+          </tr>
+          <tr style="background: var(--green-light);">
+            <td>11</td>
+            <td><strong>Dr. Henrique Maluf</strong></td>
+            <td class="text-right">R$ 4,62</td>
+            <td class="text-right">1,1%</td>
+            <td class="text-right">28</td>
+            <td class="text-right" style="color:var(--green); font-weight:700;">R$ 0,17</td>
+            <td class="text-right" style="color:var(--green);">11,34%</td>
+            <td class="text-right" style="color:var(--green);">R$ 0,12</td>
+          </tr>
+          <tr style="background: var(--green-light);">
+            <td>12</td>
+            <td><strong>Dr. Fabrício Povh</strong></td>
+            <td class="text-right">R$ 4,42</td>
+            <td class="text-right">1,0%</td>
+            <td class="text-right">20</td>
+            <td class="text-right" style="color:var(--green); font-weight:700;">R$ 0,22</td>
+            <td class="text-right" style="color:var(--green);">12,65%</td>
+            <td class="text-right" style="color:var(--green);">R$ 0,14</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Dr. João Carlos Sá</td>
+            <td class="text-right">R$ 2,81</td>
+            <td class="text-right">0,7%</td>
+            <td class="text-right">1</td>
+            <td class="text-right" style="color:var(--red);">R$ 2,81</td>
+            <td class="text-right" style="color:var(--red);">2,29%</td>
+            <td class="text-right">R$ 0,47</td>
+          </tr>
+          <tr style="background: var(--green-light);">
+            <td>14</td>
+            <td><strong>Dr. Everardo Mantovani</strong></td>
+            <td class="text-right">R$ 2,12</td>
+            <td class="text-right">0,5%</td>
+            <td class="text-right">12</td>
+            <td class="text-right" style="color:var(--green); font-weight:700;">R$ 0,18</td>
+            <td class="text-right" style="color:var(--green);">10,59%</td>
+            <td class="text-right" style="color:var(--green);">R$ 0,12</td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>Dr. Henrique Antunes</td>
+            <td class="text-right">R$ 0,27</td>
+            <td class="text-right">0,1%</td>
+            <td class="text-right">0</td>
+            <td class="text-right">—</td>
+            <td class="text-right">—</td>
+            <td class="text-right">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Gráfico de distribuição de verba -->
+    <h3 style="font-size:0.95rem; font-weight:700; margin: 28px 0 16px;">Distribuição de Verba entre Anúncios</h3>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Dr. G. Chaer</div>
+        <div class="bar-track">
+          <div class="bar-fill red" style="width:65.5%;">65,5% — R$ 276,15</div>
+        </div>
+        <div class="bar-value" style="color:var(--red);">65,5%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Eng. V. Santos</div>
+        <div class="bar-track">
+          <div class="bar-fill orange" style="width:7.5%;">7,5%</div>
+        </div>
+        <div class="bar-value">R$ 31,67</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Dr. W. Teixeira</div>
+        <div class="bar-track">
+          <div class="bar-fill orange" style="width:6.7%;">6,7%</div>
+        </div>
+        <div class="bar-value">R$ 28,08</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Dr. P. Pavinato</div>
+        <div class="bar-track">
+          <div class="bar-fill orange" style="width:5.5%;">5,5%</div>
+        </div>
+        <div class="bar-value">R$ 23,36</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Outros 11</div>
+        <div class="bar-track">
+          <div class="bar-fill dark" style="width:14.8%;">14,8%</div>
+        </div>
+        <div class="bar-value">R$ 62,52</div>
+      </div>
+    </div>
+
+    <div class="alert alert-yellow">
+      <span class="alert-icon">&#128161;</span>
+      <div>
+        <strong>Concentração excessiva.</strong> O algoritmo direcionou 65,5% da verba para um único anúncio (Dr. Guilherme Chaer). Embora tenha bom CTR (11,88%), os outros 14 anúncios foram subfinanciados. Destaque positivo: Dr. Henrique Maluf (R$ 0,17/view), Dr. Everardo Mantovani (R$ 0,18/view) e Dr. Fabrício Povh (R$ 0,22/view) entregaram os menores custos por visualização com CTR acima de 10%.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5. FUNDO DE FUNIL ==================== -->
+<section id="fundo" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#127919;</span>
+    Fundo de Funil — Vendas
+  </h2>
+  <p class="section-desc">Campanha de conversão com card de preços do Lote 2.</p>
+
+  <div class="card">
+    <div class="campaign-header">
+      <div>
+        <div class="campaign-name">FUNDO DE FUNIL — Vendas / Tráfego</div>
+        <div class="campaign-objective">Objetivo: Tráfego para site (views de página de destino) — Público: visitantes do perfil (180 dias)</div>
+      </div>
+      <span class="status-badge status-completed">Finalizada</span>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">R$ 499,76</div>
+        <div class="kpi-label">Investimento</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value success">2.073</div>
+        <div class="kpi-label">Views de página</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value success">R$ 0,24</div>
+        <div class="kpi-label">Custo por view</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">17.824</div>
+        <div class="kpi-label">Alcance</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value success">12,71%</div>
+        <div class="kpi-label">CTR</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value alert">0</div>
+        <div class="kpi-label">Compras rastreadas</div>
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      <span class="alert-icon">&#9888;&#65039;</span>
+      <div>
+        <strong>Melhor campanha em métricas de tráfego, porém zero conversões rastreadas.</strong> Apesar do CTR excelente de 12,71% e custo por visualização de apenas R$ 0,24, nenhuma compra foi atribuída. Dois problemas centrais: (1) o objetivo da campanha é <em>Tráfego</em>, e não <em>Vendas/Conversões</em> — o algoritmo otimiza para quem clica, não para quem compra; (2) o público utilizado foi um <strong>público personalizado de visitantes do perfil (180 dias)</strong>, o mesmo do Meio de Funil — não há diferenciação real entre as duas etapas. O Pixel está instalado na Congresse.me, mas como as campanhas usam objetivo de Tráfego e não de Conversões, o evento de compra não é utilizado para otimização.
+      </div>
+    </div>
+
+    <!-- KPIs do anúncio -->
+    <h3 style="font-size:0.95rem; font-weight:700; margin: 24px 0 12px;">Anúncio único: Card LOTE 2</h3>
+    <p style="font-size:0.85rem; color: var(--gray-600); margin-bottom: 16px;">
+      Criativo estático com informações de preços do segundo lote de ingressos. Formato de imagem única.
+    </p>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">3.903</div>
+        <div class="kpi-label">Cliques no link</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">R$ 0,13</div>
+        <div class="kpi-label">CPC</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">30.711</div>
+        <div class="kpi-label">Impressões</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">1,72</div>
+        <div class="kpi-label">Frequência</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 6. DIAGNÓSTICO ==================== -->
+<section id="diagnostico" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128680;</span>
+    Diagnóstico: Erros Identificados
+  </h2>
+  <p class="section-desc">Problemas críticos e alertas detectados na operação de tráfego pago.</p>
+
+  <!-- Erro 1 -->
+  <div class="diagnostic-item critical">
+    <div class="diagnostic-icon">&#128308;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">CRÍTICO — Objetivo errado nas campanhas de Meio e Fundo de Funil</div>
+      <div class="diagnostic-text">
+        As campanhas que deveriam vender ingressos estão configuradas com objetivo de <strong>Tráfego</strong>, quando o correto seria <strong>Vendas/Conversões</strong>. O algoritmo do Meta otimiza para pessoas que clicam, não para pessoas que compram. Resultado: 6.388 cliques totais nas campanhas de Meio e Fundo, e <strong>zero compras rastreadas</strong>. O Pixel do Meta já está instalado na Congresse.me, mas não é aproveitado porque as campanhas usam objetivo de Tráfego — com o objetivo correto (Vendas/Conversões), o algoritmo utilizaria os dados do Pixel para buscar perfis com maior probabilidade de concluir a inscrição.
+      </div>
+    </div>
+  </div>
+
+  <!-- Erro 2 -->
+  <div class="diagnostic-item critical">
+    <div class="diagnostic-icon">&#128308;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">CRÍTICO — Pixel instalado mas não utilizado pelas campanhas</div>
+      <div class="diagnostic-text">
+        O Pixel do Meta <strong>está instalado</strong> na Congresse.me (checkout e página principal do evento), porém as colunas de Compras, Custo por compra e ROAS estão completamente vazias em todas as campanhas. Isso ocorre porque as campanhas foram configuradas com objetivo de <strong>Tráfego</strong>, que não aciona a otimização por eventos de conversão do Pixel. O Pixel coleta dados, mas nenhuma campanha os utiliza. Para aproveitar o Pixel já instalado, as campanhas precisam ser reconfiguradas com objetivo de <strong>Vendas/Conversões</strong>, otimizando pelo evento Purchase.
+      </div>
+    </div>
+  </div>
+
+  <!-- Erro 3 -->
+  <div class="diagnostic-item critical">
+    <div class="diagnostic-icon">&#128308;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">CRÍTICO — Frequência alarmante no Meio de Funil (5,59)</div>
+      <div class="diagnostic-text">
+        A campanha de Meio de Funil atingiu frequência de <strong>5,59</strong> — cada pessoa viu os anúncios quase 6 vezes. O público utilizado foi um <strong>público personalizado de visitantes do perfil nos últimos 180 dias</strong>, o que limitou o alcance a apenas 4.150 pessoas — um universo extremamente pequeno para sustentar uma campanha por 29 dias. Frequência acima de 3,0 já indica fadiga de anúncio, aumento de custo e queda de performance. A frequência ideal para campanhas de consideração fica entre 1,5 e 2,5.
+      </div>
+    </div>
+  </div>
+
+  <!-- Erro 4 -->
+  <div class="diagnostic-item critical">
+    <div class="diagnostic-icon">&#128308;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">CRÍTICO — Mesmo público personalizado no Meio e no Fundo de Funil</div>
+      <div class="diagnostic-text">
+        Ambas as campanhas (Meio e Fundo) utilizaram o <strong>mesmo público personalizado: visitantes do perfil nos últimos 180 dias</strong>. Isso anula a lógica de funil, já que não há diferenciação de audiência entre as etapas. O Meio e o Fundo disputam as mesmas pessoas, com criativos diferentes mas sem nenhuma segmentação progressiva. Em um funil bem estruturado, o Meio deveria impactar quem já interagiu com o Topo (engajadores, por exemplo) e o Fundo deveria atingir quem já demonstrou intenção real (visitou a página de inscrição, iniciou checkout, etc.). Com o mesmo público em ambas as etapas, o conceito de funil deixa de existir na prática.
+      </div>
+    </div>
+  </div>
+
+  <!-- Erro 5 -->
+  <div class="diagnostic-item warning">
+    <div class="diagnostic-icon">&#128992;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">ALERTA — Distribuição desbalanceada de verba no Meio de Funil</div>
+      <div class="diagnostic-text">
+        O algoritmo de otimização direcionou <strong>65,5% de toda a verba</strong> (R$ 276,15 de R$ 421,78) para um único anúncio (Dr. Guilherme Chaer). Os outros 14 cards de palestrantes ficaram subfinanciados e não tiveram oportunidade justa de competir. Anúncios como Dr. Henrique Maluf (CTR 11,34%, R$ 0,17/view) e Dr. Everardo Mantovani (CTR 10,59%, R$ 0,18/view) mostraram potencial superior mas receberam menos de 2% da verba.
+      </div>
+    </div>
+  </div>
+
+  <!-- Erro 6 -->
+  <div class="diagnostic-item warning">
+    <div class="diagnostic-icon">&#128992;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">ALERTA — Desproporção Story vs. Feed no Topo de Funil</div>
+      <div class="diagnostic-text">
+        O conjunto Story consumiu <strong>70,9% da verba</strong> (R$ 592,24) mas gerou apenas <strong>9,2% das visitas ao perfil</strong> (90 de 980). O custo por visita ao perfil no Story foi de R$ 6,58, contra R$ 0,27 no Feed — uma diferença de <strong>24 vezes</strong>. O CTR alto do Story (12,69%) é enganoso: gera cliques no link, mas a métrica de resultado (visita ao perfil) não acompanha.
+      </div>
+    </div>
+  </div>
+
+  <!-- Erro 7 -->
+  <div class="diagnostic-item warning">
+    <div class="diagnostic-icon">&#128992;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">ALERTA — Criativos sem variação de formato</div>
+      <div class="diagnostic-text">
+        Todas as campanhas utilizaram exclusivamente <strong>imagens estáticas</strong>. Nenhum carrossel, vídeo, reels ou formato dinâmico foi testado. A falta de variação limita o alcance (diferentes públicos respondem a diferentes formatos) e impede testes A/B significativos. Além disso, não houve variação de ângulo de comunicação — sem copy de urgência, prova social, benefícios ou countdown.
+      </div>
+    </div>
+  </div>
+
+  <!-- Análise do feed orgânico -->
+  <div class="diagnostic-item warning">
+    <div class="diagnostic-icon">&#128992;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">ALERTA — Feed do Instagram dominado por um único template</div>
+      <div class="diagnostic-text">
+        A análise do perfil do Instagram do evento revela que <strong>mais de 80% das publicações</strong> são cards de palestrantes usando o mesmo template visual (fundo verde, moldura laranja, foto do palestrante). Embora os palestrantes sejam um ativo de comunicação válido, a repetição do mesmo formato gera <strong>fadiga visual</strong> — o cérebro do público passa a ignorar automaticamente. O feed não contém nenhum post de <strong>preço/ingresso</strong>, <strong>countdown</strong>, <strong>prova social</strong> (número de inscritos), <strong>bastidores</strong>, <strong>depoimentos</strong>, <strong>programação detalhada</strong> ou <strong>benefícios tangíveis</strong> (o que o participante leva para casa). O material orgânico existente <strong>não serve como criativo para tráfego pago</strong> — será necessário produzir peças inteiramente novas com variação real de formato e ângulo de comunicação.
+      </div>
+    </div>
+  </div>
+
+  <!-- Erro 8 -->
+  <div class="diagnostic-item info">
+    <div class="diagnostic-icon">&#128309;</div>
+    <div class="diagnostic-content">
+      <div class="diagnostic-title">OBSERVAÇÃO — Erro conceitual no nome do anúncio de Story</div>
+      <div class="diagnostic-text">
+        O anúncio do conjunto Story está nomeado como <strong>"Save The Date - Feed - Visita Insta - Storie"</strong>. O nome sugere que é um criativo de Feed rodando no posicionamento de Story, o que pode indicar um problema de formato (imagem 1:1 de Feed sendo exibida em formato 9:16 de Story, com cortes indesejados). Recomenda-se verificar se o criativo foi adaptado corretamente para o formato vertical.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 7. RECOMENDAÇÕES ==================== -->
+<section id="recomendacoes" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128161;</span>
+    Recomendações Estratégicas
+  </h2>
+  <p class="section-desc">Ações prioritárias para corrigir a operação e atingir a meta de 400 ingressos.</p>
+
+  <div class="reco-grid">
+
+    <div class="reco-card">
+      <div class="reco-number">01</div>
+      <span class="reco-priority high">Prioridade máxima</span>
+      <div class="reco-title">Aproveitar o Pixel já instalado com campanhas de Conversão</div>
+      <div class="reco-text">
+        O Pixel já está instalado na Congresse.me (checkout e página principal). O próximo passo é <strong>criar campanhas com objetivo de Vendas/Conversões</strong> otimizando pelo evento <strong>Purchase</strong>. Verificar se os eventos <strong>InitiateCheckout</strong> e <strong>ViewContent</strong> também estão disparando corretamente. Com o Pixel ativo e as campanhas configuradas para conversão, o algoritmo passará a buscar perfis com maior probabilidade de compra.
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <div class="reco-number">02</div>
+      <span class="reco-priority high">Prioridade máxima</span>
+      <div class="reco-title">Recriar campanhas com objetivo de Vendas</div>
+      <div class="reco-text">
+        Substituir as campanhas de Meio e Fundo de Funil por novas campanhas com objetivo de <strong>Vendas/Conversões</strong>, otimizando para o evento Purchase. O algoritmo passará a buscar perfis com maior probabilidade de compra, não apenas de clique. Manter as campanhas de Tráfego atuais apenas para aquecimento de público.
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <div class="reco-number">03</div>
+      <span class="reco-priority high">Prioridade alta</span>
+      <div class="reco-title">Produzir criativos novos — material existente não serve para ads</div>
+      <div class="reco-text">
+        O feed orgânico do Instagram é composto quase inteiramente por <strong>cards de palestrantes com o mesmo template</strong>. Esse material não funciona como anúncio pago — gera fadiga e não possui CTA de conversão. É necessário produzir peças inteiramente novas com variação real de formato (<strong>carrossel</strong>, <strong>vídeo/reels</strong>, <strong>imagem estática</strong>, <strong>stories 9:16</strong>) e de ângulo de comunicação (<strong>urgência</strong>, <strong>prova social</strong>, <strong>benefícios tangíveis</strong>, <strong>preços</strong>, <strong>countdown</strong>, <strong>programação</strong>, <strong>bastidores</strong>). Mínimo recomendado: 12 peças diferentes para cobrir as 4 etapas do funil.
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <div class="reco-number">04</div>
+      <span class="reco-priority high">Prioridade alta</span>
+      <div class="reco-title">Ampliar e diferenciar públicos por etapa do funil</div>
+      <div class="reco-text">
+        Meio e Fundo usaram o <strong>mesmo público personalizado (visitantes do perfil 180 dias)</strong>, anulando a lógica de funil. Corrigir: <strong>Meio</strong> — interesses amplos (agronomia, ciência do solo, agricultura de precisão, MATOPIBA) + segmentação por formação; <strong>Fundo</strong> — remarketing de visitantes do site (com Pixel), engajadores recentes e Lookalike dos 86 compradores. Cada etapa deve impactar uma audiência diferente e progressivamente mais qualificada.
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <div class="reco-number">05</div>
+      <span class="reco-priority medium">Prioridade média</span>
+      <div class="reco-title">Criar Lookalike dos 86 compradores</div>
+      <div class="reco-text">
+        Exportar a lista dos 86 inscritos da Congresse.me e criar um público personalizado no Meta. A partir dele, gerar Lookalike de 1% a 3% para encontrar pessoas com perfil semelhante aos compradores reais. Esse público tende a converter melhor que interesses genéricos.
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <div class="reco-number">06</div>
+      <span class="reco-priority medium">Prioridade média</span>
+      <div class="reco-title">Redistribuir verba: menos Topo, mais Fundo</div>
+      <div class="reco-text">
+        Inverter a proporção atual. Sugestão de distribuição: <strong>20% Topo</strong> (awareness), <strong>30% Meio</strong> (consideração com palestrantes) e <strong>50% Fundo</strong> (conversão direta com preços e urgência). Visitas ao perfil não vendem ingressos — direcionar verba para onde a conversão acontece.
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <div class="reco-number">07</div>
+      <span class="reco-priority medium">Prioridade média</span>
+      <div class="reco-title">Testar copy com urgência e escassez</div>
+      <div class="reco-text">
+        Com 63 dias restantes, explorar gatilhos de urgência: <strong>"Lote atual encerra em breve"</strong>, <strong>"Últimas vagas com desconto"</strong>, <strong>"Faltam X dias para o maior evento de solos arenosos do Brasil"</strong>. Incluir countdown visual nos criativos e landing page. Testar variação de CTA: "Garanta sua vaga" vs. "Inscreva-se agora" vs. "Quero participar".
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <div class="reco-number">08</div>
+      <span class="reco-priority low">Melhoria contínua</span>
+      <div class="reco-title">Velocímetro de meta visível na comunicação</div>
+      <div class="reco-text">
+        Utilizar o progresso de vendas (86/400 = 21,5%) como elemento de comunicação: <strong>"Mais de 80 profissionais já confirmaram presença"</strong>. Isso funciona como prova social e pode ser atualizado semanalmente nos criativos, stories orgânicos e comunicação por e-mail/WhatsApp.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Resumo de prioridades -->
+  <div class="card" style="margin-top: 24px;">
+    <div class="card-title">Cronograma sugerido de implementação</div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Semana</th>
+            <th>Ação</th>
+            <th class="text-center">Prioridade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Semana 1</strong><br><small>30/06 — 06/07</small></td>
+            <td>Validar eventos do Pixel na Congresse.me + criar campanhas de Vendas/Conversões + upload lista de compradores</td>
+            <td class="text-center"><span class="badge badge-red">Máxima</span></td>
+          </tr>
+          <tr>
+            <td><strong>Semana 2</strong><br><small>07/07 — 13/07</small></td>
+            <td>Produzir criativos variados (vídeo, carrossel, countdown) + configurar Lookalike + ampliar públicos</td>
+            <td class="text-center"><span class="badge badge-red">Alta</span></td>
+          </tr>
+          <tr>
+            <td><strong>Semana 3</strong><br><small>14/07 — 20/07</small></td>
+            <td>Lançar novas campanhas + redistribuir verba (50% fundo) + testes A/B de copy</td>
+            <td class="text-center"><span class="badge badge-yellow">Média</span></td>
+          </tr>
+          <tr>
+            <td><strong>Semana 4+</strong><br><small>21/07 em diante</small></td>
+            <td>Monitorar ROAS + escalar vencedores + intensificar urgência conforme data se aproxima</td>
+            <td class="text-center"><span class="badge badge-blue">Contínua</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-line"><strong>ADS Company</strong> — Davidson Pereira</p>
+    <p class="footer-line">Auditoria de Campanhas Meta Ads — IV Simpósio Brasileiro de Solos Arenosos</p>
+    <p class="footer-line">Relatório gerado em 29 de junho de 2026</p>
+    <p class="footer-line" style="margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3);">Documento confidencial — uso exclusivo do cliente</p>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" id="scrollTop">&#8593;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('scrollTop');
+  if (window.scrollY > 400) {
+    btn.style.display = 'flex';
+  } else {
+    btn.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>

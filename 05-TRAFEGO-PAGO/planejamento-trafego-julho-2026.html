@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planejamento de Tráfego Pago — Julho 2026 — IV SBSA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange: #E87722;
+  --orange-light: #FF9A56;
+  --orange-dark: #C45E10;
+  --dark: #2D3436;
+  --dark-bg: #1A1D1E;
+  --card-bg: #FFFFFF;
+  --gray-100: #F8F9FA;
+  --gray-200: #E9ECEF;
+  --gray-300: #DEE2E6;
+  --gray-400: #CED4DA;
+  --gray-500: #ADB5BD;
+  --gray-600: #6C757D;
+  --gray-700: #495057;
+  --green: #00B894;
+  --green-light: #E8F8F5;
+  --red: #E74C3C;
+  --red-light: #FDEDEC;
+  --yellow: #F39C12;
+  --yellow-light: #FEF5E7;
+  --blue: #3498DB;
+  --blue-light: #EBF5FB;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--gray-100);
+  color: var(--dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========== HEADER / CAPA ========== */
+.header {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #2D3436 50%, var(--orange-dark) 100%);
+  color: #fff;
+  padding: 60px 0 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(232,119,34,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.header-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.header h1 span {
+  color: var(--orange);
+}
+
+.header-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 24px;
+}
+
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.header-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-event-info {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.event-tag {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.event-tag strong {
+  color: var(--orange-light);
+}
+
+/* ========== BOTÃO VOLTAR FLUTUANTE ========== */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(45,52,54,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 30px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.back-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(232,119,34,0.4);
+}
+
+/* ========== SEÇÕES ========== */
+.section {
+  padding: 48px 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title .icon {
+  width: 36px;
+  height: 36px;
+  background: var(--orange);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.section-desc {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  margin-bottom: 32px;
+  padding-left: 48px;
+}
+
+/* ========== CARDS ========== */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========== EXEC GRID / KPI CARDS ========== */
+.exec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.exec-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  text-align: center;
+  border-top: 4px solid var(--gray-300);
+}
+
+.exec-card.critical { border-top-color: var(--red); }
+.exec-card.warning { border-top-color: var(--yellow); }
+.exec-card.neutral { border-top-color: var(--blue); }
+.exec-card.positive { border-top-color: var(--green); }
+
+.exec-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.exec-label {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.exec-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.exec-tag.bad { background: var(--red-light); color: var(--red); }
+.exec-tag.ok { background: var(--yellow-light); color: var(--yellow); }
+.exec-tag.good { background: var(--green-light); color: var(--green); }
+
+/* ========== TABELAS ========== */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+thead th {
+  background: var(--dark);
+  color: #fff;
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+thead th:first-child {
+  border-radius: var(--radius-sm) 0 0 0;
+}
+
+thead th:last-child {
+  border-radius: 0 var(--radius-sm) 0 0;
+}
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+tbody tr:hover {
+  background: var(--gray-100);
+}
+
+tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 var(--radius-sm);
+}
+
+tbody tr:last-child td:last-child {
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.badge-green { background: var(--green-light); color: var(--green); }
+.badge-red { background: var(--red-light); color: var(--red); }
+.badge-yellow { background: var(--yellow-light); color: var(--yellow); }
+.badge-blue { background: var(--blue-light); color: var(--blue); }
+
+/* ========== BARRAS VISUAIS ========== */
+.bar-chart {
+  margin: 20px 0;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.bar-label {
+  width: 180px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: right;
+  flex-shrink: 0;
+  color: var(--dark);
+}
+
+.bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  transition: width 1s ease-out;
+}
+
+.bar-fill.orange { background: linear-gradient(90deg, var(--orange), var(--orange-light)); }
+.bar-fill.green { background: linear-gradient(90deg, var(--green), #55efc4); }
+.bar-fill.red { background: linear-gradient(90deg, var(--red), #e77c73); }
+.bar-fill.blue { background: linear-gradient(90deg, var(--blue), #74b9ff); }
+.bar-fill.dark { background: linear-gradient(90deg, var(--dark), var(--gray-700)); }
+
+.bar-value {
+  width: 90px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--dark);
+  flex-shrink: 0;
+}
+
+/* ========== DISTRIBUIÇÃO VERBA ========== */
+.verba-distribution {
+  display: flex;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.verba-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+/* ========== KPI ROW ========== */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.kpi {
+  padding: 14px;
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.kpi-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.kpi-label {
+  font-size: 0.7rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.kpi-value.alert { color: var(--red); }
+.kpi-value.success { color: var(--green); }
+.kpi-value.warn { color: var(--yellow); }
+
+/* ========== DIAGNOSTIC ITEMS ========== */
+.diagnostic-item {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 16px;
+  border-left: 5px solid var(--gray-400);
+  display: flex;
+  gap: 16px;
+}
+
+.diagnostic-item.critical { border-left-color: var(--red); }
+.diagnostic-item.warning { border-left-color: var(--yellow); }
+.diagnostic-item.info { border-left-color: var(--blue); }
+.diagnostic-item.positive { border-left-color: var(--green); }
+
+.diagnostic-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.diagnostic-item.critical .diagnostic-icon {
+  background: var(--red-light);
+  color: var(--red);
+}
+
+.diagnostic-item.warning .diagnostic-icon {
+  background: var(--yellow-light);
+  color: var(--yellow);
+}
+
+.diagnostic-item.info .diagnostic-icon {
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+.diagnostic-item.positive .diagnostic-icon {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.diagnostic-content {
+  flex: 1;
+}
+
+.diagnostic-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.diagnostic-text {
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+/* ========== ALERT BOX ========== */
+.alert {
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin: 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.alert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+.alert-red {
+  background: var(--red-light);
+  color: var(--red);
+  border: 1px solid rgba(231,76,60,0.2);
+}
+
+.alert-yellow {
+  background: var(--yellow-light);
+  color: var(--yellow);
+  border: 1px solid rgba(243,156,18,0.2);
+}
+
+.alert-green {
+  background: var(--green-light);
+  color: var(--green);
+  border: 1px solid rgba(0,184,148,0.2);
+}
+
+.alert-blue {
+  background: var(--blue-light);
+  color: var(--blue);
+  border: 1px solid rgba(52,152,219,0.2);
+}
+
+/* ========== FUNNEL CARD ========== */
+.funnel-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  margin-bottom: 24px;
+  border-left: 5px solid var(--gray-400);
+}
+
+.funnel-card.topo { border-left-color: var(--blue); }
+.funnel-card.meio { border-left-color: var(--yellow); }
+.funnel-card.fundo { border-left-color: var(--orange); }
+.funnel-card.google-marca { border-left-color: var(--green); }
+.funnel-card.google-cat { border-left-color: var(--blue); }
+.funnel-card.google-remarketing { border-left-color: var(--orange); }
+
+.funnel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.funnel-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.funnel-objective {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-top: 2px;
+}
+
+.funnel-budget {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--orange-light);
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+.funnel-section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-600);
+  margin: 20px 0 10px;
+}
+
+.funnel-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.funnel-list li {
+  padding: 6px 0;
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.funnel-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* ========== CHECKLIST ========== */
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.checklist li {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--gray-200);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.check-icon {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--gray-400);
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-top: 1px;
+}
+
+/* ========== SUMÁRIO ========== */
+.summary-nav {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+
+.summary-nav-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.summary-nav ol {
+  list-style: none;
+  counter-reset: nav-counter;
+}
+
+.summary-nav li {
+  counter-increment: nav-counter;
+  margin-bottom: 6px;
+}
+
+.summary-nav a {
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.summary-nav a:hover { color: var(--orange); }
+
+.summary-nav a::before {
+  content: counter(nav-counter, decimal-leading-zero);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--orange);
+  width: 24px;
+}
+
+/* ========== GAUGE / META ========== */
+.gauge-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.gauge-container {
+  position: relative;
+  width: 280px;
+  height: 160px;
+  margin-bottom: 24px;
+}
+
+.gauge-bg {
+  position: absolute;
+  width: 280px;
+  height: 140px;
+  border-radius: 140px 140px 0 0;
+  background: var(--gray-200);
+  overflow: hidden;
+}
+
+.gauge-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 280px;
+  height: 140px;
+  border-radius: 140px 140px 0 0;
+  background: linear-gradient(90deg, var(--red), var(--yellow), var(--green));
+  transform-origin: bottom center;
+  transform: rotate(-180deg);
+  animation: gaugeAnim 1.5s ease-out forwards;
+}
+
+@keyframes gaugeAnim {
+  to { transform: rotate(-141.3deg); }
+}
+
+.gauge-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  background: var(--card-bg);
+  border-radius: 100px 100px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+}
+
+.gauge-value {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+}
+
+.gauge-label {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.gauge-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.gauge-stat {
+  text-align: center;
+  padding: 16px;
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+}
+
+.gauge-stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.gauge-stat-value.sold { color: var(--orange); }
+.gauge-stat-value.remaining { color: var(--red); }
+.gauge-stat-value.days { color: var(--blue); }
+
+.gauge-stat-label {
+  font-size: 0.75rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background: var(--dark-bg);
+  color: rgba(255,255,255,0.5);
+  padding: 32px 0;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.footer strong {
+  color: var(--orange);
+}
+
+.footer-line {
+  margin-bottom: 4px;
+}
+
+/* ========== SCROLL TOP ========== */
+.scroll-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: opacity 0.3s;
+}
+
+.scroll-top:hover { background: var(--orange-dark); }
+
+/* ========== DIVIDER ========== */
+.divider {
+  height: 1px;
+  background: var(--gray-200);
+  margin: 8px 0;
+}
+
+/* ========== PRINT ========== */
+@media print {
+  .header { padding: 30px 0; }
+  .section { padding: 24px 0; }
+  .scroll-top { display: none !important; }
+  .back-btn { display: none !important; }
+  body { background: #fff; }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.6rem; }
+  .header { padding: 40px 0 36px; }
+  .section { padding: 32px 0; }
+  .exec-grid { grid-template-columns: repeat(2, 1fr); }
+  .bar-label { width: 100px; font-size: 0.72rem; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .gauge-container { width: 220px; height: 130px; }
+  .gauge-bg { width: 220px; height: 110px; border-radius: 110px 110px 0 0; }
+  .gauge-fill { width: 220px; height: 110px; border-radius: 110px 110px 0 0; }
+  .gauge-center { width: 160px; height: 80px; border-radius: 80px 80px 0 0; }
+  .gauge-value { font-size: 2.2rem; }
+  .diagnostic-item { flex-direction: column; }
+  .funnel-header { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .header h1 { font-size: 1.3rem; }
+  .exec-grid { grid-template-columns: 1fr; }
+  .kpi-row { grid-template-columns: 1fr; }
+  .header-meta { flex-direction: column; gap: 8px; }
+  .header-event-info { flex-direction: column; }
+  .gauge-stats { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER / CAPA ==================== -->
+<header class="header">
+  <div class="container header-content">
+    <span class="header-badge">Estratégia de Tráfego</span>
+    <h1>Planejamento de <span>Tráfego Pago</span></h1>
+    <h1 style="font-size:1.3rem; font-weight:600; margin-top:4px;">IV Simpósio Brasileiro de Solos Arenosos</h1>
+    <p class="header-subtitle">Estratégia completa para o mês de julho de 2026</p>
+    <div class="header-meta">
+      <span>&#128197; Julho 2026</span>
+      <span>&#128205; Luís Eduardo Magalhães, BA</span>
+      <span>&#127891; Evento: 01 a 03 de setembro de 2026</span>
+    </div>
+    <div class="header-event-info">
+      <div class="event-tag">Orçamento: <strong>R$ 5.000</strong></div>
+      <div class="event-tag">Plataformas: <strong>Meta Ads + Google Ads</strong></div>
+      <div class="event-tag">Duração: <strong>31 dias</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- BOTÃO FLUTUANTE — VOLTAR -->
+<a href="../index.html" class="back-btn">&#8592; Voltar à Central</a>
+
+<div class="container">
+
+<!-- ==================== SUMÁRIO ==================== -->
+<div class="section" style="padding-bottom: 0; padding-top: 16px;">
+  <nav class="summary-nav">
+    <div class="summary-nav-title">Sumário do Planejamento</div>
+    <ol>
+      <li><a href="#contexto">Contexto e Objetivos</a></li>
+      <li><a href="#orcamento">Distribuição de Orçamento</a></li>
+      <li><a href="#meta-ads">Meta Ads — Estratégia Completa (R$ 3.500)</a></li>
+      <li><a href="#google-ads">Google Ads — Estratégia Completa (R$ 1.500)</a></li>
+      <li><a href="#metas-vendas">Metas de Vendas — Julho</a></li>
+      <li><a href="#pre-requisitos">Pré-requisitos Técnicos</a></li>
+      <li><a href="#cronograma">Cronograma Semanal</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ==================== 1. CONTEXTO E OBJETIVOS ==================== -->
+<section id="contexto" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#127919;</span>
+    Contexto e Objetivos
+  </h2>
+  <p class="section-desc">Situação atual de vendas e o que precisa mudar para atingir a meta.</p>
+
+  <!-- Velocímetro de Meta -->
+  <div class="card">
+    <div class="card-title">&#127919; Velocímetro de Meta — Ingressos</div>
+    <div class="gauge-wrapper">
+      <div class="gauge-container">
+        <div class="gauge-bg">
+          <div class="gauge-fill"></div>
+        </div>
+        <div class="gauge-center">
+          <div class="gauge-value">21,5%</div>
+          <div class="gauge-label">da meta atingida</div>
+        </div>
+      </div>
+      <div class="gauge-stats">
+        <div class="gauge-stat">
+          <div class="gauge-stat-value sold">86</div>
+          <div class="gauge-stat-label">Ingressos vendidos</div>
+        </div>
+        <div class="gauge-stat">
+          <div class="gauge-stat-value remaining">314</div>
+          <div class="gauge-stat-label">Ingressos faltantes</div>
+        </div>
+        <div class="gauge-stat">
+          <div class="gauge-stat-value">400</div>
+          <div class="gauge-stat-label">Meta total</div>
+        </div>
+        <div class="gauge-stat">
+          <div class="gauge-stat-value days">~60</div>
+          <div class="gauge-stat-label">Dias até o evento</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPIs do contexto -->
+  <div class="exec-grid">
+    <div class="exec-card warning">
+      <div class="exec-value">86</div>
+      <div class="exec-label">Ingressos vendidos</div>
+      <span class="exec-tag ok">21,5% da meta</span>
+    </div>
+    <div class="exec-card critical">
+      <div class="exec-value">314</div>
+      <div class="exec-label">Ingressos faltantes</div>
+      <span class="exec-tag bad">78,5% pendentes</span>
+    </div>
+    <div class="exec-card neutral">
+      <div class="exec-value">R$ 5.000</div>
+      <div class="exec-label">Orçamento julho</div>
+      <span class="exec-tag ok">Meta + Google</span>
+    </div>
+    <div class="exec-card neutral">
+      <div class="exec-value">~60 dias</div>
+      <div class="exec-label">Dias até o evento</div>
+      <span class="exec-tag ok">01 a 03/09/2026</span>
+    </div>
+  </div>
+
+  <!-- Problemas da gestão anterior -->
+  <div class="card">
+    <div class="card-title">&#128680; Problemas identificados na gestão anterior</div>
+
+    <div class="diagnostic-item critical">
+      <div class="diagnostic-icon">&#128308;</div>
+      <div class="diagnostic-content">
+        <div class="diagnostic-title">Objetivo errado nas campanhas de conversão</div>
+        <div class="diagnostic-text">Campanhas de Meio e Fundo de Funil configuradas com objetivo de <strong>Tráfego</strong> em vez de <strong>Vendas/Conversões</strong>. O algoritmo otimizava para cliques, não para compras.</div>
+      </div>
+    </div>
+
+    <div class="diagnostic-item critical">
+      <div class="diagnostic-icon">&#128308;</div>
+      <div class="diagnostic-content">
+        <div class="diagnostic-title">Pixel instalado mas não utilizado pelas campanhas</div>
+        <div class="diagnostic-text">O Pixel está instalado na Congresse.me (checkout e página principal), mas as campanhas usavam objetivo de Tráfego — os dados de conversão do Pixel não eram aproveitados para otimização.</div>
+      </div>
+    </div>
+
+    <div class="diagnostic-item critical">
+      <div class="diagnostic-icon">&#128308;</div>
+      <div class="diagnostic-content">
+        <div class="diagnostic-title">Mesmo público no Meio e no Fundo de Funil</div>
+        <div class="diagnostic-text">As duas campanhas usaram o mesmo público personalizado (visitantes do perfil 180 dias), anulando a lógica de funil e gerando competição entre anúncios pelo mesmo grupo de pessoas.</div>
+      </div>
+    </div>
+
+    <div class="diagnostic-item warning">
+      <div class="diagnostic-icon">&#128992;</div>
+      <div class="diagnostic-content">
+        <div class="diagnostic-title">Frequência alarmante de 5,59 no Meio de Funil</div>
+        <div class="diagnostic-text">Público saturado — cada pessoa viu os anúncios quase 6 vezes. Universo de apenas 4.150 pessoas era insuficiente para sustentar a campanha.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- O que muda agora -->
+  <div class="card">
+    <div class="card-title">&#9989; O que muda agora</div>
+
+    <div class="diagnostic-item positive">
+      <div class="diagnostic-icon">&#128994;</div>
+      <div class="diagnostic-content">
+        <div class="diagnostic-title">Todas as campanhas de funil com objetivo de conversão</div>
+        <div class="diagnostic-text">Topo, Meio e Fundo de Funil — todos configurados com objetivo de <strong>Conversão</strong>, otimizando para o evento Purchase. O algoritmo buscará pessoas com maior probabilidade de comprar em cada etapa. Apenas o Topão (campanha de aquisição de dados) usa objetivo de Engajamento.</div>
+      </div>
+    </div>
+
+    <div class="diagnostic-item positive">
+      <div class="diagnostic-icon">&#128994;</div>
+      <div class="diagnostic-content">
+        <div class="diagnostic-title">Pixel já instalado — pronto para campanhas de conversão</div>
+        <div class="diagnostic-text">O Pixel do Meta já está ativo na Congresse.me (checkout e página principal do evento). Agora será aproveitado com campanhas de objetivo <strong>Vendas/Conversões</strong>, permitindo rastreamento completo e otimização por evento Purchase.</div>
+      </div>
+    </div>
+
+    <div class="diagnostic-item positive">
+      <div class="diagnostic-icon">&#128994;</div>
+      <div class="diagnostic-content">
+        <div class="diagnostic-title">Funil de 4 camadas com públicos diferenciados</div>
+        <div class="diagnostic-text">Estrutura ampliada: <strong>Topão</strong> (aquisição de dados/engajamento), <strong>Topo</strong> (prospecção fria com conversão), <strong>Meio</strong> (audiência morna com conversão) e <strong>Fundo</strong> (remarketing com conversão). Cada etapa impacta uma audiência diferente e progressivamente mais qualificada, sem competição entre campanhas.</div>
+      </div>
+    </div>
+
+    <div class="diagnostic-item positive">
+      <div class="diagnostic-icon">&#128994;</div>
+      <div class="diagnostic-content">
+        <div class="diagnostic-title">Criativos diversificados e testados</div>
+        <div class="diagnostic-text">Variação de formatos (vídeo, carrossel, imagem, stories) e de ângulos de comunicação (urgência, prova social, benefícios, palestrantes, countdown). Mínimo de 3 variações por campanha.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. DISTRIBUIÇÃO DE ORÇAMENTO ==================== -->
+<section id="orcamento" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128176;</span>
+    Distribuição de Orçamento
+  </h2>
+  <p class="section-desc">Como os R$ 5.000 serão divididos entre Meta Ads e Google Ads.</p>
+
+  <div class="card">
+    <div class="card-title">Meta Ads vs. Google Ads</div>
+
+    <!-- Barra de distribuição -->
+    <div class="verba-distribution">
+      <div class="verba-segment" style="width:70%; background: var(--blue);">Meta Ads 70%</div>
+      <div class="verba-segment" style="width:30%; background: var(--green);">Google Ads 30%</div>
+    </div>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Meta Ads</div>
+        <div class="bar-track">
+          <div class="bar-fill blue" style="width:70%;">R$ 3.500 — 70%</div>
+        </div>
+        <div class="bar-value">R$ 3.500</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Google Ads</div>
+        <div class="bar-track">
+          <div class="bar-fill green" style="width:30%;">R$ 1.500 — 30%</div>
+        </div>
+        <div class="bar-value">R$ 1.500</div>
+      </div>
+    </div>
+
+    <div class="table-wrapper" style="margin-top: 20px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Plataforma</th>
+            <th class="text-right">Verba Mensal</th>
+            <th class="text-right">%</th>
+            <th class="text-right">Verba Diária</th>
+            <th>Justificativa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Meta Ads</strong></td>
+            <td class="text-right">R$ 3.500</td>
+            <td class="text-right">70%</td>
+            <td class="text-right">~R$ 113/dia</td>
+            <td>Maior potencial de alcance, retargeting visual, criação de demanda</td>
+          </tr>
+          <tr>
+            <td><strong>Google Ads</strong></td>
+            <td class="text-right">R$ 1.500</td>
+            <td class="text-right">30%</td>
+            <td class="text-right">~R$ 48/dia</td>
+            <td>Captura de intenção ativa (buscas por evento/agro)</td>
+          </tr>
+          <tr style="background: var(--gray-100); font-weight: 700;">
+            <td><strong>Total</strong></td>
+            <td class="text-right"><strong>R$ 5.000</strong></td>
+            <td class="text-right"><strong>100%</strong></td>
+            <td class="text-right"><strong>~R$ 161/dia</strong></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-blue" style="margin-top: 20px;">
+      <span class="alert-icon">&#128161;</span>
+      <div>
+        <strong>Por que 70% no Meta?</strong> O público-alvo (profissionais de agronomia, pesquisadores, produtores rurais) responde bem a conteúdo visual e educacional. O Meta permite retargeting visual com criativos variados, criação de Lookalike dos compradores e formatos como carrossel e vídeo que demonstram o valor do evento. O Google captura quem já está buscando ativamente, complementando a estratégia.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. META ADS — ESTRATÉGIA COMPLETA ==================== -->
+<section id="meta-ads" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128640;</span>
+    Meta Ads — Estratégia Completa
+  </h2>
+  <p class="section-desc">Verba total: R$ 3.500 — Topão (compra de dados) + 3 etapas de funil com objetivo de conversão.</p>
+
+  <!-- Distribuição do funil Meta -->
+  <div class="card">
+    <div class="card-title">Distribuição por Etapa</div>
+    <div class="verba-distribution">
+      <div class="verba-segment" style="width:14%; background: var(--gray-600);">Topão 14%</div>
+      <div class="verba-segment" style="width:30%; background: var(--blue);">Topo 30%</div>
+      <div class="verba-segment" style="width:30%; background: var(--yellow);">Meio 30%</div>
+      <div class="verba-segment" style="width:26%; background: var(--orange);">Fundo 26%</div>
+    </div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Topo de Funil</div>
+        <div class="bar-track">
+          <div class="bar-fill blue" style="width:30%;">R$ 1.050 — 30%</div>
+        </div>
+        <div class="bar-value">~R$ 34/dia</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Meio de Funil</div>
+        <div class="bar-track">
+          <div class="bar-fill dark" style="width:30%;">R$ 1.050 — 30%</div>
+        </div>
+        <div class="bar-value">~R$ 34/dia</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Fundo de Funil</div>
+        <div class="bar-track">
+          <div class="bar-fill orange" style="width:26%;">R$ 900 — 26%</div>
+        </div>
+        <div class="bar-value">~R$ 29/dia</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Topão (dados)</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:14%; background: linear-gradient(90deg, var(--gray-600), var(--gray-500));">R$ 500 — 14%</div>
+        </div>
+        <div class="bar-value">~R$ 16/dia</div>
+      </div>
+    </div>
+
+    <div class="alert alert-blue" style="margin-top: 16px;">
+      <span class="alert-icon">&#128161;</span>
+      <div>
+        <strong>Lógica da distribuição.</strong> Topo e Meio recebem mais verba (30% cada) porque trabalham com públicos maiores e precisam de volume para o algoritmo otimizar conversões em audiências frias e mornas. O Fundo recebe 26% porque opera com remarketing — públicos menores e mais qualificados que não precisam (e não devem) receber verba excessiva para evitar saturação. O Topão é uma campanha de alimentação que não vende diretamente, por isso recebe o mínimo necessário (14%).
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPÃO — COMPRA DE DADOS -->
+  <div class="funnel-card" style="border-left: 4px solid var(--gray-500);">
+    <div class="funnel-header">
+      <div>
+        <div class="funnel-name">TOPÃO — Compra de Dados</div>
+        <div class="funnel-objective">Objetivo: Engajamento / Reconhecimento — Campanha de aquisição de audiência</div>
+      </div>
+      <div class="funnel-budget">R$ 500 (14%) | ~R$ 16/dia</div>
+    </div>
+
+    <div class="alert alert-yellow" style="margin: 12px 0;">
+      <span class="alert-icon">&#128161;</span>
+      <div>
+        <strong>Não vende diretamente.</strong> O papel desta campanha é encher os baldes de público personalizado (engajadores, visitantes do perfil) que serão usados pelas campanhas de conversão do Meio e Fundo de Funil. Quanto mais gente interage aqui, maior e mais qualificado fica o remarketing.
+      </div>
+    </div>
+
+    <div class="funnel-section-label">Público</div>
+    <ul class="funnel-list">
+      <li>Interesses amplos: agronomia, ciência do solo, agricultura de precisão, fertilizantes, manejo de solo, engenharia agrícola</li>
+      <li>Geolocalização: Bahia (foco Oeste baiano), Maranhão, Tocantins, Piauí (MATOPIBA) + SP, GO, MG, MT</li>
+      <li>Idade: 22 a 55 anos</li>
+      <li>Exclusão: compradores (lista personalizada)</li>
+    </ul>
+
+    <div class="funnel-section-label">Criativos (2-3 variações)</div>
+    <ul class="funnel-list">
+      <li>Vídeo/Reels (15-30s) — teaser do evento com imagens da região, do local e dos palestrantes</li>
+      <li>Imagem estática — Save the Date com data, local e marca do evento</li>
+      <li>Stories vertical 9:16 — chamada visual com CTA "Saiba mais"</li>
+    </ul>
+
+    <div class="funnel-section-label">KPIs esperados</div>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">R$ 8-15</div>
+        <div class="kpi-label">CPM</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">30-50 mil</div>
+        <div class="kpi-label">Alcance</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">máx 2,0</div>
+        <div class="kpi-label">Frequência</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPO DE FUNIL -->
+  <div class="funnel-card topo">
+    <div class="funnel-header">
+      <div>
+        <div class="funnel-name">TOPO DE FUNIL — Prospecção Fria</div>
+        <div class="funnel-objective">Objetivo: Conversão (evento Purchase) — Pixel ativo</div>
+      </div>
+      <div class="funnel-budget">R$ 1.050 (30%) | ~R$ 34/dia</div>
+    </div>
+
+    <div class="funnel-section-label">Público</div>
+    <ul class="funnel-list">
+      <li>Interesses amplos: agronomia, ciência do solo, agricultura de precisão, fertilizantes, manejo de solo, engenharia agrícola</li>
+      <li>Lookalike amplo (3-5%) dos 86 compradores</li>
+      <li>Geolocalização: Bahia (foco Oeste baiano), Maranhão, Tocantins, Piauí (MATOPIBA) + SP, GO, MG, MT</li>
+      <li>Idade: 22 a 55 anos</li>
+      <li>Exclusão: compradores + engajadores recentes (para não competir com Meio)</li>
+    </ul>
+
+    <div class="funnel-section-label">Criativos (3-4 variações)</div>
+    <ul class="funnel-list">
+      <li>Carrossel — "5 razões para participar do IV SBSA"</li>
+      <li>Vídeo/Reels (15-30s) — programação resumida + benefícios + CTA de inscrição</li>
+      <li>Imagem estática — destaque do evento com preço de entrada (a partir de R$ 180)</li>
+      <li>Stories vertical 9:16 — chamada direta com CTA "Inscreva-se"</li>
+    </ul>
+
+    <div class="funnel-section-label">KPIs esperados</div>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">R$ 25-50</div>
+        <div class="kpi-label">Custo por conversão</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">20-40</div>
+        <div class="kpi-label">Conversões esperadas</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">máx 2,0</div>
+        <div class="kpi-label">Frequência</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEIO DE FUNIL -->
+  <div class="funnel-card meio">
+    <div class="funnel-header">
+      <div>
+        <div class="funnel-name">MEIO DE FUNIL — Audiência Morna</div>
+        <div class="funnel-objective">Objetivo: Conversão (evento Purchase) — Pixel ativo</div>
+      </div>
+      <div class="funnel-budget">R$ 1.050 (30%) | ~R$ 34/dia</div>
+    </div>
+
+    <div class="funnel-section-label">Público</div>
+    <ul class="funnel-list">
+      <li>Engajadores do Instagram nos últimos 30 dias</li>
+      <li>Lookalike 1% a 3% dos 86 compradores</li>
+      <li>Visitantes do perfil nos últimos 30 dias</li>
+      <li>Exclusão: compradores + visitantes do site (para não competir com Fundo)</li>
+    </ul>
+
+    <div class="funnel-section-label">Criativos (4-5 variações)</div>
+    <ul class="funnel-list">
+      <li>Carrossel — Top 5 palestrantes (Maluf, Povh, Mantovani, Chaer, Mellis)</li>
+      <li>Carrossel — Programação completa dos 3 dias</li>
+      <li>Vídeo depoimento (se disponível) de participantes ou palestrantes</li>
+      <li>Imagem prova social — "Mais de 100 profissionais já confirmaram presença"</li>
+      <li>Stories bastidores — preparação do evento, local, equipe</li>
+    </ul>
+
+    <div class="funnel-section-label">KPIs esperados</div>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">R$ 15-35</div>
+        <div class="kpi-label">Custo por conversão</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">30-70</div>
+        <div class="kpi-label">Conversões esperadas</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">máx 3,0</div>
+        <div class="kpi-label">Frequência</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUNDO DE FUNIL -->
+  <div class="funnel-card fundo">
+    <div class="funnel-header">
+      <div>
+        <div class="funnel-name">FUNDO DE FUNIL — Remarketing + Conversão</div>
+        <div class="funnel-objective">Objetivo: Conversão (evento Purchase) — Pixel ativo</div>
+      </div>
+      <div class="funnel-budget">R$ 900 (26%) | ~R$ 29/dia</div>
+    </div>
+
+    <div class="alert alert-yellow" style="margin: 12px 0;">
+      <span class="alert-icon">&#9888;&#65039;</span>
+      <div>
+        <strong>Verba controlada.</strong> O Fundo trabalha com públicos pequenos de remarketing. Verba excessiva nesta etapa causa saturação (frequência alta) — o mesmo erro da gestão anterior. Com 26% do orçamento, mantemos a frequência sob controle enquanto convertemos quem já demonstrou interesse real.
+      </div>
+    </div>
+
+    <div class="funnel-section-label">Público</div>
+    <ul class="funnel-list">
+      <li>Visitantes do site nos últimos 30 dias (Pixel ativo)</li>
+      <li>Quem iniciou checkout e não finalizou (evento InitiateCheckout do Pixel)</li>
+      <li>Engajadores do Instagram nos últimos 7 dias (mais recentes = mais quentes)</li>
+      <li>Exclusão: compradores (lista personalizada)</li>
+    </ul>
+
+    <div class="funnel-section-label">Criativos (4-5 variações)</div>
+    <ul class="funnel-list">
+      <li>Card de preços com urgência — "3.º Lote: garanta antes que acabe"</li>
+      <li>Countdown — "Faltam X dias para o maior evento de solos arenosos do Brasil"</li>
+      <li>Carrossel comparativo — "O que você recebe: 4 workshops + conferência + dinâmica em fazenda + networking por R$ X"</li>
+      <li>Prova social — número atualizado de inscritos confirmados</li>
+      <li>Card desconto sócio SBCS — "Sócios pagam 20% menos"</li>
+    </ul>
+
+    <div class="funnel-section-label">KPIs esperados</div>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">R$ 10-25</div>
+        <div class="kpi-label">Custo por conversão</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">5-10%</div>
+        <div class="kpi-label">Taxa de conversão</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">máx 3,0</div>
+        <div class="kpi-label">Frequência</div>
+      </div>
+    </div>
+
+    <div class="alert alert-blue" style="background: var(--green-light); color: var(--green); border: 1px solid rgba(0,184,148,0.2);">
+      <span class="alert-icon">&#9989;</span>
+      <div>
+        <strong>Pixel ativo.</strong> O Pixel do Meta já está instalado na Congresse.me (checkout e página principal). O Fundo opera com objetivo de <strong>Conversão</strong> otimizando pelo evento Purchase — público menor, mais qualificado, menor custo por conversão.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. GOOGLE ADS — ESTRATÉGIA COMPLETA ==================== -->
+<section id="google-ads" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128270;</span>
+    Google Ads — Estratégia Completa
+  </h2>
+  <p class="section-desc">Verba total: R$ 1.500 — foco em captura de intenção ativa via busca e remarketing.</p>
+
+  <!-- Distribuição Google -->
+  <div class="card">
+    <div class="card-title">Distribuição por Campanha</div>
+    <div class="verba-distribution">
+      <div class="verba-segment" style="width:30%; background: var(--green);">Marca 30%</div>
+      <div class="verba-segment" style="width:50%; background: var(--blue);">Categoria 50%</div>
+      <div class="verba-segment" style="width:20%; background: var(--orange);">Remarketing 20%</div>
+    </div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Busca — Categoria</div>
+        <div class="bar-track">
+          <div class="bar-fill blue" style="width:50%;">R$ 750 — 50%</div>
+        </div>
+        <div class="bar-value">~R$ 24/dia</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Busca — Marca</div>
+        <div class="bar-track">
+          <div class="bar-fill green" style="width:30%;">R$ 450 — 30%</div>
+        </div>
+        <div class="bar-value">~R$ 15/dia</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Remarketing Display</div>
+        <div class="bar-track">
+          <div class="bar-fill orange" style="width:20%;">R$ 300 — 20%</div>
+        </div>
+        <div class="bar-value">~R$ 10/dia</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUSCA — MARCA -->
+  <div class="funnel-card google-marca">
+    <div class="funnel-header">
+      <div>
+        <div class="funnel-name">BUSCA — MARCA</div>
+        <div class="funnel-objective">Captura de quem já conhece o evento e busca diretamente</div>
+      </div>
+      <div class="funnel-budget">R$ 450 (30%) | ~R$ 15/dia</div>
+    </div>
+
+    <div class="funnel-section-label">Palavras-chave</div>
+    <ul class="funnel-list">
+      <li>"simpósio brasileiro de solos arenosos"</li>
+      <li>"SBSA 2026"</li>
+      <li>"IV simpósio solos arenosos"</li>
+      <li>"simpósio solos luís eduardo magalhães"</li>
+      <li>"inscrição simpósio solos"</li>
+      <li>"congresse me sbsa"</li>
+    </ul>
+
+    <div class="funnel-section-label">Anúncios</div>
+    <ul class="funnel-list">
+      <li>3 variações de título e descrição</li>
+      <li>Extensões de sitelink: Programação, Palestrantes, Inscrição, Localização</li>
+      <li>Extensão de preço: a partir de R$ 180</li>
+      <li>Extensão de local: Luís Eduardo Magalhães, BA</li>
+    </ul>
+  </div>
+
+  <!-- BUSCA — CATEGORIA -->
+  <div class="funnel-card google-cat">
+    <div class="funnel-header">
+      <div>
+        <div class="funnel-name">BUSCA — CATEGORIA</div>
+        <div class="funnel-objective">Captura de quem busca eventos do setor sem conhecer o SBSA</div>
+      </div>
+      <div class="funnel-budget">R$ 750 (50%) | ~R$ 24/dia</div>
+    </div>
+
+    <div class="funnel-section-label">Palavras-chave</div>
+    <ul class="funnel-list">
+      <li>"evento agronomia bahia 2026"</li>
+      <li>"congresso ciência do solo"</li>
+      <li>"simpósio agrícola nordeste"</li>
+      <li>"evento manejo de solo"</li>
+      <li>"congresso fertilidade solo"</li>
+      <li>"evento agro MATOPIBA"</li>
+      <li>"workshop solos arenosos"</li>
+      <li>"palestra agronomia setembro"</li>
+    </ul>
+
+    <div class="funnel-section-label">Palavras negativas</div>
+    <ul class="funnel-list">
+      <li>"emprego", "vaga", "salário", "curso grátis", "gratuito"</li>
+    </ul>
+  </div>
+
+  <!-- REMARKETING DISPLAY -->
+  <div class="funnel-card google-remarketing">
+    <div class="funnel-header">
+      <div>
+        <div class="funnel-name">REMARKETING DISPLAY</div>
+        <div class="funnel-objective">Banners para quem visitou o site mas não converteu</div>
+      </div>
+      <div class="funnel-budget">R$ 300 (20%) | ~R$ 10/dia</div>
+    </div>
+
+    <div class="funnel-section-label">Formatos de Banner</div>
+    <ul class="funnel-list">
+      <li>300x250 (retângulo médio — desktop e mobile)</li>
+      <li>728x90 (leaderboard — desktop)</li>
+      <li>320x50 (banner mobile)</li>
+    </ul>
+
+    <div class="funnel-section-label">Configurações</div>
+    <ul class="funnel-list">
+      <li>Frequência máxima: 5 impressões por dia por pessoa</li>
+      <li>Público: visitantes do site nos últimos 30 dias que não converteram</li>
+      <li>CTA direto: "Garanta sua vaga no IV SBSA"</li>
+    </ul>
+  </div>
+
+  <!-- KPIs Google -->
+  <div class="card">
+    <div class="card-title">KPIs Esperados — Google Ads</div>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-value">R$ 1,50-3,00</div>
+        <div class="kpi-label">CPC médio (Search)</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">5-10%</div>
+        <div class="kpi-label">CTR (Search)</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value success">20-40</div>
+        <div class="kpi-label">Meta vendas via Google (julho)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5. METAS DE VENDAS ==================== -->
+<section id="metas-vendas" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128202;</span>
+    Metas de Vendas — Julho
+  </h2>
+  <p class="section-desc">Projeção de vendas por canal para o mês de julho de 2026.</p>
+
+  <div class="card">
+    <div class="card-title">Projeção por Canal</div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Canal</th>
+            <th class="text-right">Meta Otimista</th>
+            <th class="text-right">Meta Conservadora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Meta Ads — Topo</strong></td>
+            <td class="text-right">25 ingressos</td>
+            <td class="text-right">15 ingressos</td>
+          </tr>
+          <tr>
+            <td><strong>Meta Ads — Meio</strong></td>
+            <td class="text-right">35 ingressos</td>
+            <td class="text-right">20 ingressos</td>
+          </tr>
+          <tr>
+            <td><strong>Meta Ads — Fundo</strong></td>
+            <td class="text-right">30 ingressos</td>
+            <td class="text-right">15 ingressos</td>
+          </tr>
+          <tr style="background: rgba(59,130,246,0.05);">
+            <td><strong>Subtotal Meta Ads</strong></td>
+            <td class="text-right" style="color: var(--green); font-weight: 700;">90 ingressos</td>
+            <td class="text-right" style="font-weight: 600;">50 ingressos</td>
+          </tr>
+          <tr>
+            <td><strong>Google Ads</strong></td>
+            <td class="text-right" style="color: var(--green); font-weight: 700;">40 ingressos</td>
+            <td class="text-right">20 ingressos</td>
+          </tr>
+          <tr style="background: var(--blue-light);">
+            <td><strong>Total Tráfego Pago</strong></td>
+            <td class="text-right" style="font-weight: 700;">130 ingressos</td>
+            <td class="text-right" style="font-weight: 700;">70 ingressos</td>
+          </tr>
+          <tr>
+            <td>Orgânico / WhatsApp</td>
+            <td class="text-right">30 ingressos</td>
+            <td class="text-right">15 ingressos</td>
+          </tr>
+          <tr style="background: var(--orange); color: #fff; font-weight: 700;">
+            <td><strong>Total Julho</strong></td>
+            <td class="text-right"><strong>160 ingressos</strong></td>
+            <td class="text-right"><strong>85 ingressos</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Projeção acumulada -->
+  <div class="card">
+    <div class="card-title">Projeção Acumulada até 31 de Julho</div>
+
+    <div class="exec-grid">
+      <div class="exec-card positive">
+        <div class="exec-value">86</div>
+        <div class="exec-label">Vendidos até agora</div>
+        <span class="exec-tag good">Base atual</span>
+      </div>
+      <div class="exec-card neutral">
+        <div class="exec-value">85 a 160</div>
+        <div class="exec-label">Projeção julho</div>
+        <span class="exec-tag ok">Conservadora a otimista</span>
+      </div>
+      <div class="exec-card positive">
+        <div class="exec-value">171 a 246</div>
+        <div class="exec-label">Acumulado até 31/07</div>
+        <span class="exec-tag good">42,8% a 61,5% da meta</span>
+      </div>
+      <div class="exec-card warning">
+        <div class="exec-value">154 a 229</div>
+        <div class="exec-label">Faltam para agosto</div>
+        <span class="exec-tag ok">Desafio em 31 dias</span>
+      </div>
+    </div>
+
+    <div class="alert alert-yellow">
+      <span class="alert-icon">&#128161;</span>
+      <div>
+        <strong>Cenário realista.</strong> Mesmo no cenário otimista (246 ingressos até 31/07), restam 154 ingressos para agosto. Será necessário intensificar a operação em agosto com aumento de verba, campanhas de urgência e ações de última hora. Cada dia conta — começar as campanhas no dia 01/07 é determinante.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 6. PRÉ-REQUISITOS TÉCNICOS ==================== -->
+<section id="pre-requisitos" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#9881;&#65039;</span>
+    Pré-requisitos Técnicos
+  </h2>
+  <p class="section-desc">Ações obrigatórias antes de ativar as campanhas.</p>
+
+  <div class="card">
+    <div class="card-title">Checklist de Implementação</div>
+    <ul class="checklist">
+      <li>
+        <span class="check-icon">1</span>
+        <div>
+          <strong>Validar eventos do Pixel na Congresse.me</strong><br>
+          <span style="font-size: 0.82rem; color: var(--gray-600);">O Pixel já está instalado. Usar a ferramenta Eventos de Teste do Meta para confirmar que os eventos Purchase, InitiateCheckout e ViewContent estão disparando corretamente no checkout e na página principal.</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-icon">2</span>
+        <div>
+          <strong>Subir lista dos 86 compradores como público personalizado</strong><br>
+          <span style="font-size: 0.82rem; color: var(--gray-600);">Exportar e-mails e telefones dos inscritos na Congresse.me. Criar público personalizado no Gerenciador de Anúncios do Meta para exclusão (evitar gastar verba em quem já comprou) e para base do Lookalike.</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-icon">3</span>
+        <div>
+          <strong>Criar Lookalike 1% a 3% dos compradores</strong><br>
+          <span style="font-size: 0.82rem; color: var(--gray-600);">A partir do público personalizado dos 86 compradores, gerar Lookalike de 1% (mais preciso) e 3% (mais amplo) para as campanhas de Meio de Funil.</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-icon">4</span>
+        <div>
+          <strong>Configurar conta Google Ads com tag de conversão</strong><br>
+          <span style="font-size: 0.82rem; color: var(--gray-600);">Criar conta Google Ads (se ainda não existir), instalar tag global do Google e configurar conversão de compra no site da Congresse.me. Vincular ao Google Analytics para dados mais ricos.</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-icon">5</span>
+        <div>
+          <strong>Produzir criativos inteiramente novos — material orgânico existente não serve</strong><br>
+          <span style="font-size: 0.82rem; color: var(--gray-600);">O feed do Instagram do evento é composto quase inteiramente por cards de palestrantes com o mesmo template verde/laranja. Esse material gera fadiga visual e não possui CTA de conversão — não funciona como anúncio pago. É necessário produzir peças novas com variação de formato (vídeo 15-30s, carrossel, imagem estática, stories 9:16) e de ângulo de comunicação (urgência, preços, prova social, programação, benefícios, countdown, bastidores). Mínimo: 12 peças diferentes para cobrir as 4 etapas do funil (Topão + Topo + Meio + Fundo) + Google Display.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="alert alert-red" style="margin-top: 16px;">
+      <span class="alert-icon">&#9888;&#65039;</span>
+      <div>
+        <strong>Ação prioritária.</strong> O Pixel já está instalado. Resta validar os eventos e subir a lista de compradores para que as campanhas de Fundo de Funil operem com otimização completa desde o primeiro dia.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 7. CRONOGRAMA SEMANAL ==================== -->
+<section id="cronograma" class="section">
+  <h2 class="section-title">
+    <span class="icon">&#128197;</span>
+    Cronograma Semanal
+  </h2>
+  <p class="section-desc">Plano de execução semana a semana para julho de 2026.</p>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Semana</th>
+            <th>Ações</th>
+            <th class="text-center">Prioridade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="white-space: nowrap; vertical-align: top;">
+              <strong>Semana 1</strong><br>
+              <small style="color: var(--gray-600);">01 a 06/07</small>
+            </td>
+            <td>
+              Validar eventos do Pixel na Congresse.me (Purchase, InitiateCheckout, ViewContent)<br>
+              Subir lista dos 86 compradores como público personalizado<br>
+              Criar Lookalike 1%-3% dos compradores<br>
+              Configurar conta Google Ads com tag de conversão<br>
+              Produzir primeiro lote de criativos (mínimo 10 peças)<br>
+              <strong>Lançar Topão</strong> — campanha de engajamento para começar a encher os baldes de público
+            </td>
+            <td class="text-center" style="vertical-align: top;">
+              <span class="badge badge-red">MÁXIMA</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="white-space: nowrap; vertical-align: top;">
+              <strong>Semana 2</strong><br>
+              <small style="color: var(--gray-600);">07 a 13/07</small>
+            </td>
+            <td>
+              <strong>Lançar Topo de Funil</strong> — conversão em público frio (interesses + Lookalike amplo)<br>
+              <strong>Lançar Meio de Funil</strong> — conversão em audiência morna (engajadores + Lookalike 1-3%)<br>
+              Lançar campanhas de Busca (Marca + Categoria) no Google Ads<br>
+              Monitorar diariamente e ajustar lances<br>
+              Produzir segundo lote de criativos (vídeos e carrosséis)
+            </td>
+            <td class="text-center" style="vertical-align: top;">
+              <span class="badge badge-red">ALTA</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="white-space: nowrap; vertical-align: top;">
+              <strong>Semana 3</strong><br>
+              <small style="color: var(--gray-600);">14 a 20/07</small>
+            </td>
+            <td>
+              <strong>Lançar Fundo de Funil</strong> — remarketing com objetivo de Conversão (evento Purchase)<br>
+              Ativar Remarketing Display no Google<br>
+              Primeiro corte de performance: pausar criativos fracos, escalar vencedores<br>
+              Atualizar prova social nos criativos com número atualizado de inscritos<br>
+              Avaliar frequência do Topão — pausar ou reduzir verba se acima de 2,0
+            </td>
+            <td class="text-center" style="vertical-align: top;">
+              <span class="badge badge-yellow">MÉDIA</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="white-space: nowrap; vertical-align: top;">
+              <strong>Semana 4+</strong><br>
+              <small style="color: var(--gray-600);">21 a 31/07</small>
+            </td>
+            <td>
+              Escalar criativos vencedores (aumentar verba dos melhores)<br>
+              Pausar criativos e públicos com performance abaixo da média<br>
+              Intensificar gatilhos de urgência: countdown, escassez, último lote<br>
+              Realocar verba do Topão para Fundo se os baldes de remarketing já estiverem cheios<br>
+              Relatório final de julho com resultados e plano para agosto
+            </td>
+            <td class="text-center" style="vertical-align: top;">
+              <span class="badge badge-blue">CONTÍNUA</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-line"><strong>ADS Company</strong> — Davidson Pereira</p>
+    <p class="footer-line">Planejamento de Tráfego Pago — IV Simpósio Brasileiro de Solos Arenosos</p>
+    <p class="footer-line">Julho 2026</p>
+    <p class="footer-line" style="margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3);">Documento confidencial — uso exclusivo do cliente</p>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" id="scrollTop">&#8593;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('scrollTop');
+  if (window.scrollY > 400) {
+    btn.style.display = 'flex';
+  } else {
+    btn.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>
