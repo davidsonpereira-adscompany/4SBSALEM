@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrat&eacute;gia de E-mail Marketing &mdash; IV Simp&oacute;sio Brasileiro de Solos Arenosos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --laranja: #E87722;
+  --laranja-hover: #FF9A56;
+  --laranja-bg: rgba(232,119,34,0.08);
+  --laranja-border: rgba(232,119,34,0.15);
+  --preto: #060606;
+  --cinza-escuro: #111;
+  --cinza-card: #141414;
+  --cinza-card-hover: #1A1A1A;
+  --cinza-medio: #2A2A2A;
+  --cinza-claro: #888;
+  --cinza-border: rgba(255,255,255,0.06);
+  --branco: #F5F5F5;
+  --verde: #22C55E;
+  --verde-bg: rgba(34,197,94,0.08);
+  --verde-border: rgba(34,197,94,0.15);
+  --azul: #3B8BFF;
+  --azul-bg: rgba(59,139,255,0.08);
+  --azul-border: rgba(59,139,255,0.15);
+  --vermelho: #EF4444;
+  --vermelho-bg: rgba(239,68,68,0.08);
+  --vermelho-border: rgba(239,68,68,0.15);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--preto);
+  color: var(--branco);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(20,20,20,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--cinza-border);
+  border-radius: 10px;
+  color: var(--cinza-claro);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.back-btn:hover { color: var(--laranja); border-color: var(--laranja-border); }
+.back-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 100px 32px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0A0705 0%, var(--preto) 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(232,119,34,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--laranja);
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+.hero h1 em { font-style: italic; color: var(--laranja); }
+.hero-line { width: 60px; height: 2px; background: var(--laranja); margin: 24px auto; }
+.hero p {
+  font-size: 0.95rem;
+  color: var(--cinza-claro);
+  font-weight: 300;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ===== CONTAINER ===== */
+.container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+/* ===== SECTION ===== */
+.section { padding: 64px 0 40px; }
+.section-tag {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--laranja);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+.section-title em { font-style: italic; color: var(--laranja); }
+
+/* ===== DIVIDER ===== */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232,119,34,0.15), transparent);
+}
+
+/* ===== INFO GRID ===== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.info-box {
+  background: var(--cinza-card);
+  border: 1px solid var(--cinza-border);
+  padding: 20px;
+  border-radius: 8px;
+}
+.info-box-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cinza-claro);
+  margin-bottom: 6px;
+}
+.info-box-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--branco);
+}
+.info-box-value.orange { color: var(--laranja); }
+
+/* ===== CARD ===== */
+.card {
+  background: var(--cinza-card);
+  border: 1px solid var(--cinza-border);
+  border-radius: 8px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.card-number {
+  width: 36px; height: 36px;
+  background: var(--laranja-bg);
+  border: 1px solid var(--laranja-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--laranja);
+  flex-shrink: 0;
+}
+.card h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+.card h3 em { font-style: italic; color: var(--laranja); }
+.card p, .card li {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+}
+.card ul { list-style: none; padding: 0; }
+.card ul li { padding: 4px 0; padding-left: 18px; position: relative; }
+.card ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px;
+  width: 6px; height: 6px;
+  background: var(--laranja);
+  border-radius: 50%;
+}
+
+/* ===== CAMPAIGN SECTION ===== */
+.campaign {
+  background: var(--cinza-card);
+  border: 1px solid var(--cinza-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.campaign-header {
+  background: linear-gradient(135deg, rgba(232,119,34,0.06), transparent);
+  padding: 28px;
+  border-bottom: 1px solid var(--cinza-border);
+}
+.campaign-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--laranja);
+  background: var(--laranja-bg);
+  border: 1px solid var(--laranja-border);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+.campaign-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.campaign-title em { font-style: italic; color: var(--laranja); }
+.campaign-subtitle {
+  font-size: 0.82rem;
+  color: var(--cinza-claro);
+  font-weight: 300;
+}
+.campaign-body { padding: 28px; }
+
+/* ===== EMAIL PREVIEW ===== */
+.email-field {
+  margin-bottom: 20px;
+}
+.email-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--laranja);
+  margin-bottom: 8px;
+}
+.email-value {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--cinza-border);
+  border-radius: 6px;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  color: var(--branco);
+  font-weight: 500;
+}
+.email-body {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--cinza-border);
+  border-radius: 6px;
+  padding: 24px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+}
+.email-body p { margin-bottom: 16px; }
+.email-body p:last-child { margin-bottom: 0; }
+.email-body .cta-btn {
+  display: inline-block;
+  background: var(--laranja);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  margin: 8px 0;
+}
+.email-body .email-footer-text {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cinza-border);
+  font-size: 0.78rem;
+  color: var(--cinza-claro);
+}
+.email-body ul { list-style: disc; padding-left: 20px; margin: 12px 0; }
+.email-body ul li { margin-bottom: 6px; }
+
+/* ===== SCHEDULE TABLE ===== */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.82rem;
+}
+.schedule-table th {
+  text-align: left;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cinza-claro);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--cinza-border);
+}
+.schedule-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--cinza-border);
+  color: rgba(255,255,255,0.8);
+}
+.schedule-table tr:last-child td { border-bottom: none; }
+.schedule-table .warm { color: #FFCB05; }
+.schedule-table .active { color: var(--verde); }
+.schedule-table .event-day { color: var(--vermelho); }
+
+/* ===== CALENDAR GRID ===== */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin: 20px 0;
+  font-size: 0.72rem;
+}
+.cal-header {
+  text-align: center;
+  font-weight: 600;
+  color: var(--cinza-claro);
+  padding: 8px 2px;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.cal-day {
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid transparent;
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.cal-day .num { font-weight: 600; font-size: 0.82rem; }
+.cal-day .label { font-size: 0.55rem; font-weight: 500; letter-spacing: 0.05em; }
+.cal-day.c1 { background: rgba(232,119,34,0.1); border-color: rgba(232,119,34,0.2); }
+.cal-day.c1 .label { color: var(--laranja); }
+.cal-day.c2 { background: rgba(59,139,255,0.1); border-color: rgba(59,139,255,0.2); }
+.cal-day.c2 .label { color: var(--azul); }
+.cal-day.c3 { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.2); }
+.cal-day.c3 .label { color: var(--verde); }
+.cal-day.c4 { background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.2); }
+.cal-day.c4 .label { color: #A855F7; }
+.cal-day.c5 { background: rgba(236,72,153,0.1); border-color: rgba(236,72,153,0.2); }
+.cal-day.c5 .label { color: #EC4899; }
+.cal-day.c6 { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.2); }
+.cal-day.c6 .label { color: var(--vermelho); }
+.cal-day.setup { background: rgba(255,203,5,0.08); border-color: rgba(255,203,5,0.15); }
+.cal-day.setup .label { color: #FFCB05; }
+.cal-day.evento { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.3); }
+.cal-day.evento .label { color: var(--vermelho); font-weight: 700; }
+.cal-day.empty { background: transparent; border: none; }
+.cal-day.weekend { opacity: 0.3; }
+
+/* ===== LOTE DETAILS ===== */
+.lote-section { margin-bottom: 16px; }
+.lote-toggle {
+  width: 100%;
+  background: var(--cinza-card);
+  border: 1px solid var(--cinza-border);
+  border-radius: 8px;
+  color: var(--branco);
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all 0.3s;
+}
+.lote-toggle:hover { border-color: var(--laranja-border); }
+.lote-toggle summary {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+}
+.lote-toggle summary::-webkit-details-marker { display: none; }
+.lote-toggle summary::after {
+  content: '+';
+  font-size: 1.2rem;
+  color: var(--laranja);
+  font-weight: 300;
+  transition: transform 0.3s;
+}
+.lote-toggle[open] summary::after { content: '-'; }
+.lote-toggle[open] { border-color: var(--laranja-border); }
+.lote-content { padding: 0 20px 20px; }
+.lote-count {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--laranja);
+  background: var(--laranja-bg);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+.email-textarea {
+  width: 100%;
+  min-height: 100px;
+  max-height: 200px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--cinza-border);
+  border-radius: 6px;
+  padding: 14px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: var(--laranja);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.copy-btn:hover { background: var(--laranja-hover); }
+.copy-btn.copied { background: var(--verde); }
+.copy-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+/* ===== EXCLUSION LIST ===== */
+.exclusion-list {
+  background: var(--vermelho-bg);
+  border: 1px solid var(--vermelho-border);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+.exclusion-list h4 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--vermelho);
+  margin-bottom: 10px;
+}
+.exclusion-list ul {
+  list-style: none;
+  padding: 0;
+}
+.exclusion-list li {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+  padding: 3px 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* ===== ALERT BOX ===== */
+.alert {
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  margin: 16px 0;
+  line-height: 1.6;
+}
+.alert-orange {
+  background: var(--laranja-bg);
+  border: 1px solid var(--laranja-border);
+  color: rgba(255,255,255,0.8);
+}
+.alert-green {
+  background: var(--verde-bg);
+  border: 1px solid var(--verde-border);
+  color: rgba(255,255,255,0.8);
+}
+.alert-blue {
+  background: var(--azul-bg);
+  border: 1px solid var(--azul-border);
+  color: rgba(255,255,255,0.8);
+}
+.alert strong { color: var(--branco); }
+
+/* ===== LEGEND ===== */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+  font-size: 0.72rem;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 3px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 48px 32px 32px;
+  border-top: 1px solid var(--cinza-border);
+  margin-top: 48px;
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+.footer-brand em { font-style: italic; color: var(--laranja); }
+.footer-sub {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  font-weight: 300;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .hero { padding: 80px 20px 48px; }
+  .hero h1 { font-size: 1.4rem; }
+  .container { padding: 0 16px; }
+  .section { padding: 40px 0 24px; }
+  .campaign-header { padding: 20px; }
+  .campaign-body { padding: 20px; }
+  .card { padding: 20px; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+  .calendar { font-size: 0.6rem; gap: 2px; }
+  .cal-day { min-height: 40px; padding: 4px 2px; }
+  .cal-day .num { font-size: 0.7rem; }
+  .cal-day .label { font-size: 0.45rem; }
+  .back-btn { top: 12px; left: 12px; padding: 8px 14px; font-size: 0.72rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- BACK -->
+<a href="../index.html" class="back-btn">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  Central de Documentos
+</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">E-mail Marketing</div>
+  <h1>Estrat&eacute;gia de <em>E-mail Marketing</em></h1>
+  <div class="hero-line"></div>
+  <p>Guia completo de execu&ccedil;&atilde;o para Brevo (plano gratuito) &mdash; 6 campanhas, copies prontas, lotes de envio e calend&aacute;rio de cad&ecirc;ncia para o IV Simp&oacute;sio Brasileiro de Solos Arenosos</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============================================================ -->
+<!-- VISÃO GERAL -->
+<!-- ============================================================ -->
+<div class="container">
+  <div class="section">
+    <div class="section-tag">Vis&atilde;o Geral</div>
+    <div class="section-title">N&uacute;meros da <em>estrat&eacute;gia</em></div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="info-box-label">Base total</div>
+        <div class="info-box-value">1.449 e-mails</div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Compradores exclu&iacute;dos</div>
+        <div class="info-box-value orange">9 e-mails</div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Base ativa</div>
+        <div class="info-box-value">1.440 e-mails</div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Campanhas</div>
+        <div class="info-box-value">6 campanhas</div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Limite di&aacute;rio (Brevo Free)</div>
+        <div class="info-box-value orange">300 / dia</div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Dias por campanha</div>
+        <div class="info-box-value">5 dias &uacute;teis</div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Per&iacute;odo total</div>
+        <div class="info-box-value">21/jul &mdash; 29/ago</div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Evento</div>
+        <div class="info-box-value orange">1 a 3/set</div>
+      </div>
+    </div>
+
+    <div class="alert alert-orange">
+      <strong>Plano Brevo Free:</strong> limite de 300 e-mails por dia, contatos ilimitados. Cada campanha leva 5 dias &uacute;teis para alcan&ccedil;ar toda a base de 1.440 contatos (4 lotes de 300 + 1 lote de 240).
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- CONFIGURAÇÃO BREVO -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-tag">Prepara&ccedil;&atilde;o</div>
+    <div class="section-title">Configura&ccedil;&atilde;o do <em>Brevo</em></div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-number">1</div>
+        <h3>Criar conta e configurar <em>dom&iacute;nio</em></h3>
+      </div>
+      <ul>
+        <li>Criar conta gratuita em <strong>brevo.com</strong></li>
+        <li>Adicionar e verificar o dom&iacute;nio de envio (ex.: fundacaoba.com.br ou sbsa.com.br)</li>
+        <li>Configurar autentica&ccedil;&atilde;o <strong>SPF</strong>, <strong>DKIM</strong> e <strong>DMARC</strong> no DNS do dom&iacute;nio</li>
+        <li>Definir nome do remetente: <strong>IV Simp&oacute;sio de Solos Arenosos</strong></li>
+        <li>Definir e-mail de resposta (reply-to): e-mail da comiss&atilde;o organizadora</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-number">2</div>
+        <h3>Importar <em>contatos</em></h3>
+      </div>
+      <ul>
+        <li>Importar os <strong>1.440 e-mails</strong> (lista j&aacute; limpa, sem compradores)</li>
+        <li>Criar lista no Brevo com nome: <strong>SBSA 2026 &mdash; Leads Eventos FBA</strong></li>
+        <li>N&atilde;o importar os 9 compradores j&aacute; exclu&iacute;dos (ver se&ccedil;&atilde;o &ldquo;Exclus&otilde;es&rdquo; abaixo)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-number">3</div>
+        <h3>Hor&aacute;rio e <em>configura&ccedil;&otilde;es</em> de envio</h3>
+      </div>
+      <ul>
+        <li><strong>Hor&aacute;rio ideal de envio:</strong> entre 8h e 10h (hor&aacute;rio de Bras&iacute;lia)</li>
+        <li><strong>Dias de envio:</strong> segunda a sexta (nunca aos finais de semana)</li>
+        <li><strong>Nome do remetente:</strong> IV Simp&oacute;sio de Solos Arenosos</li>
+        <li><strong>Rodap&eacute; obrigat&oacute;rio:</strong> link de descadastramento (o Brevo adiciona automaticamente)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- AQUECIMENTO -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-tag">Aquecimento</div>
+    <div class="section-title">Aquecimento de <em>dom&iacute;nio</em></div>
+
+    <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:20px;">
+      Se este &eacute; o primeiro envio pelo dom&iacute;nio, os 2 primeiros dias da Campanha 1 servem para aquecer a reputa&ccedil;&atilde;o e evitar que os e-mails caiam em spam. A partir do 3&ordm; dia, o envio opera na capacidade total (300/dia).
+    </p>
+
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Data</th>
+          <th>Volume</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Dia 0</td><td>Seg 20/jul</td><td>&mdash;</td><td class="warm">Configura&ccedil;&atilde;o Brevo</td></tr>
+        <tr><td>Dia 1</td><td>Ter 21/jul</td><td>100 e-mails</td><td class="warm">Aquecimento</td></tr>
+        <tr><td>Dia 2</td><td>Qua 22/jul</td><td>200 e-mails</td><td class="warm">Aquecimento</td></tr>
+        <tr><td>Dia 3</td><td>Qui 23/jul</td><td>300 e-mails</td><td class="active">Capacidade total</td></tr>
+        <tr><td>Dia 4+</td><td>Sex 24/jul em diante</td><td>300 e-mails</td><td class="active">Capacidade total</td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-green">
+      <strong>Ap&oacute;s o aquecimento:</strong> a partir da Campanha 2 em diante, todos os envios s&atilde;o feitos na capacidade total (300/dia) desde o primeiro dia. O aquecimento s&oacute; &eacute; necess&aacute;rio na Campanha 1.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- EXCLUSÕES -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-tag">Segmenta&ccedil;&atilde;o</div>
+    <div class="section-title">Compradores <em>exclu&iacute;dos</em></div>
+
+    <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:20px;">
+      Os 9 e-mails abaixo pertencem a pessoas que j&aacute; compraram ingresso. Foram removidos da base ativa para evitar envio de comunica&ccedil;&atilde;o de venda a quem j&aacute; &eacute; inscrito.
+    </p>
+
+    <div class="exclusion-list">
+      <h4>9 compradores removidos da base</h4>
+      <ul>
+        <li>eduardaaraujoferreira61@gmail.com</li>
+        <li>elisah.uemura@gmail.com</li>
+        <li>emanuel.trabalho2023@gmail.com</li>
+        <li>ianna-@outlook.com</li>
+        <li>jailtonlima2050@gmail.com</li>
+        <li>joao.akiray@gmail.com</li>
+        <li>leandro998698855@gmail.com</li>
+        <li>lukaseduardo217@gmail.com</li>
+        <li>mvbarbosa10@gmail.com</li>
+      </ul>
+    </div>
+
+    <div class="alert alert-orange">
+      <strong>Atualiza&ccedil;&atilde;o futura:</strong> quando a lista atualizada de compradores for enviada, remover do Brevo os novos compradores que j&aacute; estiverem na base ativa. Isso evita enviar e-mails de venda para quem j&aacute; comprou.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- CALENDÁRIO GERAL -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-tag">Cad&ecirc;ncia</div>
+    <div class="section-title">Calend&aacute;rio de <em>envios</em></div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,203,5,0.5)"></div> Setup</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(232,119,34,0.5)"></div> Camp. 1</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(59,139,255,0.5)"></div> Camp. 2</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(34,197,94,0.5)"></div> Camp. 3</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(168,85,247,0.5)"></div> Camp. 4</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(236,72,153,0.5)"></div> Camp. 5</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(239,68,68,0.5)"></div> Camp. 6</div>
+    </div>
+
+    <!-- JULHO -->
+    <h4 style="font-size:0.82rem; font-weight:600; color:var(--cinza-claro); margin: 20px 0 10px; letter-spacing:0.1em; text-transform:uppercase;">Julho 2026</h4>
+    <div class="calendar">
+      <div class="cal-header">Seg</div>
+      <div class="cal-header">Ter</div>
+      <div class="cal-header">Qua</div>
+      <div class="cal-header">Qui</div>
+      <div class="cal-header">Sex</div>
+      <div class="cal-header">S&aacute;b</div>
+      <div class="cal-header">Dom</div>
+      <!-- Semana 20-26 jul -->
+      <div class="cal-day setup"><span class="num">20</span><span class="label">SETUP</span></div>
+      <div class="cal-day c1"><span class="num">21</span><span class="label">C1 &middot; 100</span></div>
+      <div class="cal-day c1"><span class="num">22</span><span class="label">C1 &middot; 200</span></div>
+      <div class="cal-day c1"><span class="num">23</span><span class="label">C1 &middot; 300</span></div>
+      <div class="cal-day c1"><span class="num">24</span><span class="label">C1 &middot; 300</span></div>
+      <div class="cal-day weekend"><span class="num">25</span></div>
+      <div class="cal-day weekend"><span class="num">26</span></div>
+      <!-- Semana 27 jul - 2 ago -->
+      <div class="cal-day c1"><span class="num">27</span><span class="label">C1 &middot; 300</span></div>
+      <div class="cal-day c1"><span class="num">28</span><span class="label">C1 &middot; 240</span></div>
+      <div class="cal-day c2"><span class="num">29</span><span class="label">C2 &middot; 300</span></div>
+      <div class="cal-day c2"><span class="num">30</span><span class="label">C2 &middot; 300</span></div>
+      <div class="cal-day c2"><span class="num">31</span><span class="label">C2 &middot; 300</span></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+    </div>
+
+    <!-- AGOSTO -->
+    <h4 style="font-size:0.82rem; font-weight:600; color:var(--cinza-claro); margin: 20px 0 10px; letter-spacing:0.1em; text-transform:uppercase;">Agosto 2026</h4>
+    <div class="calendar">
+      <div class="cal-header">Seg</div>
+      <div class="cal-header">Ter</div>
+      <div class="cal-header">Qua</div>
+      <div class="cal-header">Qui</div>
+      <div class="cal-header">Sex</div>
+      <div class="cal-header">S&aacute;b</div>
+      <div class="cal-header">Dom</div>
+      <!-- Semana 1 ago -->
+      <div class="cal-day c2"><span class="num">3</span><span class="label">C2 &middot; 300</span></div>
+      <div class="cal-day c2"><span class="num">4</span><span class="label">C2 &middot; 240</span></div>
+      <div class="cal-day c3"><span class="num">5</span><span class="label">C3 &middot; 300</span></div>
+      <div class="cal-day c3"><span class="num">6</span><span class="label">C3 &middot; 300</span></div>
+      <div class="cal-day c3"><span class="num">7</span><span class="label">C3 &middot; 300</span></div>
+      <div class="cal-day weekend"><span class="num">8</span></div>
+      <div class="cal-day weekend"><span class="num">9</span></div>
+      <!-- Semana 10 ago -->
+      <div class="cal-day c3"><span class="num">10</span><span class="label">C3 &middot; 300</span></div>
+      <div class="cal-day c3"><span class="num">11</span><span class="label">C3 &middot; 240</span></div>
+      <div class="cal-day c4"><span class="num">12</span><span class="label">C4 &middot; 300</span></div>
+      <div class="cal-day c4"><span class="num">13</span><span class="label">C4 &middot; 300</span></div>
+      <div class="cal-day c4"><span class="num">14</span><span class="label">C4 &middot; 300</span></div>
+      <div class="cal-day weekend"><span class="num">15</span></div>
+      <div class="cal-day weekend"><span class="num">16</span></div>
+      <!-- Semana 17 ago -->
+      <div class="cal-day c4"><span class="num">17</span><span class="label">C4 &middot; 300</span></div>
+      <div class="cal-day c4"><span class="num">18</span><span class="label">C4 &middot; 240</span></div>
+      <div class="cal-day c5"><span class="num">19</span><span class="label">C5 &middot; 300</span></div>
+      <div class="cal-day c5"><span class="num">20</span><span class="label">C5 &middot; 300</span></div>
+      <div class="cal-day c5"><span class="num">21</span><span class="label">C5 &middot; 300</span></div>
+      <div class="cal-day weekend"><span class="num">22</span></div>
+      <div class="cal-day weekend"><span class="num">23</span></div>
+      <!-- Semana 24 ago -->
+      <div class="cal-day c5"><span class="num">24</span><span class="label">C5 &middot; 300</span></div>
+      <div class="cal-day c5"><span class="num">25</span><span class="label">C5 &middot; 240</span></div>
+      <div class="cal-day c6"><span class="num">26</span><span class="label">C6 &middot; 300</span></div>
+      <div class="cal-day c6"><span class="num">27</span><span class="label">C6 &middot; 300</span></div>
+      <div class="cal-day c6"><span class="num">28</span><span class="label">C6 &middot; 300</span></div>
+      <div class="cal-day weekend"><span class="num">29</span></div>
+      <div class="cal-day weekend"><span class="num">30</span></div>
+      <!-- Semana 31 ago -->
+      <div class="cal-day c6"><span class="num">31</span><span class="label">C6 &middot; 300</span></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+    </div>
+
+    <!-- SETEMBRO -->
+    <h4 style="font-size:0.82rem; font-weight:600; color:var(--cinza-claro); margin: 20px 0 10px; letter-spacing:0.1em; text-transform:uppercase;">Setembro 2026</h4>
+    <div class="calendar">
+      <div class="cal-header">Seg</div>
+      <div class="cal-header">Ter</div>
+      <div class="cal-header">Qua</div>
+      <div class="cal-header">Qui</div>
+      <div class="cal-header">Sex</div>
+      <div class="cal-header">S&aacute;b</div>
+      <div class="cal-header">Dom</div>
+      <div class="cal-day c6"><span class="num">1</span><span class="label">C6 &middot; 240</span></div>
+      <div class="cal-day evento"><span class="num">1</span><span class="label">EVENTO</span></div>
+      <div class="cal-day evento"><span class="num">2</span><span class="label">EVENTO</span></div>
+      <div class="cal-day evento"><span class="num">3</span><span class="label">EVENTO</span></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+    </div>
+
+    <div class="alert alert-orange">
+      <strong>Campanha 6, Lote 5:</strong> cai no dia 1&ordm; de setembro (primeiro dia do evento). O operador pode optar por enviar na sexta 28/ago junto com o Lote 3 (totalizando 540 e-mails, acima do limite di&aacute;rio) ou simplesmente pular o Lote 5, atingindo 1.200 dos 1.440 contatos nesta &uacute;ltima campanha.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- CAMPANHAS -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-tag">Campanhas</div>
+    <div class="section-title">Copies dos <em>e-mails</em></div>
+
+    <!-- ==================== CAMPANHA 1 ==================== -->
+    <div class="campaign" id="c1">
+      <div class="campaign-header">
+        <div class="campaign-badge">Campanha 1</div>
+        <div class="campaign-title">Convite <em>Oficial</em></div>
+        <div class="campaign-subtitle">Apresenta&ccedil;&atilde;o do evento, datas, local e primeiros detalhes &mdash; 21 a 28/jul (6 dias &uacute;teis, com aquecimento)</div>
+      </div>
+      <div class="campaign-body">
+        <div class="email-field">
+          <div class="email-label">Assunto do e-mail</div>
+          <div class="email-value">Voc&ecirc; est&aacute; convidado &mdash; IV Simp&oacute;sio Brasileiro de Solos Arenosos</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Texto de pr&eacute;-visualiza&ccedil;&atilde;o</div>
+          <div class="email-value" style="font-size:0.82rem; color:var(--cinza-claro);">1 a 3 de setembro, em Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA. Inscri&ccedil;&otilde;es abertas.</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Corpo do e-mail</div>
+          <div class="email-body">
+            <p>Prezado(a),</p>
+            <p>O <strong>IV Simp&oacute;sio Brasileiro de Solos Arenosos</strong> acontece de <strong>1 a 3 de setembro de 2026</strong>, em Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA.</p>
+            <p>O evento re&uacute;ne os maiores especialistas do pa&iacute;s para discutir manejo sustent&aacute;vel, fertilidade, irriga&ccedil;&atilde;o e as pr&aacute;ticas mais avan&ccedil;adas para solos arenosos no Cerrado e MATOPIBA.</p>
+            <p>S&atilde;o 3 dias de palestras t&eacute;cnicas, pain&eacute;is com pesquisadores, visitas de campo e networking com profissionais de todo o Brasil.</p>
+            <p><strong>Inscri&ccedil;&otilde;es abertas &mdash; 2&ordm; Lote: R$ 180</strong></p>
+            <p><span class="cta-btn">GARANTA SUA VAGA</span></p>
+            <div class="email-footer-text">
+              <p><strong>IV Simp&oacute;sio Brasileiro de Solos Arenosos</strong><br>
+              1 a 3 de setembro de 2026<br>
+              Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA<br>
+              Inscri&ccedil;&atilde;o: R$ 180 (2&ordm; Lote)</p>
+            </div>
+          </div>
+        </div>
+
+        <table class="schedule-table">
+          <thead><tr><th>Dia</th><th>Data</th><th>Volume</th><th>Lote</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Ter 21/jul</td><td class="warm">100</td><td>Sublote Aquecimento A</td></tr>
+            <tr><td>2</td><td>Qua 22/jul</td><td class="warm">200</td><td>Sublote Aquecimento B</td></tr>
+            <tr><td>3</td><td>Qui 23/jul</td><td class="active">300</td><td>Lote 2</td></tr>
+            <tr><td>4</td><td>Sex 24/jul</td><td class="active">300</td><td>Lote 3</td></tr>
+            <tr><td>5</td><td>Seg 27/jul</td><td class="active">300</td><td>Lote 4</td></tr>
+            <tr><td>6</td><td>Ter 28/jul</td><td class="active">240</td><td>Lote 5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== CAMPANHA 2 ==================== -->
+    <div class="campaign" id="c2">
+      <div class="campaign-header">
+        <div class="campaign-badge">Campanha 2</div>
+        <div class="campaign-title">Programa&ccedil;&atilde;o e <em>Palestrantes</em></div>
+        <div class="campaign-subtitle">Destaques da programa&ccedil;&atilde;o, temas confirmados e nomes de refer&ecirc;ncia &mdash; 29/jul a 04/ago (5 dias &uacute;teis)</div>
+      </div>
+      <div class="campaign-body">
+        <div class="email-field">
+          <div class="email-label">Assunto do e-mail</div>
+          <div class="email-value">Programa&ccedil;&atilde;o confirmada &mdash; IV Simp&oacute;sio Brasileiro de Solos Arenosos</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Texto de pr&eacute;-visualiza&ccedil;&atilde;o</div>
+          <div class="email-value" style="font-size:0.82rem; color:var(--cinza-claro);">Conhe&ccedil;a os palestrantes e temas que estar&atilde;o no IV SBSA, de 1 a 3 de setembro em LEM.</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Corpo do e-mail</div>
+          <div class="email-body">
+            <p>Prezado(a),</p>
+            <p>A programa&ccedil;&atilde;o do <strong>IV Simp&oacute;sio Brasileiro de Solos Arenosos</strong> est&aacute; confirmada &mdash; e re&uacute;ne nomes de refer&ecirc;ncia no manejo de solos, fertilidade e pesquisa agron&ocirc;mica no Brasil.</p>
+            <p><strong>Entre os temas confirmados:</strong></p>
+            <ul>
+              <li>Manejo de solos arenosos no Cerrado e MATOPIBA</li>
+              <li>Fertilidade e nutri&ccedil;&atilde;o de plantas em texturas leves</li>
+              <li>Irriga&ccedil;&atilde;o e uso eficiente da &aacute;gua</li>
+              <li>Tecnologias de monitoramento e agricultura de precis&atilde;o</li>
+              <li>Pr&aacute;ticas conservacionistas e sustentabilidade</li>
+            </ul>
+            <p>S&atilde;o palestras t&eacute;cnicas, pain&eacute;is de discuss&atilde;o e visitas de campo &mdash; tudo reunido em 3 dias de programa&ccedil;&atilde;o intensiva.</p>
+            <p><strong>1 a 3 de setembro de 2026</strong><br>Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA<br>Inscri&ccedil;&atilde;o: R$ 180 (2&ordm; Lote)</p>
+            <p><span class="cta-btn">VER PROGRAMA&Ccedil;&Atilde;O COMPLETA</span></p>
+            <div class="email-footer-text">
+              <p>IV Simp&oacute;sio Brasileiro de Solos Arenosos<br>
+              Realiza&ccedil;&atilde;o: Embrapa &middot; Funda&ccedil;&atilde;o Bahia</p>
+            </div>
+          </div>
+        </div>
+
+        <table class="schedule-table">
+          <thead><tr><th>Dia</th><th>Data</th><th>Volume</th><th>Lote</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Qua 29/jul</td><td class="active">300</td><td>Lote 1</td></tr>
+            <tr><td>2</td><td>Qui 30/jul</td><td class="active">300</td><td>Lote 2</td></tr>
+            <tr><td>3</td><td>Sex 31/jul</td><td class="active">300</td><td>Lote 3</td></tr>
+            <tr><td>4</td><td>Seg 03/ago</td><td class="active">300</td><td>Lote 4</td></tr>
+            <tr><td>5</td><td>Ter 04/ago</td><td class="active">240</td><td>Lote 5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== CAMPANHA 3 ==================== -->
+    <div class="campaign" id="c3">
+      <div class="campaign-header">
+        <div class="campaign-badge">Campanha 3</div>
+        <div class="campaign-title">5 motivos para <em>participar</em></div>
+        <div class="campaign-subtitle">Benef&iacute;cios, networking, conhecimento t&eacute;cnico e valor do investimento &mdash; 05 a 11/ago (5 dias &uacute;teis)</div>
+      </div>
+      <div class="campaign-body">
+        <div class="email-field">
+          <div class="email-label">Assunto do e-mail</div>
+          <div class="email-value">5 raz&otilde;es para estar no IV Simp&oacute;sio de Solos Arenosos</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Texto de pr&eacute;-visualiza&ccedil;&atilde;o</div>
+          <div class="email-value" style="font-size:0.82rem; color:var(--cinza-claro);">Networking, conte&uacute;do t&eacute;cnico, visitas de campo e mais. Veja por que voc&ecirc; precisa estar l&aacute;.</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Corpo do e-mail</div>
+          <div class="email-body">
+            <p>Prezado(a),</p>
+            <p>Ainda est&aacute; decidindo se vai participar do <strong>IV Simp&oacute;sio Brasileiro de Solos Arenosos</strong>? Aqui v&atilde;o 5 raz&otilde;es:</p>
+            <p><strong>1. Conte&uacute;do t&eacute;cnico de alto n&iacute;vel</strong><br>Palestrantes com d&eacute;cadas de pesquisa em solos arenosos, trazendo dados e pr&aacute;ticas que funcionam na regi&atilde;o.</p>
+            <p><strong>2. Networking qualificado</strong><br>Produtores, pesquisadores, consultores e empresas do agro reunidos em um s&oacute; lugar.</p>
+            <p><strong>3. Visitas de campo</strong><br>Contato direto com &aacute;reas experimentais e pr&aacute;ticas aplicadas na regi&atilde;o de LEM e MATOPIBA.</p>
+            <p><strong>4. Regi&atilde;o estrat&eacute;gica</strong><br>Lu&iacute;s Eduardo Magalh&atilde;es est&aacute; no cora&ccedil;&atilde;o do MATOPIBA, onde o manejo de solos arenosos &eacute; decisivo para a produtividade.</p>
+            <p><strong>5. Investimento acess&iacute;vel</strong><br>R$ 180 (2&ordm; Lote) por 3 dias de evento com acesso completo a palestras, pain&eacute;is e visitas.</p>
+            <p><span class="cta-btn">INSCREVA-SE AGORA</span></p>
+            <div class="email-footer-text">
+              <p>1 a 3 de setembro de 2026 &middot; Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA<br>
+              IV Simp&oacute;sio Brasileiro de Solos Arenosos</p>
+            </div>
+          </div>
+        </div>
+
+        <table class="schedule-table">
+          <thead><tr><th>Dia</th><th>Data</th><th>Volume</th><th>Lote</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Qua 05/ago</td><td class="active">300</td><td>Lote 1</td></tr>
+            <tr><td>2</td><td>Qui 06/ago</td><td class="active">300</td><td>Lote 2</td></tr>
+            <tr><td>3</td><td>Sex 07/ago</td><td class="active">300</td><td>Lote 3</td></tr>
+            <tr><td>4</td><td>Seg 10/ago</td><td class="active">300</td><td>Lote 4</td></tr>
+            <tr><td>5</td><td>Ter 11/ago</td><td class="active">240</td><td>Lote 5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== CAMPANHA 4 ==================== -->
+    <div class="campaign" id="c4">
+      <div class="campaign-header">
+        <div class="campaign-badge">Campanha 4</div>
+        <div class="campaign-title">Garanta sua <em>vaga</em></div>
+        <div class="campaign-subtitle">Urg&ecirc;ncia, vagas limitadas, CTA direto de compra &mdash; 12 a 18/ago (5 dias &uacute;teis)</div>
+      </div>
+      <div class="campaign-body">
+        <div class="email-field">
+          <div class="email-label">Assunto do e-mail</div>
+          <div class="email-value">Garanta sua vaga no IV Simp&oacute;sio Brasileiro de Solos Arenosos &mdash; R$ 180</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Texto de pr&eacute;-visualiza&ccedil;&atilde;o</div>
+          <div class="email-value" style="font-size:0.82rem; color:var(--cinza-claro);">Vagas limitadas. Faltam menos de 3 semanas para o evento. Inscreva-se agora.</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Corpo do e-mail</div>
+          <div class="email-body">
+            <p>Prezado(a),</p>
+            <p>Faltam menos de <strong>3 semanas</strong> para o <strong>IV Simp&oacute;sio Brasileiro de Solos Arenosos</strong> e as vagas est&atilde;o se esgotando.</p>
+            <p>O evento acontece de <strong>1 a 3 de setembro</strong> em Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA, com programa&ccedil;&atilde;o completa de palestras t&eacute;cnicas, pain&eacute;is com pesquisadores e visitas de campo.</p>
+            <p>Se voc&ecirc; atua com solos arenosos, produ&ccedil;&atilde;o no Cerrado ou pesquisa agron&ocirc;mica, este &eacute; o evento mais importante do ano para a sua &aacute;rea.</p>
+            <p><strong>Inscri&ccedil;&atilde;o: R$ 180 (2&ordm; Lote)</strong> &mdash; sujeito a encerramento sem aviso pr&eacute;vio.</p>
+            <p><span class="cta-btn">GARANTIR MINHA VAGA</span></p>
+            <p style="font-size:0.82rem; color:var(--cinza-claro); margin-top:12px;">Nos vemos em LEM.</p>
+            <div class="email-footer-text">
+              <p>IV Simp&oacute;sio Brasileiro de Solos Arenosos<br>
+              1 a 3 de setembro de 2026 &middot; Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA</p>
+            </div>
+          </div>
+        </div>
+
+        <table class="schedule-table">
+          <thead><tr><th>Dia</th><th>Data</th><th>Volume</th><th>Lote</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Qua 12/ago</td><td class="active">300</td><td>Lote 1</td></tr>
+            <tr><td>2</td><td>Qui 13/ago</td><td class="active">300</td><td>Lote 2</td></tr>
+            <tr><td>3</td><td>Sex 14/ago</td><td class="active">300</td><td>Lote 3</td></tr>
+            <tr><td>4</td><td>Seg 17/ago</td><td class="active">300</td><td>Lote 4</td></tr>
+            <tr><td>5</td><td>Ter 18/ago</td><td class="active">240</td><td>Lote 5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== CAMPANHA 5 ==================== -->
+    <div class="campaign" id="c5">
+      <div class="campaign-header">
+        <div class="campaign-badge">Campanha 5</div>
+        <div class="campaign-title">Contagem <em>regressiva</em></div>
+        <div class="campaign-subtitle">Faltam poucos dias, urg&ecirc;ncia final, p&uacute;blico-alvo do evento &mdash; 19 a 25/ago (5 dias &uacute;teis)</div>
+      </div>
+      <div class="campaign-body">
+        <div class="email-field">
+          <div class="email-label">Assunto do e-mail</div>
+          <div class="email-value">Faltam 12 dias &mdash; IV Simp&oacute;sio Brasileiro de Solos Arenosos</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Texto de pr&eacute;-visualiza&ccedil;&atilde;o</div>
+          <div class="email-value" style="font-size:0.82rem; color:var(--cinza-claro);">A contagem regressiva come&ccedil;ou. Voc&ecirc; j&aacute; garantiu sua vaga?</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Corpo do e-mail</div>
+          <div class="email-body">
+            <p>Prezado(a),</p>
+            <p>A contagem regressiva come&ccedil;ou: faltam <strong>12 dias</strong> para o <strong>IV Simp&oacute;sio Brasileiro de Solos Arenosos</strong>.</p>
+            <p>De 1 a 3 de setembro, Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA recebe os principais nomes da pesquisa e do manejo de solos arenosos no Brasil.</p>
+            <p>Se voc&ecirc; ainda n&atilde;o se inscreveu, este &eacute; o momento. As vagas s&atilde;o limitadas e o 2&ordm; Lote (R$ 180) est&aacute; nos &uacute;ltimos dias.</p>
+            <p><strong>Quem participa:</strong></p>
+            <ul>
+              <li>Pesquisadores da Embrapa e universidades</li>
+              <li>Produtores rurais do Cerrado e MATOPIBA</li>
+              <li>Consultores agron&ocirc;micos e t&eacute;cnicos de campo</li>
+              <li>Empresas de insumos e tecnologia agr&iacute;cola</li>
+            </ul>
+            <p><span class="cta-btn">INSCREVER-SE &mdash; R$ 180</span></p>
+            <div class="email-footer-text">
+              <p>IV Simp&oacute;sio Brasileiro de Solos Arenosos<br>
+              1 a 3 de setembro de 2026 &middot; Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA</p>
+            </div>
+          </div>
+        </div>
+
+        <table class="schedule-table">
+          <thead><tr><th>Dia</th><th>Data</th><th>Volume</th><th>Lote</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Qua 19/ago</td><td class="active">300</td><td>Lote 1</td></tr>
+            <tr><td>2</td><td>Qui 20/ago</td><td class="active">300</td><td>Lote 2</td></tr>
+            <tr><td>3</td><td>Sex 21/ago</td><td class="active">300</td><td>Lote 3</td></tr>
+            <tr><td>4</td><td>Seg 24/ago</td><td class="active">300</td><td>Lote 4</td></tr>
+            <tr><td>5</td><td>Ter 25/ago</td><td class="active">240</td><td>Lote 5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== CAMPANHA 6 ==================== -->
+    <div class="campaign" id="c6">
+      <div class="campaign-header">
+        <div class="campaign-badge">Campanha 6</div>
+        <div class="campaign-title">&Uacute;ltima <em>chance</em></div>
+        <div class="campaign-subtitle">Encerramento de inscri&ccedil;&otilde;es, &uacute;ltima semana antes do evento &mdash; 26 a 31/ago (4-5 dias &uacute;teis)</div>
+      </div>
+      <div class="campaign-body">
+        <div class="email-field">
+          <div class="email-label">Assunto do e-mail</div>
+          <div class="email-value">&Uacute;ltima semana &mdash; inscri&ccedil;&otilde;es encerram para o IV Simp&oacute;sio de Solos Arenosos</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Texto de pr&eacute;-visualiza&ccedil;&atilde;o</div>
+          <div class="email-value" style="font-size:0.82rem; color:var(--cinza-claro);">O evento come&ccedil;a na pr&oacute;xima segunda. Esta &eacute; a &uacute;ltima chance de garantir sua vaga.</div>
+        </div>
+        <div class="email-field">
+          <div class="email-label">Corpo do e-mail</div>
+          <div class="email-body">
+            <p>Prezado(a),</p>
+            <p>Esta &eacute; a <strong>&uacute;ltima semana</strong> para garantir sua vaga no <strong>IV Simp&oacute;sio Brasileiro de Solos Arenosos</strong>.</p>
+            <p>O evento come&ccedil;a na pr&oacute;xima segunda-feira (<strong>1&ordm; de setembro</strong>) em Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA, e as inscri&ccedil;&otilde;es encerram esta semana.</p>
+            <p>3 dias de palestras, pain&eacute;is e visitas de campo com os maiores especialistas em solos arenosos do Brasil.</p>
+            <p><strong>Inscri&ccedil;&atilde;o: R$ 180</strong></p>
+            <p><span class="cta-btn">INSCREVER-SE AGORA</span></p>
+            <p style="font-size:0.82rem; color:var(--cinza-claro); margin-top:12px;">Se j&aacute; se inscreveu, nos vemos em LEM.</p>
+            <div class="email-footer-text">
+              <p>IV Simp&oacute;sio Brasileiro de Solos Arenosos<br>
+              1 a 3 de setembro de 2026 &middot; Lu&iacute;s Eduardo Magalh&atilde;es &mdash; BA</p>
+            </div>
+          </div>
+        </div>
+
+        <table class="schedule-table">
+          <thead><tr><th>Dia</th><th>Data</th><th>Volume</th><th>Lote</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Qua 26/ago</td><td class="active">300</td><td>Lote 1</td></tr>
+            <tr><td>2</td><td>Qui 27/ago</td><td class="active">300</td><td>Lote 2</td></tr>
+            <tr><td>3</td><td>Sex 28/ago</td><td class="active">300</td><td>Lote 3</td></tr>
+            <tr><td>4</td><td>Seg 31/ago</td><td class="active">300</td><td>Lote 4</td></tr>
+            <tr><td>5</td><td>Seg 01/set</td><td class="event-day">240</td><td>Lote 5 (dia do evento)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-orange">
+          <strong>Aten&ccedil;&atilde;o:</strong> o Lote 5 desta campanha cai no dia do evento (01/set). Se poss&iacute;vel, antecipe este lote para sexta 28/ago (enviando 540 no dia, se o plano permitir) ou aceite que 240 contatos n&atilde;o receber&atilde;o esta campanha.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- LOTES DE ENVIO -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-tag">Lotes de Envio</div>
+    <div class="section-title">E-mails para <em>copiar e colar</em></div>
+
+    <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:8px;">
+      Cada lote cont&eacute;m os endere&ccedil;os separados por v&iacute;rgula, prontos para colar no campo &ldquo;destinat&aacute;rios&rdquo; do Brevo. Os <strong>Sublotes de Aquecimento</strong> s&atilde;o usados apenas na Campanha 1 (dias 1 e 2). A partir da Campanha 2, use os <strong>Lotes 1 a 5</strong> na ordem.
+    </p>
+
+    <div class="alert alert-blue" style="margin-bottom:24px;">
+      <strong>Como usar:</strong> clique em &ldquo;Copiar e-mails&rdquo;, abra o Brevo, crie uma nova campanha, cole no campo de destinat&aacute;rios (ou importe como lista). Repita para cada dia conforme o calend&aacute;rio acima.
+    </div>
+
+    <!-- SUBLOTE AQUECIMENTO A -->
+    <div class="lote-section">
+      <details class="lote-toggle" id="sublote-a">
+        <summary>
+          <span>Sublote Aquecimento A &mdash; Campanha 1, Dia 1</span>
+          <span class="lote-count">100 e-mails</span>
+        </summary>
+        <div class="lote-content">
+          <textarea class="email-textarea" id="ta-aquec-a" readonly>077999694075d@gmail.com, 77999407521a@gmail.com, a16191742@gmail.com, abapa@abapa.com.br, abattianaflavia@gmail.com, abraao@schifino.com.br, abrendha78@gmail.com, acarlacomunica@gmail.com, acfoliveira@gdmseeds.com, aclecia.tecseg@live.com, adailton.alkmim@origeo.com, adailtonalkmin@hotmail.com, ader.arpini@timacagro.com.br, adersoncaneto@gmail.com, adheiltin@hotmail.com, adheilton@hotmail.com, adilia.amarante@simbiose-agro.com.br, adiliobonfim3@gmail.com, adilson.santos@origeo.com, adjalbasmacedo@gmail.com, adm.fernandasantana@icloud.com, adm@aprosem.com, adm@irrigacerrado.com.br, administrativo@fundacaoba.com.br, adv.laylacamara@gmail.com, advsodre@gmail.com, aelsonjuniorff@gmail.com, aghattagabrielimaier@gmail.com, agitae.net@gmail.com, agro.lucasfarias@gmail.com, agro.natale@gmail.comastro, agrocampo1@outlook.com, agroerlanac@gmail.com, agrokarine@gmail.com, agrolimalem@gmail.com, agromaiara.cardoso@gmail.com, agropilar.representacoes@gamil.com, ak_consultoriaegeo@yahoo.com, alanasantana70350@gmail.com, albuquerquedelgado2905@gmail.com, aldemirdacunharegino@gmail.com, alef.breno@apipa.com.br, alencarsophia885@gmail.com, alessia.oliveira@aiba.org.br, alexandraamartini@gmail.com, alexandre.pereira@ifgoiano.edu.br, alexandre2297@gmail.com, alexandre@nicolettiadv.com.br, alexandredemeloagro@gmail.com, alexemanoelsantosdaschagas128@gmail.com, alexgravestop@gmail.com, alexsandrotetzlaff@gmail.com, alexschagas256@gmail.com, alicemaaia.11@gmail.com, alicenunesbrito33@gmail.com, alifcunegundes8@gmail.com, aline_amaral27@hotmail.com, alisson.ev10@gmail.com, alissonearthur14@gmail.com, allanachristinapsantos@gmail.com, allifvieira993@gmail.com, allisonmoraes230620@gmail.com, aloisio.junior@aiba.org.br, alpebrumado@gmail.com, altieres.dias@arggusagro.com, alucxs2007@gmail.com, alvaro.costa@mosaicco.com, alves.daiana@outlook.com.br, alves.dallas67@gmail.com, alveshigo303@gmail.com, alvessophia3006@gmail.com, alvinomarcelooliveira@gmail.com, alyssonalysson83@gmail.com, alyssonkyu@gmail.com, ama_billi@hotmail.com, amanda.nunes@grupobritacal.com.br, amandachavesdourado70@gmail.com, amandadieringsandreola@gmail.com, amandalima.esa@gmail.com, amarante.adilia@hotmail.com, amarildo.souza5@hotmail.com, amarofazendapalmeira@gmail.com, amorelifilho@gmail.com, ana.correa@yara.com, ana.flavia@xfarm.ag, anaakira78@gmail.com, anabeatriztrindadedejesus0@gmail.com, anabetrizdantaslopes@gmail.com, anacarolinasulzbachtoniazzo@gmail.com, anaclaradasilvagama08@gmail.com, anaclaramariadelimalima@gmail.com, analice.dias@nkseeds.com, analuisapereira2021@gmail.com, anamoraski8@gmail.com, anaolivi44@gmail.com, anaptiggemann@gmail.com, anaritchelydesouzaaninha@gmail.com, anathan.martins@ccab-agro.com.br, anavitoriamonzine@gmail.com, andersonfialho15@hotmail.com</textarea>
+          <button class="copy-btn" onclick="copyEmails('ta-aquec-a', this)">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copiar e-mails
+          </button>
+        </div>
+      </details>
+    </div>
+
+    <!-- SUBLOTE AQUECIMENTO B -->
+    <div class="lote-section">
+      <details class="lote-toggle" id="sublote-b">
+        <summary>
+          <span>Sublote Aquecimento B &mdash; Campanha 1, Dia 2</span>
+          <span class="lote-count">200 e-mails</span>
+        </summary>
+        <div class="lote-content">
+          <textarea class="email-textarea" id="ta-aquec-b" readonly>andersonhguimaraes@gmail.com, andraade2006@gmail.com, andre.honaiser@timacagro.com.br, andre.o.alves@outlook.com, andrebarreira77@gmail.com, andregomes@inquima.com.br, andreiadias552@gmail.com, andreiu.fanzlau@icloud.com, andreluis.vb13@gmail.com, andreluizcordeiro27@gmail.com, andressakeld01@gmail.com, andressaserpa001@gmail.com, andrey@drakkar.com.br, angelamarcinajurkfitz@gmail.com, anna.brinquedo@gmail.com, annabxavier.007@gmail.com, annacarollina118@gmail.com, antoniogrespan@uol.com.br, antoniohilario.agro@hotmail.com, antoniooliveirauft@gmail.com, antonioserafim@grupocastro.agr.br, apalsikowski23@gmail.com, apoloteodoro10@gmail.com, aprosem.secretaria@gmail.com, aprosojaba@aprosojaba.com.br, araujoantoniogabriel22@gmail.com, araujokelinede@gmail.com, aregisjust@gmail.com, arianelaiola@hotmail.com, arielylnd@gmail.com, ariennesouzass98@gmail.com, arivaldo.souza@enova.educacao.ba.gov.br, arlindo@irrigacerrado.com.br, aron.robles@sumitomochemical.com, arsilva@gdmseeds.com, arthurmlmelo@gmail.com, arthurprosel@gmail.com, arthursantanasjab@hotmail.com, arthurvinicyo2@gmail.com, artur.flores@origeo.com, ascom@sprb.org.br, asdourado@galvani.ind.br, assessoria@abapa.com.br, assueliobarretoaraujo@gmail.com, assuncao@jh.com.br, atendimentojusti@justinet.com.br, augusto.sanches@nitro.com.br, aurio.honaiser@timacagro.com.br, awtlisboa@hotmail.com, aylasamyllejesusdosanjos@gmail.com, ayrasouza60@hotmail.com, bahiaagricola@gmail.com, barbaraleandra2410@gmail.com, barbaraleandra479@gmail.com, barbararodrigues071@gmail.com, barrosbrenda419@gmail.com, batistabarbosarodrigo@gmail.com, beatrizdasilvabrito18@gmail.com, betelnutricaoanimal@hotmail.com, bgamamoura@gmail.com, bi.gaede07@gmail.com, bianca.radin@alzgraos.com.br, biancaaparecidagomes67@gmail.com, biankac400@gmail.com, biasouzarodrigues1925@gmail.com, binasilva992@gmail.com, bispoclara0207@gmail.com, bluiza.almeida@icloud.com, bna.porto@gmail.com, boaventuralvesribeiro@gmail.com, bocolimarimk@gmail.com, bogianorafael@gmail.com, borgesoseane@gmail.com, bremuranda234@gmail.com, brenda.lobo@hotmail.com, breno10snienke@gmail.com, brenoantonio54@gmail.com, brenogorgen@hotmail.com, britocamila858@gmail.com, bruna.esteves@bayer.com, brunacarlacoimbra2019@gmail.com, brunnabisello@hotmail.com, bruno.79oliver@gmail.com, bruno.amorim@unicampo.coop.br, bruno.bastossr@gmail.com, bruno.dezopa@jh.com.br, bruno.luz.oficial.2024@gmail.com, bruno.oficial.2024@gmail.com, bruno_leite@sicredi.com.br, brunobarcelos430@gmail.com, brunolucasengprod@gmail.com, brunooliveirahso@gmail.com, brunopereiramarques09@gmail.com, brunorangel.contato@gmail.com, buritis.gerencia@setepovos.com.br, cadurb15@gmail.com, caikemendes@hotmail.com, caiqueagro26@gmail.com, cajuarana@hotmail.com, caldeira.agro@gmail.com, calsoliver1@gmail.com, camila.miranda@schmidtagricola.com.br, camilaoliveira0195@gmail.com, camilaos086@gmail.com, camillabrito.g@gmail.com, canandamts.engagro@gmail.com, caputoandre@gmail.com, caril.silva@hotmail.com, carina.vendadireta@gmail.com, carina@nemafito.com, carlagabriellealencar@gmail.com, carlos.araujo3@estudante.ifgoiano.edu.br, carlos.defacio-1@syngenta.com, carlos.finato@alzgraos.com.br, carlosedudossantosleite@gmail.com, carlosjosebr2001@yahoo.com.br, carolinnealves652@gmail.com, carvalhobrandaokatrine@gmail.com, cassianesouzada23@gmail.com, catiaraissa1@gmail.com, cauajulio136@gmail.com, caualeitenovais@gmail.com, cayme.souza@boasafrasementes.com.br, ccaua877@gmail.com, cecilliamatos2008@gmail.com, celialeticia08@gmail.com, celitomissio@sementesoilema.com.br, cerratoselmo@gmail.com, ces.agricola@hotmail.com, cesar@bigfertil.com.br, cesarasm@outlook.com.br, cessimon1@gmail.com, cferreira@agbitech.com, chavescotrin@gmail.com, chris.nienke@hotmail.com, christian.santos@santosagri.com.br, christyanandrade0926@gmail.com, chsmarra@gmail.com, ciceroalag@gmail.com, ciriloribeiroanaclara@gmail.com, claelmacv@hotmail.com, claraadrielly16@gmail.com, claragomes102096@gmail.com, claudiadonatti261200@gmail.com, claudio.junior@pmemaquinas.com.br, claudiogomes007@ymail.com, cleber.longhin@bayer.com, cleicisantos91@gmail.com, cleisonsena@icloud.com, clismanrocha@gmail.com, cm91284421@gmail.com, cneto@planthealthcare.com, comercial1@santosagri.com.br, comercial@oestepneus.com, compras1@fundacaoba.com.br, comunicaeven@gmail.com, coordenacao@sprb.org.br, correiaamanda029@gmail.com, correiaana837@gmail.com, cosmesantos@jcobioprodutos.com.br, costaroberta107@gmail.com, costawanderson08@gmail.com, cottonconsultoria@gmail.com, crisrppaz@gmail.com, crissouzateixeira38@gmail.com, cristhayna11@gmail.com, cristianjaco01@gmail.com, cristianobogiano@hotmail.com, cristina.gross@aiba.org.br, cruzdanielzuttion@gmail.com, cunha.faugusto@gmail.com, cunhamoreirasusycaroline@gmail.com, cunhamoreirasusycatoline.@gmail.com, d.borgesufob@gmail.com, d82213br@gmail.com, da5950034@gmail.com, daianaconeglian@hotmail.com, daiane.allves20@gmail.com, daianebritotht@gmail.com, daianeguerreiro.29@gmail.com, damacenaluca@gmail.com, danielaagro30@gmail.com.br, daniella.cantelli@sulamericafaculdade.edu.br, daniellaraissa2009@gmail.com, daniellysouzaaraujo3@gmail.com, danielseverinoantonio@gmail.com, danillo12.cardoso@gmail.com, danilo.negrini@albaragro.com, danilobrandao1106@gmail.com, danilodiasofc727@gmail.com, danilourcino@gmail.com, davi16anoss@gmail.com, daviaquilla2017@gmail.com, davicarvakho2007@hotmail.com, davifenandes2802@gmail.com, davigwsteira@gmail.com, davisouzasilva011@gmail.com, davisouzasilvayt@gmail.com, davycarvalho2007@gmail.com, dayribeirosilva02@gmail.com</textarea>
+          <button class="copy-btn" onclick="copyEmails('ta-aquec-b', this)">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copiar e-mails
+          </button>
+        </div>
+      </details>
+    </div>
+
+    <div style="height:12px"></div>
+    <p style="font-size:0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--laranja); margin-bottom:16px;">Lotes padr&atilde;o &mdash; Campanhas 2 a 6 (e Campanha 1 a partir do Dia 3)</p>
+
+    <!-- LOTE 1 -->
+    <div class="lote-section">
+      <details class="lote-toggle" id="lote-1">
+        <summary>
+          <span>Lote 1 &mdash; Dia 1 de cada campanha</span>
+          <span class="lote-count">300 e-mails</span>
+        </summary>
+        <div class="lote-content">
+          <textarea class="email-textarea" id="ta-lote1" readonly>077999694075d@gmail.com, 77999407521a@gmail.com, a16191742@gmail.com, abapa@abapa.com.br, abattianaflavia@gmail.com, abraao@schifino.com.br, abrendha78@gmail.com, acarlacomunica@gmail.com, acfoliveira@gdmseeds.com, aclecia.tecseg@live.com, adailton.alkmim@origeo.com, adailtonalkmin@hotmail.com, ader.arpini@timacagro.com.br, adersoncaneto@gmail.com, adheiltin@hotmail.com, adheilton@hotmail.com, adilia.amarante@simbiose-agro.com.br, adiliobonfim3@gmail.com, adilson.santos@origeo.com, adjalbasmacedo@gmail.com, adm.fernandasantana@icloud.com, adm@aprosem.com, adm@irrigacerrado.com.br, administrativo@fundacaoba.com.br, adv.laylacamara@gmail.com, advsodre@gmail.com, aelsonjuniorff@gmail.com, aghattagabrielimaier@gmail.com, agitae.net@gmail.com, agro.lucasfarias@gmail.com, agro.natale@gmail.comastro, agrocampo1@outlook.com, agroerlanac@gmail.com, agrokarine@gmail.com, agrolimalem@gmail.com, agromaiara.cardoso@gmail.com, agropilar.representacoes@gamil.com, ak_consultoriaegeo@yahoo.com, alanasantana70350@gmail.com, albuquerquedelgado2905@gmail.com, aldemirdacunharegino@gmail.com, alef.breno@apipa.com.br, alencarsophia885@gmail.com, alessia.oliveira@aiba.org.br, alexandraamartini@gmail.com, alexandre.pereira@ifgoiano.edu.br, alexandre2297@gmail.com, alexandre@nicolettiadv.com.br, alexandredemeloagro@gmail.com, alexemanoelsantosdaschagas128@gmail.com, alexgravestop@gmail.com, alexsandrotetzlaff@gmail.com, alexschagas256@gmail.com, alicemaaia.11@gmail.com, alicenunesbrito33@gmail.com, alifcunegundes8@gmail.com, aline_amaral27@hotmail.com, alisson.ev10@gmail.com, alissonearthur14@gmail.com, allanachristinapsantos@gmail.com, allifvieira993@gmail.com, allisonmoraes230620@gmail.com, aloisio.junior@aiba.org.br, alpebrumado@gmail.com, altieres.dias@arggusagro.com, alucxs2007@gmail.com, alvaro.costa@mosaicco.com, alves.daiana@outlook.com.br, alves.dallas67@gmail.com, alveshigo303@gmail.com, alvessophia3006@gmail.com, alvinomarcelooliveira@gmail.com, alyssonalysson83@gmail.com, alyssonkyu@gmail.com, ama_billi@hotmail.com, amanda.nunes@grupobritacal.com.br, amandachavesdourado70@gmail.com, amandadieringsandreola@gmail.com, amandalima.esa@gmail.com, amarante.adilia@hotmail.com, amarildo.souza5@hotmail.com, amarofazendapalmeira@gmail.com, amorelifilho@gmail.com, ana.correa@yara.com, ana.flavia@xfarm.ag, anaakira78@gmail.com, anabeatriztrindadedejesus0@gmail.com, anabetrizdantaslopes@gmail.com, anacarolinasulzbachtoniazzo@gmail.com, anaclaradasilvagama08@gmail.com, anaclaramariadelimalima@gmail.com, analice.dias@nkseeds.com, analuisapereira2021@gmail.com, anamoraski8@gmail.com, anaolivi44@gmail.com, anaptiggemann@gmail.com, anaritchelydesouzaaninha@gmail.com, anathan.martins@ccab-agro.com.br, anavitoriamonzine@gmail.com, andersonfialho15@hotmail.com, andersonhguimaraes@gmail.com, andraade2006@gmail.com, andre.honaiser@timacagro.com.br, andre.o.alves@outlook.com, andrebarreira77@gmail.com, andregomes@inquima.com.br, andreiadias552@gmail.com, andreiu.fanzlau@icloud.com, andreluis.vb13@gmail.com, andreluizcordeiro27@gmail.com, andressakeld01@gmail.com, andressaserpa001@gmail.com, andrey@drakkar.com.br, angelamarcinajurkfitz@gmail.com, anna.brinquedo@gmail.com, annabxavier.007@gmail.com, annacarollina118@gmail.com, antoniogrespan@uol.com.br, antoniohilario.agro@hotmail.com, antoniooliveirauft@gmail.com, antonioserafim@grupocastro.agr.br, apalsikowski23@gmail.com, apoloteodoro10@gmail.com, aprosem.secretaria@gmail.com, aprosojaba@aprosojaba.com.br, araujoantoniogabriel22@gmail.com, araujokelinede@gmail.com, aregisjust@gmail.com, arianelaiola@hotmail.com, arielylnd@gmail.com, ariennesouzass98@gmail.com, arivaldo.souza@enova.educacao.ba.gov.br, arlindo@irrigacerrado.com.br, aron.robles@sumitomochemical.com, arsilva@gdmseeds.com, arthurmlmelo@gmail.com, arthurprosel@gmail.com, arthursantanasjab@hotmail.com, arthurvinicyo2@gmail.com, artur.flores@origeo.com, ascom@sprb.org.br, asdourado@galvani.ind.br, assessoria@abapa.com.br, assueliobarretoaraujo@gmail.com, assuncao@jh.com.br, atendimentojusti@justinet.com.br, augusto.sanches@nitro.com.br, aurio.honaiser@timacagro.com.br, awtlisboa@hotmail.com, aylasamyllejesusdosanjos@gmail.com, ayrasouza60@hotmail.com, bahiaagricola@gmail.com, barbaraleandra2410@gmail.com, barbaraleandra479@gmail.com, barbararodrigues071@gmail.com, barrosbrenda419@gmail.com, batistabarbosarodrigo@gmail.com, beatrizdasilvabrito18@gmail.com, betelnutricaoanimal@hotmail.com, bgamamoura@gmail.com, bi.gaede07@gmail.com, bianca.radin@alzgraos.com.br, biancaaparecidagomes67@gmail.com, biankac400@gmail.com, biasouzarodrigues1925@gmail.com, binasilva992@gmail.com, bispoclara0207@gmail.com, bluiza.almeida@icloud.com, bna.porto@gmail.com, boaventuralvesribeiro@gmail.com, bocolimarimk@gmail.com, bogianorafael@gmail.com, borgesoseane@gmail.com, bremuranda234@gmail.com, brenda.lobo@hotmail.com, breno10snienke@gmail.com, brenoantonio54@gmail.com, brenogorgen@hotmail.com, britocamila858@gmail.com, bruna.esteves@bayer.com, brunacarlacoimbra2019@gmail.com, brunnabisello@hotmail.com, bruno.79oliver@gmail.com, bruno.amorim@unicampo.coop.br, bruno.bastossr@gmail.com, bruno.dezopa@jh.com.br, bruno.luz.oficial.2024@gmail.com, bruno.oficial.2024@gmail.com, bruno_leite@sicredi.com.br, brunobarcelos430@gmail.com, brunolucasengprod@gmail.com, brunooliveirahso@gmail.com, brunopereiramarques09@gmail.com, brunorangel.contato@gmail.com, buritis.gerencia@setepovos.com.br, cadurb15@gmail.com, caikemendes@hotmail.com, caiqueagro26@gmail.com, cajuarana@hotmail.com, caldeira.agro@gmail.com, calsoliver1@gmail.com, camila.miranda@schmidtagricola.com.br, camilaoliveira0195@gmail.com, camilaos086@gmail.com, camillabrito.g@gmail.com, canandamts.engagro@gmail.com, caputoandre@gmail.com, caril.silva@hotmail.com, carina.vendadireta@gmail.com, carina@nemafito.com, carlagabriellealencar@gmail.com, carlos.araujo3@estudante.ifgoiano.edu.br, carlos.defacio-1@syngenta.com, carlos.finato@alzgraos.com.br, carlosedudossantosleite@gmail.com, carlosjosebr2001@yahoo.com.br, carolinnealves652@gmail.com, carvalhobrandaokatrine@gmail.com, cassianesouzada23@gmail.com, catiaraissa1@gmail.com, cauajulio136@gmail.com, caualeitenovais@gmail.com, cayme.souza@boasafrasementes.com.br, ccaua877@gmail.com, cecilliamatos2008@gmail.com, celialeticia08@gmail.com, celitomissio@sementesoilema.com.br, cerratoselmo@gmail.com, ces.agricola@hotmail.com, cesar@bigfertil.com.br, cesarasm@outlook.com.br, cessimon1@gmail.com, cferreira@agbitech.com, chavescotrin@gmail.com, chris.nienke@hotmail.com, christian.santos@santosagri.com.br, christyanandrade0926@gmail.com, chsmarra@gmail.com, ciceroalag@gmail.com, ciriloribeiroanaclara@gmail.com, claelmacv@hotmail.com, claraadrielly16@gmail.com, claragomes102096@gmail.com, claudiadonatti261200@gmail.com, claudio.junior@pmemaquinas.com.br, claudiogomes007@ymail.com, cleber.longhin@bayer.com, cleicisantos91@gmail.com, cleisonsena@icloud.com, clismanrocha@gmail.com, cm91284421@gmail.com, cneto@planthealthcare.com, comercial1@santosagri.com.br, comercial@oestepneus.com, compras1@fundacaoba.com.br, comunicaeven@gmail.com, coordenacao@sprb.org.br, correiaamanda029@gmail.com, correiaana837@gmail.com, cosmesantos@jcobioprodutos.com.br, costaroberta107@gmail.com, costawanderson08@gmail.com, cottonconsultoria@gmail.com, crisrppaz@gmail.com, crissouzateixeira38@gmail.com, cristhayna11@gmail.com, cristianjaco01@gmail.com, cristianobogiano@hotmail.com, cristina.gross@aiba.org.br, cruzdanielzuttion@gmail.com, cunha.faugusto@gmail.com, cunhamoreirasusycaroline@gmail.com, cunhamoreirasusycatoline.@gmail.com, d.borgesufob@gmail.com, d82213br@gmail.com, da5950034@gmail.com, daianaconeglian@hotmail.com, daiane.allves20@gmail.com, daianebritotht@gmail.com, daianeguerreiro.29@gmail.com, damacenaluca@gmail.com, danielaagro30@gmail.com.br, daniella.cantelli@sulamericafaculdade.edu.br, daniellaraissa2009@gmail.com, daniellysouzaaraujo3@gmail.com, danielseverinoantonio@gmail.com, danillo12.cardoso@gmail.com, danilo.negrini@albaragro.com, danilobrandao1106@gmail.com, danilodiasofc727@gmail.com, danilourcino@gmail.com, davi16anoss@gmail.com, daviaquilla2017@gmail.com, davicarvakho2007@hotmail.com, davifenandes2802@gmail.com, davigwsteira@gmail.com, davisouzasilva011@gmail.com, davisouzasilvayt@gmail.com, davycarvalho2007@gmail.com, dayribeirosilva02@gmail.com</textarea>
+          <button class="copy-btn" onclick="copyEmails('ta-lote1', this)">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copiar e-mails
+          </button>
+        </div>
+      </details>
+    </div>
+
+    <!-- LOTE 2 -->
+    <div class="lote-section">
+      <details class="lote-toggle" id="lote-2">
+        <summary>
+          <span>Lote 2 &mdash; Dia 2 de cada campanha</span>
+          <span class="lote-count">300 e-mails</span>
+        </summary>
+        <div class="lote-content">
+          <textarea class="email-textarea" id="ta-lote2" readonly>dayyandrady@gmail.com, dcastro@agbitech.com, debinha-hori@hotmail.com, deisealvs26@gmail.com, deivide.silva@gwminfinity.com.br, delormemenezes@gmail.com, denielsouto@gmail.com, deoliveirarochaanaclara6@gmail.com, deusmario@santosagri.com.br, deybsonr436@gmail.com, deyse_@hotmail.com, dhayane.souza@agrobiologica.com.br, dhayaneribas1@hotmail.com, dhone@dugnani.com.br, diasmoraisfelipe@gmail.com, diego.scatola@nicoletticompany.com.br, diegorodrigueslem@gmail.com, diogobraulino@hotmail.com, diogogz@msn.com, djison.silvestre@gmail.com, dm@ciaseeds.com.br, dossantosdeivid71@gmail.com, douglasalvesalmeida03@gmail.com, dourado.tecagro@gmail.com, dralaercia@hotmail.com, drcebolinha@gmail.com, drops.lem@hotmail.com, dsoldiniz@gmail.com, dstefanelo@gmail.com, duda@justinet.com.br, dudahetai@gmail.com, dudapolin@gmail.com, dudaqueixx0909@gmail.com, dudaregus1005@gmail.com, duduhono8@gmail.com, duduzinhooo1011@gmail.com, duilli.silva@agroauljd.com.br, e-felip@hotmail.com, ea20evelyn@gmail.com, earaujo@isca.com, edelsonmenezes.santos@gmail.com, edersonprochnow@conatusagricola.com.br, edgarbortolozzo@gmail.com, edilane.agronomia@outlook.com, edinei.fugalli@hotnail.com, edivanneto2@gmail.com, edjaneg177@gmail.com, edna@fazsaofrancisco.com, ednasb99@gmail.com, edson.camillo@nicoletticompany.com.br, edson.camilo@nicoletticompany.com.br, edson@apipa.com.br, edsondallazen@hotmail.com, edsonvitoraraujovieira@gmail.com, eduardo-sampaio@hotmail.com, eduardo.ferreira@ihara.com.br, eduardo@anfis.com.br, eduardogomesaraujo78@gmail.com, eduardolopesdon@gmail.com, eduardomatos.silva@timacagro.com.br, eduardopradoba@gmail.com, eduardosalles2014@gmail.com, edvaniabarbosaramos@gmail.com, efsilva@gdmseeds.com, egjunior@galvani.ind.br, eiadrielly47@gmail.com, eitalarissao.2022@gmail.com, ejhendrix@me.com, elencardoso559@gmail.com, elianarochaagronoma@gmail.com, elianeleoa23.05@gmail.com, elianiasantosnany@gmail.com, elisa@bvlvida.com.br, elismar.santos@irmaosfranciosi.com, elissienesilva@gmail.com, ellytonmeira11@gmail.com.br, elzastasinafo@gmail.com, emanuelacamargof@gmail.com, emerencianoeugenia@gmail.com, emilialr.007@gmail.com, emille.lhorane@outlook.com, eneas.porto@aiba.org.br, eng.agronomasandy@gmail.com, eng.diegoeabreu@gmail.com, engenhariaagronomicajc@gmail.com, engtdias@gmail.com, ennegomes@hotmail.com, enrick.juliani@gmail.com, entomologia@fundacaoba.com.br, enzorochachaves30@gmail.com, eric@contractaenergia.com.br, ericarothemann@gmail.com, ericatayla.12@gmail.com, erickmacedo222@gmail.com, erikaralile7@gmail.com, erisson.junior@timacagro.com.br, escritoriolem@ciaseeds.com.br, estherhoffmann.agro@gmail.com, eugeniataynaracunha@gmail.com, eumarjunior.agro@gmail.com, euricoborges183@gmail.com, evaldo.pinheiro@sumitomochemical.com, evanaferreirasilva@gmail.com, evaneide.luz@inquima.com.br, evelycomercial@jcofertilizantes.com.br, evelyncastro422@gmail.com, everton.eng.negreiros@gmail.com, evinhasantos089@gmail.com, ezelino@uol.com.br, eziquielaw@yahoo.com.br, ezy@pasoita.com.br, f.gordin2@gmail.com, fabia_gui28@hotmail.com.br, fabiano.perina@embrapa.br, fabio1emanoel2@gmail.com, fabioaugustocss00@gmail.com, fabiollasantosdequeiroz8@gmail.com, fabiolsornellas@gmail.com, fabioornellas@multitecnica.com.br, fabybrbza@gmail.com, fagner.fta@gmail.com, fagner@savanaagrobusiness.com.br, fazendarenovadora@hotmail.com, fazendarenovadora@hotmsil.com, fazpaineira01@outlook.com, felipe.herber@adama.com, felipe.marisco@nuntec.com.br, felipecunha241@gmail.com, felipedavipb@gmail.com, felipejmcagro@gmail.com, felipelucio411@gmail.com, felipepelizza@gmail.com, felipesouzamendes77@gmail.com, fernadamacedo10@icloud.com, fernanda.dezani@basf.com, fernanda@nicolettiadv.com.br, fernandaxavier170@gmail.com, fernandok.saito@gmail.com, fernandokfk071@gmail.com, fernandovpetrycoski@gmail.com, ferreiraislane58@gmail.com, ferro.alvaro@gmail.com, fialespaulovictor@gmail.com, filgueirasgilberto@gmail.com, filipe@ciaseeds.com.br, filipe@viavent.com.br, financeiro@fundacaoba.com.br, fisicacemac@gmail.com, fito10@abapa.com.br, fito@abapa.com.br, fitopatologia@fundacaoba.com.br, flainiborges@gmail.com, flavia.juliani@hormail.com, flaviaangel60@gmail.com, flaviaarruda@jcobioprodutos.com.br, florencio.barbosa@basf.com, fmtcampos@hotmail.com, fontanaagr@gmail.com, franceline_a@hotmail.com, franciane_lopes@hotmail.com, francisco.mariof@gmail.com, franciscodasilvaivodouglas@gmail.com, fredson.bispo@santosagri.com.br, freitasrayana6@gmail.com, g_medrado@hotmail.com, gabbcarvalh7@gmail.com, gabibraga706@gmail.com, gabriel.arnold@arnoldfertilizantes.com.br, gabriel.gomes.1900@gmail.com, gabriel.henrique@aiba.org.br, gabriel.juchem@gmail.com, gabriel.rodrigues010201@gmail.com, gabriel1838g@gmail.com, gabriel@heliagro.com.br, gabrielafigueiredobrasil@gmail.com, gabrielavoelz22@gmail.com, gabrielbatistacosta39@gmail.com, gabrielcostagc785392@gmail.com, gabrieleferreiralima7@gmail.com, gabriellcharles1@gmail.com, gabriellyananda50@gmail.com, gabrielmilionario33@gmail.com.br, gabrielpacheco3416@gmail.com, gabrielsanches196@gmail.com, gabrielsouza150509@gamil.com, gabrihellymagalhaes@gmail.com, gabysanttana1234@gmail.com, gacerq@outlook.com, gagobi101112@gmail.com, gamadasilvanando@gmail.com, gavilaleahy@gmail.com, gbcechet@gmail.com, geffersons42@gmail.com, geisiane.araujo@saasoftware.com.br, geisielcosta077@gmail.com, gelsongutoski@gmail.com, genivaldo_loro@hotmail.com, genivalter.teixeira@sementec.com.br, geovanna.cavalcante@xfarm.ag, geraldo.equipe@uol.com.br, gerdson@geagroseeds.com.br, gerencia.marketing@arggusagro.com, gerencia@atmseguranca.com.br, gerencia@radiocidadelem.com.br, gerencia@weassessoriacontabil.com, gerson.junior@pivot.com.br, gersoncavazini@gmail.com, gesiane.neves@outlook.com, gessematrix@gmail.com, gessicalarissa@yahoo.com.br, gestaoagronomica@didomenico.agr.br, gguhgustavo123@gmail.com, giegoscholz@hotmail.com, gilberto_fmj@hotmail.com, gilmararuann@gmail.com, giovani.barcellos@live.com, giovannasseng@gmail.com, glagrorepresentacao@gmail.com, gleice18kele@gmail.com, gleidsonhenriquesantosdacruz@gmail.com, gleisonsr28@gmail.com, glendabarbosaa@gmail.com, glendha537@gmail.com, gnerineves@gmail.com, gomesgandarag@gmail.com, goncalvesagro24@gmail.com, goncalvesagro24@outlook.com, gorgendaiane@gmail.com, gr1968788@gmail.com, gr7877522@gmail.com, gra_roso@hotmail.com, grazi.minozzo@gmail.com, greiceagro@gmail.com, greicekfk@hotmail.com, gsantanavieiradeandradesobrinh@gmail.com, gturatto2011@gmail.com, gueltube654@gmail.com, guerreirobruna99@gmail.com, guguedes1@hotmail.com, guilherme.moura@minax.com.br, guilherme_lem@icloud.com, guilhermebarbosa15809@gmail.com, guilhermeberlatto@hotmail.com, gustavo.fernandes@drakkar.com.br, gustavo.pereira@nicoletticompany.com.br, gustavo.silva@icrop.com.br, gustavo.silva@irriga.net, gustavo@progressoagroindustrial.com.br, gustavocarneirodemelo@gmail.com, gustavokublik@hotmail.com, gustavolisboa1895@outlook.com, gustavomarchioretto14@gmail.com, gustavorabelo88@gmail.com, gustavorodrigues459dp@gmail.com, gustavosousacalixto@gmail.com, gusttaar@gmail.com, gwsteira@gmail.com, halexbatistatorres@gmail.com, hebertdanielramosleite0@gmail.com, heldersena32@gmail.com, helenaalves8413@gmail.com, helenabergamo.hb@gmail.com, helenabergamo@yahoo.com.br, helenice.ssla@hotmail.com, helioferreira208@gmail.com, hellenrosa0165@gmail.com, helocassili213@gmail.com, hemiliiingrid@gmail.com, hemillyx850@gmail.com, henriqp82@gmail.com, henrique@austera.org, henrique@sensix.ag, henriqueazevedo200@gmail.com, henriquejesusmatos@gmail.com, hevertonpassos777@gmail.com, hiagocharles198@gmail.com, hideyoshimiyamoto@yahoo.com.br, higormassi@gmail.com, hlucasnunes@hotmail.com, hmaluf@galvani.ind.br, hrezende404@gmail.com, huansouza765@gmail.com, hugobrasil@eletricaminasbahia.com.br, hutson@bvlvida.com.br, hyan6887@gmail.com, hygormarques1@gmail.com, iago_silva_lima@hotmail.com, ian.c.novaies@gmail.com, iangg.c.novaes@gmail.com, iannadiaspereira08@gmail.com, icarodreges@hotmail.com, icunha@koppert.com.br, idaianasantos5@gmail.com, igor.hermes15@gmail.com, igor.idd@gmail.com, igor.oliveira@jassy.ag, igor.santana@sementesoilema.com.br, igordejesus394@gmail.com, igorsilba1010@gmail.com, imprensa@aiba.org.br</textarea>
+          <button class="copy-btn" onclick="copyEmails('ta-lote2', this)">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copiar e-mails
+          </button>
+        </div>
+      </details>
+    </div>
+
+    <!-- LOTE 3 -->
+    <div class="lote-section">
+      <details class="lote-toggle" id="lote-3">
+        <summary>
+          <span>Lote 3 &mdash; Dia 3 de cada campanha</span>
+          <span class="lote-count">300 e-mails</span>
+        </summary>
+        <div class="lote-content">
+          <textarea class="email-textarea" id="ta-lote3" readonly>imprensa@sindicatorurallemba.com, indiellysilva5@gmail.com, info.jhonismarques@gmail.com, informaticavargas03@gmail.com, ingrid.n8777@ufob.edu.br, irineo.junior@inpasa.com.br, iriscristinyamaralsilva646@gmail.com, isaac.liborio@gwminfinity.com.br, isabelabonifacio08@gmail.com, isabelasntz@outlook.com, isabelbritocaldas@gmail.com, isabella.macedo@origeo.com, isabella20185@icloud.com, isadora_fur@hotmail.com, isaquecostaaa90@gmail.com, isaquesantosoli123@gmail.com, islane.ferreira@aiba.org.br, ismael@mizote.com.br, italodeponti14@gmail.com, italosantosdesouza6@gmail.com, iure_antonio@hotmail.com, iuri4809@gmail.com, iuricastroagronomo@gmail.com, ivancardosoferreira@hotmail.com, ivanilton.pereira3015@gmail.com, ivaniroliveira933@gmail.com, ivetefernandes140@gmail.com, ivetinhafernandes@hotmail.com, ivinicatureba@gmail.com, izabel.lemos@aiba.com.br, izabelarodriguesmachado@gmail.com, izadorafreitasfb10@gmail.com, izadoramatos26@gmail.com, izamara2017ba@gmail.com, izoldamaia7@gmail.com, j.betof@hotmail.com, jacintapamplona2@gmail.com, jackelinebastos2@gmail.com, jackson.mota@aiba.org.br, jackt2687@gmail.com, jadiel_7@hotmail.com, jaime.cappellesso@gmail.com, jakeline7alves@gmail.com, jallankardec@outlook.com, jamile.s2823@ufob.edu.br, janaina.leal@licenciadoademicon.com.br, janderson.lacerda@bience.com.br, janderson.santos@pmemaquinas.com.br, janinenovaesalmeida@gmail.com, jaquelinemamedio@yahoo.com.br, jasminef.santos@hotmail.com, jc680978@gmail.com, jdudubarros@gmail.com, jean.felix@estudante.ifto.edu.br, jean.ribeiro@arggusagro.com, jeanesilva2512@hotmail.com, jeferson.oliveira.agr@gmail.com, jefferson234.jl@gmail.com, jenifferkalyneos19@gmail.com, jeovanasouza439@gmail.com, jerzielwellber@gmail.com, jessica-nunes-15@hotmail.com, jessica.carvalho.1@hotmail.com, jessica.cetano@gmail.com, jessicarosa2021macedo@gmail.com, jhenniferloq@gmail.com, jhonlima099@gmail.com, jhonny.farias1@bayer.com, jjoaovictorqueiroz@gmail.com, jm8809172@gmail.com, jmarcosgsouza@gmail.com, joao.cardosode@basf.com, joao.mallmann@sociedadefranciosi.com.br, joao.marcos@brasmaquinas.com.br, joao.modena@live.com, joao.silverio@origeo.com, joao.sousa@bamaq.com.br, joao.vendaslem@gmail.com, joao.vittor@aiba.org.br, joao23otaviosilva@gmail.com, joaoantonion531@gmail.com, joaocarlos@gruponewvision.com.br, joaocarlosputon@hotmail.com, joaoo.g.barbosa@gmail.com, joaopaulojpnunes@outlook.com, joaopedro.srocha26@gmail.com, joaopedroaraujogomes5@gmail.com, joaovictorbrtv@gmail.com, joaovictorgithaybarbosa@gmail.com, jocimarklein30@gmail.com, joice.jesus@brandt.co, joice_pistore@hotmail.com, jonatas.souza23112000@gmail.com, jones@agriculturasepp.agr.br, jordane@inquima.com.br, jorgealvesoliv@gmail.com, jorgehenriquedomingoscastrofe@gmail.com, jorgenevesrodrigues@gmail.com, jorsilva@uneb.br, jose.bibries@agrosul.com.br, jose.gonzaga@tecnomyl.com, jose.junior0622@gmail.com, joseandersonnn456@gmail.com, josemarjragro@gmail.com, joseneton643@gmail.com, joseoliviolvjr@gmail.com, josewalterjr2000@gmail.com, josias.ribeiro@uol.com.br, josielparana@hotmail.com, josimartinsagro@gmail.com, josyagro@outlook.com, joycecba@live.com, jpssadm0@gmail.com, js7491805@gmail.com, jsergio.lem@gmail.com, jsjbaiano@gmail.com.br, juan.nery.lazaro08@gmail.com, jucimararodrigues1@gmail.com, jujumoraeslima777@gmail.com, julia@dnseeds.com.br, juliana.forgiarini@hotmail.com, julianacarneirooeste@gmail.com, juliani.alan@hotmail.com, juliele_vieira@sicredi.com.br, julio.cesaf.schmidt@icloud.com, julio.f@irrigacerrado.com.br, julio.santana@inpasa.com.br, julio.umpirre07@gmail.com, juliocesarrodrigues2012@gmail.com, juliocezarmacedo9@gmail.com, juliodescovi@gmail.com, jullia.garcialima@gmail.com, julliaemilly23@gmail.com, jullyane.thebest2007@hotmail.com, juniormacedo6280@gmail.com, jvitor.zeni@gmail.com, kaik.winck@gmail.com, kailaeduarda282008@gmail.com, kaioveiga96@gmail.com, kaique.engenhariaagronomica@outlook.com, kaiquecandido0110@gmail.com, kaiquefrancactt@gmail.com, kaiquels135@gmail.com, kalinimarketing@gmail.com, kallytamm@gmail.com, kalydasyo123@gmail.com, kamillarochag@gmail.com, kamille.almeida@nelsonirrigation.com.br, kamille.almeida@pivot.com.br, kamilyhoffurnauer@gmail.com, kananndamoreiramaciel@gmail.com, karen.machado@aiba.org.br, karina.silveira@syngenta.com, karipcosta@gmail.com, karolayne.abl@icloud.com, karolinebs.agro@gmail.com, karolroseno596@gmail.com, kassiodesousarodrigues@hotmail.com, katia.cappellesso@gmail.com, kauansantana1918@gmail.com, kauanydss10@gmail.com, kauecirqueira13@gmail.com, kauel2426@gmail.com, kawmartins.aragao@gmail.com, kaylanneribeiro16@gmail.com, kelvis.abreu@hotmail.com, kennedy.gonzaga@adama.com, kerolainy.ferreira@andermatt.agr.br, kerolainy.rr@gmail.com, ketlelykauane2008@gmail.com, ketlysilva188@gmail.com, kevennzoi1717@gamil.com, kiararamaioagro@outlook.com, klayveroliveira338@gmail.com, kristhianolepesqueur@icloud.com, lacerdaandrem@outlook.com, lacir.mendes@avantagro.com.br, laianne.loppes@gmail.com, lailaeng.agro@gmail.com, laissasantana1515@gmail.com, laiziazevedo.agro@gmail.com, lalleu.silva@agrosuljd.com.br, larabeatrizdealmeidasantos@gmail.com, laragrazielelimasouza@gmail.com, larissa_nanine@outlook.com, larissesouzafreitas@gamil.com, laryssathayna27@gmail.com, lauany.silva@ldc.com, laura@jh.com.br, laurapereira@aluno.ufrb.edu.br, lauroaveleski@outlook.com, laurohenrique123@gmail.com, laviniarodriguesqueiroz3@gmail.com, layla.samyli@gmail.com, layson_costa@rainbowagro.com.br, lazaro.domingues2017@gmail.com, lazarodaguarda@gmail.com, lazzaro.vilaverde@gmail.com, lcingrbbns@gmail.com, leandro.cardoso@arggusagro.com, leandro.ssantos@adama.com, leandro@anfis.com.br, leandrolrm@hotmail.com, leandrosantos.ea@gmail.com, leila.barreto@agrosuljd.com.br, leo.paz.vidabela@gmail.com, leoguastti@gmail.com, leon.miranda@timacagro.com.br, leonardo.marques@gransete.com, leonardo1993marcelo@gmail.com, leonardoclash89@gmail.com, leonardohonofremorais@gmail.com, leonardolimamais64@icloud.com, leonardooliveirasilva3225@gmail.com, leonardoribeirocunha2102@gmail.com, leopdi2011@hotmail.com, leorampazzo8@gmail.com, leticia_inocenciorocha@outlook.com, leticiafarias8392@gmail.com, leticiapiana7@gmail.com, leticiavargas0206@gmail.com, leticyacoutinho2901@gmail.com, lggustavo051@gmail.com, lh555473@gmail.com, liadognani@gmail.com, lidybonfim@hotmail.com, lilianaraujo1001@gmail.com, liliane_ol@hotmail.com, limaeloy96@gmail.com, limanovais127@gmail.com, limasjamily@gmail.com, limasobral.agro@gmail.com, lincoln.bizerra@biolinc.com.br, lincoln.murata@gmail.com, lissandrinho10@gmail.com, lizane.ferreira@aiba.org.br, lohanyvieira@gmail.com, loisleni@lavrobras.com.br, lorenaalmeidaqueiroz0@gmail.com, lorenaalmeidaqueiroz26@gmail.com, lorenaalmeidaqueiroz26@gmail.con, loretoanacarolinaloreto@gmail.com, lourival@itapocos.com.br, lqueirozviana@gamil.com, ltorresquadros@gmail.com, luan1234557@gmail.com, luanagomesdejesus002@gmail.com, luanateixeiradossantos470@gmail.com, luandanovaes@outlook.com, luanelopes.agro@gmail.com, luankennedy10@sementesoilema.com.br, luann.oestegas@outook.com, luanschmitt149@gmail.com, lucas.agronomia2015@gmail.com, lucas.amfla@gmail.com, lucas.andretto@repcorteva.com, lucas.augusto@sumitomochemical.com, lucas.felisberto@ifgoiano.edu.br, lucas.reis@bience.com.br, lucas.trindade@agrosuljd.com.br, lucas.vieira@agrosuljd.com.br, lucasbelem@gmail.com, lucasccirilo@gmail.com, lucascerrato123@gmail.com, lucascmelo7@gmail.com, lucasemanuelsantosaires8@gmail.com, lucasfpt2010@hotmail.com, lucashernanedasilva@hotmail.com, lucasjhuanjucluque@gmail.com, lucasroslaniec25@gmail.com, lucass9856@gmail.com, lucassantosbvt03@gmail.com, luccasoliveira95@gmail.com, luceliadourado.agro@outlook.com, lucialdo@hotmail.com, luciana.brod@hotmail.com, lucianabosa9@gmail.com, lucianebarrem@hotmail.com, luciano.grassi@hotmail.com.br, luciano.santos@agrosuljd.com.br, ludimila.moraes@pmemaquinas.com.br, ludmillasouzachagas58@gmail.com, luigionunes@gmail.com, luis@austera.org, luisfelipepazzicoelho@gamil.com, luishenrique@kasuya.com.br, luissilveira67@yahoo.com, luiz.rezende@itaubba.com, luiz06092000@gmail.com, luiz11@grupopradella.com, luiz12042009@gmail.com, luizaholleben22@icloud.com, luizamarcelle10@gmail.com, luizfernandomattosdossantos@gmail.com, luizfernandrb@gmail.com, luizfranca.tec@gamail.com, luizotavioferreiradacosta@gmail.com, luizpaloschi9@gmail.com, lunnamello71@icloud.com, lusantosxavier80@gmail.com</textarea>
+          <button class="copy-btn" onclick="copyEmails('ta-lote3', this)">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copiar e-mails
+          </button>
+        </div>
+      </details>
+    </div>
+
+    <!-- LOTE 4 -->
+    <div class="lote-section">
+      <details class="lote-toggle" id="lote-4">
+        <summary>
+          <span>Lote 4 &mdash; Dia 4 de cada campanha</span>
+          <span class="lote-count">300 e-mails</span>
+        </summary>
+        <div class="lote-content">
+          <textarea class="email-textarea" id="ta-lote4" readonly>luuizaferraaz@gmail.comll, luzdse@hotmail.com, ly_brizolla@hotmail.com, m.santos.06@icloud.com, maarceloomascarenhas@icloud.com, macielfigueiredogabriel@gmail.com, magno-rvbrasil@hotmail.com, magno.oliveira.tecnomylbr@gmail.com, maiaclaraestelina@gmail.com, maicon@multivistabr.com.br, maik_souza99@hotmail.com, maikon.lemos.ca@gamil.com, maikon.lemos@sementesprodutiva.com.br, mainarosa.agro@gmail.com, mairalem9997@gmail.com, mairla.ribeiro@gmail.com, maisa.amorim@ba.sebrae.com.br, maisaregis@remax.com.br, mandacosta15@hotmail.com, mandoka300400@gmail.com, manoel@santasophiaagro.com.br, manohelvecio@gmail.com, maraborges2608@gmail.com, maramuritiba.adv@gamil.com, marcaldoriaanacarolinamarcaldo@gmail.com, marcelo.ferreira@origeo.com, marcelo.mascarenhas@grupoabcomunica.com.br, marcelo.silva@ufob.edu.br, marcelo@savanaagrobusiness.com.br, marcelofalves0530@gmail.com, marchesan.equipe@uol.com.br, marciellyporto88@gmail.com, marcilio.almeida@petrobahia.com.br, marcillenepsouza@gmail.com, marcio.agro2@hotmail.com, marcio.snascimento05@gmail.com, marcioseas@gmail.com, marcos.alexandre@aiba.org.br, marcos.alves@syngenta.com, marcos.queiroz@rabobank.com, marcos_lem2011@hotmail.com, marcospooter@yahoo.com, marcus.neves@aiba.org.br, mari.bernardo0883@gmail.com, mari_neves09@hotmail.com, maria.eduardasoares1592@gmail.com, mariabeatriznolasco@gmail.com, mariaclara1801.agro@gmail.com, mariaclaracampos155@gmail.com, mariaclaraqueiroz490@gmail.com, mariaedilene44592@gmail.com, mariaeduardacesariadasilva@gmail.com, mariaeduardademarco0@gmail.com, mariaeduduthiesen@gmail.com, mariaesoares159@gmail.com, marialorena.lores@gmail.com, marialuisa427384@gmail.com, marialuizaandrade20234@gmail.com, marialuizacoutinhomaia@gmail.com, marialuizasilvaaa22@gmail.com, mariana.torres@origeo.com, marianajanjarcosta5@gmail.com, marianalaurindamelo@gmail.com, marianamarquess2004@gmail.com, marianaoliveiramelo16@gmail.com, marianemiranda014@gmail.com, mariatrindadee2009@gmail.com, mariavitoriaalbuquerque61@gmail.com, mariavitoriaalbuquerque61@gmail.comm, mariavitorialbqz@icloud.com, marielly.alves@inquima.com.br, mariferreiraptu@gmail.com, mario.lopes@agrosuljd.com.br, marioluisfv@gmail.com, marisagorgen@hotmail.com, marivaniapiresdossantos@gmail.com, marketingjco@jcobioprodutos.com.br, marlenemendesrh@gmail.com, marlize.stuczynski@aiba.org.br, maryaraujob04@gmail.com, maryvanessabenicio@gmail.com, mateus.blatt58@gmail.com, mateus.moraes@timacagro.com.br, mateusferreirabarbosa22@gmail.com, mateusfm52@gmail.com, matheus.banfi@upl-ltd.com, matheuscruz483@gmail.com, matheushenriquepdradm@gmail.com, matheusrdefranca@gmail.com, matheuswallauer346@gmail.com, mattheussilva8@icloud.com, matutinojoao@gmail.com, mauricioklinkoski@gmail.com, maxpauloc@hotmail.com, maykoc32@gmail.com, maylacris25@gmail.com, mbastos5245@gmail.com, mdornelles28@gmail.com, melkcel@hotmail.com, mendesmikaelle825@gmail.com, mendoncaborgessofia@gmail.com, mendoncaborgessofia@gmail.con, mendoncagab13@gmail.com, mendoncasb8@gmail.com, mendoncasolb@gmail.con, mercer.pesquisa@outlook.com, mfrancafernandes@gmail.com, mftania24@gmail.com, micaellaaraujo01@gmail.com, michel.casali@icloud.com, michelleeagroo@gmail.com, michellesfelix26@gmail.com, miguelmelogrzibovski@gmail.com, mikaelerebeca24@gmail.com, mikaellucassouza@hotmail.com, milcaelizama2311@gmail.com, milenaaambint2018.1@gmail.com, milton@nsagronegocios.com.br, mirellamoura0804@gmail.com, mjhonis435@gmail.com, mjr190907@gmail.com, mkarine646@gmail.com, mkt@agrosuljd.com.br, mlopes.eduarda5@gmail.com, mobilizacao@sprb.org.br, mocelin56@gmail.com, moisesalmeidaschmidt@gmail.com, moisespedreira@hotmail.com, monica.agro@outlook.com, monica.diniz@aiba.org.br, monica@mktdoagro.com.br, moniquedmenezes@hotmail.com, moniquemartins143@gmail.com, moniquesandridasilva@gmail.com, montlucas76@gmail.com, motajrs@hotmail.com, ms0451596@gmail.com, muciojunior80@hotmail.com, muriellypereiradasilva231@gmail.com, murillosantoscamara@gmail.com, murilo-perreira@live.com, murilo._.soouza@hotmail.com, murilocirqueiraguerra13@gmail.com, muriloonofre9@gmail.com, nadirson.lucena@tecnomyl.com, naiara.nogueira@valence.agr.br, nalanagotardo062@gmail.com, nandaaragao121@gmail.com, natal.mph@gmail.com, natalia.a6500@edu.gov.br, natalia.sribas@gmail.com, nataliagomesdasilva1993@gmail.com, nathan.zanolli@hotmail.com, natheleregino@gmail.com, nayara_alencar2312@hotmail.com, nayaraalencar2312@gmail.com, neialpaine@outlook.com, nelson.pachecor7@outlook.com, nepomucenoelenkauana@gmail.com, nerihellen4@gmail.com, nerybraga4@gmail.com, netinhavolvo@gmail.com, neureniceguimaraes@gmail.com, neurenicesilva7@gmail.com, nicacio6122@gmail.com, nicolasamorimdeoliveira@gmail.com, nilsonvic@fundacaoba.com.br, nilton.souza@nsagronegocios.com.br, nnormanha@outlook.com, o.guilhermebns@gmail.com, ohsecamilly@gmail.com, oliveiraadriele168@gmail.com, oliveiracarloshenrique257@gmail.com, oliveiradenilson370@gmail.com, oliveiraeliclecio6@gmail.com, osielmarqueslopesjunior@gmail.com, osjeagro@gmail.com, otoniel_bertoldo@sicredi.com.br, ourograosfinanceiro@gmail.com, ozanadeoliveiralimaa@gmail.com, ozania.nascimento@gmail.com, pablomauricio768@gmail.com, pablosabini081@gmail.com, pablosampaiocopirece@gmail.com, pacheco-agro@outlook.com, pacheco@austera.org, pactos-nodoso-3p@icloud.com, paivakersul@yahoo.com.br, paloma.cruz@aiba.org.br, pamella.sakumoto@gmail.com, paraestudosluan@gmail.com, patricia.agrofinance@gmail.com, patricia244811@gmail.com, patriciahermes.adv@gmail.com, patriciobambui@yahoo.com.br, paula.nas1998@gmail.com, paula_rayssa@icloud.com, paulaheloisa.tbv@gmail.com, paulalinoagro@outlook.com, paularayssaandreola466@gmail.com, paulo.pieczur@gmail.com, paulo.silva@agrosuljd.com.br, paulo.silva@metos.global, pauloalbaqueiro@gmail.com, paulocastro@imamt.org.br, paulocastropma@gmail.com, paulohsb8@gmail.com, paulovictorfialesribeiro@gmail.com, payribeiro369@gmail.com, pb.bento@hotmail.com, pedro@bigfertil.com.br, pedroagroturato@gmail.com, pedrobarrocal@icloud.com, pedrobarrros0312@gmail.com, pedrobento@jcobioprodutos.com.br, pedrohabotelho1@gmail.com, pedrohenriquepsk@gmail.com, pedrohenriquesl1987@gmail.com, pedroluizcamandaroba23@gmail.com, pedromattana@gmail.com, pedromleite16@gmail.com, pedropleite4@gmail.com, pedrosouto17@hotmail.com, pedrovilela98@gmail.com, pereirasarah446@gmail.com, phdeike_@hotmai.com, phdeike_@hotmail.com, phdeoliveira.2019@gmail.com, philipeapmoreira@gmail.com, phytosolum@gmail.com, pioneira.comercial@gamail.com, pjr.luz@gmail.com, pliniokaua22@gmail.com, pmontalvao@isca.com, polianaalmeida554@gmail.com, pr.adelmorosa@bol.com.br, presidente@sprb.org.br, produzirconsultoria@hotmail.com, projetos@profissional.agr.br, protocolo@fundacaoba.com.br, queline-vieira@hotmail.com, r.daviars@gmail.com, rafael.araujo@agrosuljd.com.br, rafael.fonteles@avantiagro.com.br, rafael.guaraagricola@gmail.com, rafael.soares@fazsaofrancisco.com, rafael.zacarias@fazsaofrancisco.com, rafael@bvlvida.com.br, rafael@somosempilhadeiras.com.br, rafaela.dalecio@hotmail.com, rafaelnienke30@gmail.com, rafaelrohde@gmail.com, rafaelzacarias@fazsaofrancisco.com, rafagraauu244@gmail.com, raissatauane56@gmail.com, ramilos@hotmail.com, ramirosilveira1404@gmail.com, ramonbrenner1@gmail.com, ranielerox245@gmail.com, ranyeric.alves@gmail.com, rapha.s.schuster@gmail.con, rapha.s.shuster@gmail.com, raphael.simao@microxisto.com.br, raphamp@hotmail.com, raqueloliveiralima207@gmail.com, rauljacobsen@jcc.agr.br, ravena.paloma@canalpecasagricolas.com.br, ravenamartins210@gmail.com, rayaneradrigues663@gmail.com, rayellesantos348@gmail.com, raysilvaoliveira2@gmail.com, rbrandao@isca.com, rbrtpietro@gmail.com, rebeccajuliadasilvalimacruz@gmail.com, reeffrizon@gmail.com, regiane.oli.jesus@gmail.com, renanwendell70@gmail.com, renata.moretto@nicoletticompany.com.br, renata_cp100@hotmail.com, renatapereira@pq.uenf.br, reneuluis@hotmail.com, renne.coite@mosaicco.com, revaconsultoria@hotmail.com, ribeiroborgesmarakelly@gmail.com, ribeirohozanalenivia@gmail.com, ribeiroluisagro@outlook.com, ribeirovelosolucas@gmail.com, ricardo.mesquita@timacagro.com.br, ricardo@ciaseeds.com.br, ricardo@jh.com.br, ricardomonza10@gmail.com, richarlisonsantana17@gmail.com, rickymuniz123@yahoo.com.br, ricleyeduardo27@gmail.com, ridelmarmineiro@hotmail.com, rigaooo@outlook.com, rignermarcal@gmail.com, riosnemezio@icloud.com, riquelmo0704@gmail.com, ritamonicasantos16@gmail.com</textarea>
+          <button class="copy-btn" onclick="copyEmails('ta-lote4', this)">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copiar e-mails
+          </button>
+        </div>
+      </details>
+    </div>
+
+    <!-- LOTE 5 -->
+    <div class="lote-section">
+      <details class="lote-toggle" id="lote-5">
+        <summary>
+          <span>Lote 5 &mdash; Dia 5 de cada campanha</span>
+          <span class="lote-count">240 e-mails</span>
+        </summary>
+        <div class="lote-content">
+          <textarea class="email-textarea" id="ta-lote5" readonly>ritinhadellarosa@hotmail.com, rmadureira@vitalforce.com.br, roberthribe57@gmail.com, roberthysardeiro07@gmail.com, robhsonzrob@gmail.com, robson.silva@mizote.com.br, robsonmaquinadevendasiso@gmail.com, rochajoana915@gmail.com, rodcesarlb1@gmail.com, rodrigo.pertile1@gmail.com, rodrigobds@hotmail.com.br, rodrigocarvalho1987rc@gmail.com, rodrigouveia1509@gmail.com, rodriguesaparecida1983@gmail.com, roger15112021@gmail.com, rogeragro10@gmail.com, rogerio@agropolatti.com.br, rogerioportelalirafilho@gmail.com, romatecagro@hotmail.com, ronald@rural.agr.br, ronaldo@irrigacerrado.com.br, ronaldodrumond2@gmail.com, ronaldollopes97@gmail.com, rondinei.oliveira@slcagricola.com.br, rondinei01@gmail.com, ronierixrs@gmail.com, ronisvaldodossantos@gmail.com, ronubiaadv@gmail.com, roqueandrade540@gmail.com, roquebrito825@gmail.com, rosariacostavargas77562@gmail.com, rosario@embalagensvazias.org.br, rosberg.flores@aiba.org.br, rosenysilvagusmao24@gmail.com, rrnsdmnnn1999@gmail.com, rs0911853@gmail.com, rteston@araizdasolucao.com, ruan.fabricio.oficial@gmail.com, ruanpabloguimaraesrpg@gmail.com, rubensdesa2009@hotmail.com, rubiatimm88@gmail.com, ruralagri1@gmail.com, ryansousagomes7@gmail.com, s.lindner@uol.com.br, salesjeice8@gmail.com, samara.menezes20@gmail.com, samile_thielke@hotmail.com, samilebrito58@gmail.com, samuelmiguelsouza095s@gmail.com, sandiasbahia@uol.com.br, sandro.ferreira.agro@gmail.com, sanietoledodm@gmail.com, santhyagobrasil@gmail.com, santos7633@hotmail.com, santosedvania342@gmail.com, santosmariaclara446@gmail.com, santossilvahitauana39@gmail.com, santossilvat151@gmail.com, sarahpmelo2009@gmail.com, sarasilvabezerra34@gmail.com, satiro17.ju@outlook.com, saulo.rodrigues@bunge.com, saulohora134@gmail.com, saviopereirasantos242@gmail.com, schauble.kelly@gmail.com, secretariageral@jcobioprodutos.com.br, secretariageral@jcofertilizantes.com.br, secretario.educacao@pmlem.ba.gov.br, seguimaraes@uneb.br, segurancatrabalho1@fazsaofrancisco.com, seguros@agrosuljd.com.br, sena69334@gmail.com, senaotavio9@gmail.com, serafimramosjackson@gmail.com, sergio.sobrinho@origeo.com, silvaadriele52755@gmail.com, silvakelma799@gmail.com, silvio.silva@solinftec.com.br, simabaagricolagarantia@gmail.com, simon.agronomo@gmail.com, simoneandzeiewski@yahoo.com.br, simoniribas.engagronoma@gmail.com, sinara.cocos.ba@hotmail.com, sj99169197@gmail.com, smtaffarel@yahoo.com.br, soares.geo311@gmail.com, soaresluan397@gmail.com, sobrinhoangela@gmail.com, socratesalbuquerque60@gmail.com, solangepymentinha@gmail.com, sostermedeiros@gmail.com, souzafelix1324@gmail.com, souzagabrieldegomes@gmail.com, souzajanaine43@gmail.com, ssantisnn@gmail.com, stefaniesantosdarocharocha@gmail.com, steffani.scds@outlook.com, sthefnysilva0807@gmail.com, suelisantos2142@gmail.com, sunny.aaron@aiba.org.br, sustentabilidade3@abapa.com.br, sytemaout@gmail.com, taemyketery3@gmail.com, tainahsilva421@gmail.com, tainaramosdasilva27@gmail.com, talysson100@gmail.com, tamiristavares096@gmail.com, tarsifs@gmail.com, tassylasousapereira@gmail.com, tatytenkil@outlook.com, taunny.2006@gmail.com, tayaneketely@gmail.com, tayllasilva0083@gmail.com, tayna.lem@hotmail.com, tcmperes@hotmail.com, teofilolenon@hotmail.com, terezinha.silva@redebahia.com.br, teste@teste.com, thaina.emilie@aiba.org.br, thainalive2019@gmail.com, thais.barbosa010108@gmail.com, thaiseramos16@gmail.com, thales.caetano10@hotmail.com, thalyaurcino98@gmail.com, thamara.belanda@basf.com, thaynadani08@gmail.com, thaynarasilva095673@gmail.com, thayserodrigues2007@icloud.com, thayserodrigues@icloud.com, thiago.oliveira@hntassessoria.com.br, thiago@agzt.com.br, thiago@tonhacardoso.adv.br, thiagomfraga@yahoo.com.br, thomas.pereira@ballagro.com.br, tiabreu87@gmail.com, tiago.link@agrosuljd.com.br, ticianoasa@gmail.com, to37698@gmail.com, tom.corado04@gmail.com, toniazzorodrigo1@gmail.com, tssilvasouza2024@gmail.com, tstbarbaragomes@gmail.com, uelintoncasn19@gmail.com, uesleisilva.nik@gmail.com, ufes.caio@gmail.com, uislanesouza2018@gmail.com, ulisseslp505@gmail.com, v.oliveira@bauer-at.com, v@v.com, valdegoncalves4@gmail.com, valdemir.soares@solubio.agr.br, valdetecencimatana@gmail.com, valdevino@zagri.com.br, valdoflores098@gmail.com, valmirjoseweber@gmail.com, vanessa.sofhia@hitmail.com, vanessa.sophia@hotmail.com, vanessa@grupostracci.agr.br, vanessamartins@primeagro.com.br, vanessapereirapr@gmail.com, vanessarufino99@gmail.com, vania.ardase@gmail.com, vania_cenci@hotmail.com, vanuziadiasbarbosa@gmail.com, vbagrooficial@gmail.com, venceslaudraissa@gmail.com, vendas5@iropel.com.br, veridiane.carvalho@aiba.org.br, verylemos9@gmail.com, vferreira@gdmseeds.com, vi.vcv.vargas@gmail.com, vicentehelena02@gmail.com, victhornunes7@gmail.com, victorgabrielfernandes.agro@gmail.com, victoria.barbosa10@outlook.com, victoria@hydroagro.com.br, vieiraariela@gmail.com, vieirarodriguesthaylageovanna@gmail.com, viginioromeiro@hotmail.com, vihvih20santos@gmail.com, vilson.pertile@gmail.com, vineaguiar2018@gmail.com, vinicius.nascimento@bience.com.br, vinicius.santos-1@syngenta.com, vinicius.silva@adama.com, viniciusbritto1@gmail.com, viniciuscunha600@gmail.com, viniciusvanni@hotmail.com, vinilima1107@gmail.com, vitorcarvalho2406@gmail.com, vitorgabrielazevedodesouza@gmail.com, vitoria.sales@fertinsumos.com.br, vitoriahellen2002@gmail.com, vitorigo980@gmail.com, vitormanoel.caldas@icrop.com.br, vitorruan650@gmail.com, vitorsilvabrito241@gmail.com, vitorvieira1463627@gmail.com, viviane.s0743@ufob.edu.br, vivianenovais.p@gmail.com, vs794569@gmail.com, wagner1526oliveira@gmail.com, wagnernunes0055@gmail.com, walifrenanb@gmail.com, walison.fernando@yahoo.com.br, walter.reis@irmaoswalker.com, wanderson.costa@inquima.com.br, warlenbg@gmail.com, washington.junior@inpasa.com.br, weder76cunha@gmail.com, wedermanoel10@icloud.com, welington.gab@hotmail.com, wellingtonsilvaba@gmail.com, werlly25silva@gmail.com, wesley.lima@nossafendt.com.br, wesleycruz17@hotmail.com, wesllensantos1@icloud.com, wildsonpereira98000056@gmail.com, wilian.bsilva@outlook.com, william.gbir9@hotmail.com, williambraijunior@gmail.com, williammoro27@gmail.com, williamseixasdemorais@gmail.com, willian.dias@bience.com.br, willianbusatte@gmail.com, wm939692@gmail.com, wmcavalcante@galvani.ind.br, wmcavalcanteta@gmail.com, wtagroconsultoria@gmail.com, yanna.karoline@hotmail.com, yasmin.stone2024@gmail.com, yasminvma12@gmail.com, ybrandim@koppert.com.br, yhorranacastrosilva4@gmail.com, ylsilva@galvani.ind.br, yollandatagua@hotmail.com, yuricardosopjl@gmail.com, zb.advocaciaeconsultoria@gmail.com, zeg58332@gmail.com, zeze.campos@redebahia.com.br</textarea>
+          <button class="copy-btn" onclick="copyEmails('ta-lote5', this)">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copiar e-mails
+          </button>
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- MÉTRICAS -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-tag">Acompanhamento</div>
+    <div class="section-title">M&eacute;tricas para <em>monitorar</em></div>
+
+    <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+      <div class="info-box">
+        <div class="info-box-label">Taxa de abertura</div>
+        <div class="info-box-value orange">Meta: &gt; 20%</div>
+        <p style="font-size:0.75rem; color:var(--cinza-claro); margin-top:6px;">Abaixo de 15%: revisar assunto e hor&aacute;rio de envio</p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Taxa de clique</div>
+        <div class="info-box-value orange">Meta: &gt; 3%</div>
+        <p style="font-size:0.75rem; color:var(--cinza-claro); margin-top:6px;">Abaixo de 2%: revisar CTA e layout do e-mail</p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Taxa de descadastro</div>
+        <div class="info-box-value orange">Meta: &lt; 1%</div>
+        <p style="font-size:0.75rem; color:var(--cinza-claro); margin-top:6px;">Acima de 2%: reduzir frequ&ecirc;ncia ou revisar conte&uacute;do</p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">Taxa de bounce</div>
+        <div class="info-box-value orange">Meta: &lt; 5%</div>
+        <p style="font-size:0.75rem; color:var(--cinza-claro); margin-top:6px;">Acima de 5%: limpar e-mails inv&aacute;lidos da lista</p>
+      </div>
+    </div>
+
+    <div class="alert alert-green">
+      <strong>Ap&oacute;s cada campanha:</strong> verificar no Brevo as m&eacute;tricas de abertura, clique e bounce. Remover e-mails que retornaram bounce permanente (hard bounce) para manter a reputa&ccedil;&atilde;o do dom&iacute;nio saud&aacute;vel.
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">ADS <em>Company</em> &mdash; Assessoria de Marketing e Performance</div>
+  <div class="footer-sub">Estrat&eacute;gia de E-mail Marketing &mdash; IV Simp&oacute;sio Brasileiro de Solos Arenosos &mdash; Julho/Agosto 2026</div>
+</div>
+
+<script>
+function copyEmails(id, btn) {
+  var ta = document.getElementById(id);
+  ta.select();
+  ta.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(ta.value).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2" fill="none"/></svg> Copiado!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2" fill="none"/></svg> Copiar e-mails';
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
