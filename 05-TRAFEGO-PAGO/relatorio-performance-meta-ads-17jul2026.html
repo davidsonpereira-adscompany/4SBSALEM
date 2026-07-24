@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relatório de Performance — Meta Ads | IV SBSA | 17/07/2026</title>
+<title>Relatório de Performance — Meta Ads | IV SBSA</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -47,6 +47,30 @@ body {
 }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* BACK BUTTON */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(20,20,20,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  color: #888;
+  text-decoration: none;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.back-btn:hover { color: var(--orange); border-color: rgba(232,119,34,0.15); }
 
 /* HEADER */
 .header {
@@ -111,13 +135,14 @@ body {
 }
 .nav-inner {
   display: flex;
+  align-items: center;
   gap: 8px;
   overflow-x: auto;
   padding: 0 24px;
   max-width: 1100px;
   margin: 0 auto;
 }
-.nav a {
+.nav a, .nav-link {
   color: var(--gray-400);
   text-decoration: none;
   font-size: 0.8rem;
@@ -126,8 +151,42 @@ body {
   border-radius: 6px;
   white-space: nowrap;
   transition: all 0.2s;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font);
 }
-.nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.nav a:hover, .nav-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+/* PERIOD TOGGLE */
+.period-tabs {
+  display: flex;
+  gap: 6px;
+  margin-right: 8px;
+  padding-right: 12px;
+  border-right: 1px solid var(--gray-700);
+}
+.period-btn {
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--gray-700);
+  background: transparent;
+  color: var(--gray-400);
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.period-btn:hover { border-color: var(--orange); color: var(--orange); }
+.period-btn.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
+.period-data { display: none; }
+.period-data.active { display: block; }
 
 /* SECTIONS */
 .section { padding: 48px 0; }
@@ -183,6 +242,8 @@ body {
 .kpi-value.orange { color: var(--orange); }
 .kpi-value.green { color: var(--green); }
 .kpi-value.blue { color: var(--blue); }
+.kpi-value.yellow { color: var(--yellow); }
+.kpi-value.red { color: var(--red); }
 .kpi-sub {
   font-size: 0.75rem;
   color: var(--gray-500);
@@ -280,6 +341,8 @@ tr:last-child td { border-bottom: none; }
 .chart-bar-fill.orange { background: linear-gradient(90deg, var(--orange), #FFA756); }
 .chart-bar-fill.purple { background: linear-gradient(90deg, var(--purple), #A78BFA); }
 .chart-bar-fill.gray { background: linear-gradient(90deg, var(--gray-600), var(--gray-500)); }
+.chart-bar-fill.red { background: linear-gradient(90deg, var(--red), #F87171); }
+.chart-bar-fill.yellow { background: linear-gradient(90deg, var(--yellow), #FBBF24); }
 .chart-bar-value {
   font-size: 0.82rem;
   font-weight: 700;
@@ -439,7 +502,7 @@ tr:last-child td { border-bottom: none; }
 .status-dot.pending { background: var(--yellow); }
 .status-dot.off { background: var(--gray-600); }
 
-/* MINI CHART — donut-like stats */
+/* MINI CHART */
 .stat-row {
   display: flex;
   align-items: center;
@@ -478,6 +541,8 @@ tr:last-child td { border-bottom: none; }
   .nav-inner { padding: 0 16px; }
   table { font-size: 0.78rem; }
   th, td { padding: 10px 8px; }
+  .back-btn { top: 10px; left: 10px; padding: 8px 12px; font-size: 0.72rem; }
+  .period-tabs { margin-right: 4px; padding-right: 8px; }
 }
 @media (max-width: 480px) {
   .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -487,10 +552,17 @@ tr:last-child td { border-bottom: none; }
   .chart-bar-row { flex-direction: column; align-items: flex-start; gap: 4px; }
   .chart-bar-label { text-align: left; min-width: auto; }
   .status-grid { grid-template-columns: 1fr; }
+  .back-btn span:last-child { display: none; }
 }
 </style>
 </head>
 <body>
+
+<!-- BACK BUTTON -->
+<a href="../index.html" class="back-btn">
+  <span>&#8592;</span>
+  <span>Central de Documentos</span>
+</a>
 
 <!-- ==================== HEADER ==================== -->
 <header class="header">
@@ -499,7 +571,7 @@ tr:last-child td { border-bottom: none; }
     <h1>Meta Ads — IV Simpósio Brasileiro de Solos Arenosos</h1>
     <div class="subtitle">Análise por conjunto de anúncios | Oeste Baiano vs. MATOPIBA</div>
     <div class="period">
-      &#128197; Dados até 16/07/2026 &nbsp;|&nbsp; Topão: 4 dias &nbsp;|&nbsp; Topo e Meio: 2 dias
+      &#128197; <span id="period-display">17 a 24/jul/2026 · 7 dias de veiculação</span>
     </div>
   </div>
 </header>
@@ -507,19 +579,28 @@ tr:last-child td { border-bottom: none; }
 <!-- ==================== NAV ==================== -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#resumo">Resumo</a>
-    <a href="#topao">Topão</a>
-    <a href="#topo">Topo</a>
-    <a href="#meio">Meio</a>
-    <a href="#comparativo">Comparativo</a>
+    <div class="period-tabs">
+      <button class="period-btn" id="btn-p1" data-period="Dados até 16/jul/2026 · Topão: 4 dias | Topo e Meio: 2 dias" onclick="showPeriod('p1')">Até 16/jul</button>
+      <button class="period-btn active" id="btn-p2" data-period="17 a 24/jul/2026 · 7 dias de veiculação" onclick="showPeriod('p2')">17 — 24/jul</button>
+    </div>
+    <button class="nav-link" onclick="goTo('resumo')">Resumo</button>
+    <button class="nav-link" onclick="goTo('topao')">Topão</button>
+    <button class="nav-link" onclick="goTo('topo')">Topo</button>
+    <button class="nav-link" onclick="goTo('meio')">Meio</button>
+    <button class="nav-link" onclick="goTo('comparativo')">Comparativo</button>
     <a href="#segmentacao">Segmentação</a>
-    <a href="#melhorias">Melhorias</a>
-    <a href="#status">Status</a>
+    <button class="nav-link" onclick="goTo('melhorias')">Melhorias</button>
+    <button class="nav-link" onclick="goTo('status')">Status</button>
   </div>
 </nav>
 
-<!-- ==================== RESUMO EXECUTIVO ==================== -->
-<section id="resumo" class="section">
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║                  PERÍODO 1 — Até 16/jul                     ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+<div id="data-p1" class="period-data">
+
+<!-- RESUMO P1 -->
+<section id="resumo-p1" class="section">
   <div class="container">
     <div class="section-title">Resumo Executivo</div>
     <p class="section-desc">Consolidado de todas as campanhas ativas no Meta Ads. Dados acumulados até 16/07/2026.</p>
@@ -560,21 +641,21 @@ tr:last-child td { border-bottom: none; }
     <div class="alert alert-yellow">
       <span class="alert-icon">&#9888;&#65039;</span>
       <div>
-        <strong>Dados iniciais.</strong> O Topão acumula apenas 4 dias de veiculação (desde 13/07) e as campanhas de Topo e Meio de Funil têm apenas 2 dias (desde 15/07). Os números são promissores, mas é cedo para conclusões definitivas — o algoritmo do Meta precisa de 7 a 14 dias para sair da fase de aprendizado e estabilizar a entrega. Os resultados abaixo devem ser lidos como sinais iniciais, não como tendência consolidada.
+        <strong>Dados iniciais.</strong> O Topão acumula apenas 4 dias de veiculação (desde 13/07) e as campanhas de Topo e Meio de Funil têm apenas 2 dias (desde 15/07). Os números são promissores, mas é cedo para conclusões definitivas — o algoritmo do Meta precisa de 7 a 14 dias para sair da fase de aprendizado e estabilizar a entrega.
       </div>
     </div>
 
     <div class="alert alert-green">
       <span class="alert-icon">&#9989;</span>
       <div>
-        <strong>Sinal positivo.</strong> 13 compras rastreadas pelo Pixel com R$ 232 investidos representam um CPA de R$ 17,87 — muito abaixo da meta de R$ 25 a R$ 50 definida no planejamento. A receita atribuída ao Topão e Topo (R$ 4.720) gera um ROAS de 32,9x. Mesmo considerando que são dados iniciais, o desempenho é excelente.
+        <strong>Sinal positivo.</strong> 13 compras rastreadas pelo Pixel com R$ 232 investidos representam um CPA de R$ 17,87 — muito abaixo da meta de R$ 25 a R$ 50 definida no planejamento. A receita atribuída ao Topão e Topo (R$ 4.720) gera um ROAS de 32,9x.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== TOPÃO DE FUNIL ==================== -->
-<section id="topao" class="section">
+<!-- TOPÃO P1 -->
+<section id="topao-p1" class="section">
   <div class="container">
     <div class="section-title">
       <span style="color: var(--gray-400);">&#9899;</span>
@@ -670,7 +751,6 @@ tr:last-child td { border-bottom: none; }
       </div>
     </div>
 
-    <!-- Gráfico comparativo -->
     <div class="card">
       <div class="card-title">Comparativo: Oeste Baiano vs. MATOPIBA</div>
       <div class="chart-bar-group">
@@ -711,14 +791,14 @@ tr:last-child td { border-bottom: none; }
     <div class="alert alert-green">
       <span class="alert-icon">&#128161;</span>
       <div>
-        <strong>Análise.</strong> O Topão está cumprindo sua função de alimentar os baldes de remarketing: 30 mil pessoas alcançadas em 4 dias com CPM extremamente baixo (R$ 2,14). O MATOPIBA surpreendeu com 2 compras — algo que não era esperado de uma campanha de engajamento. O CTR do MATOPIBA (0,30%) é o dobro do Oeste Baiano (0,15%), indicando que o vídeo institucional gera mais cliques no público estadual. A frequência está saudável (abaixo de 1,5) em ambos os conjuntos.
+        <strong>Análise.</strong> O Topão está cumprindo sua função de alimentar os baldes de remarketing: 30 mil pessoas alcançadas em 4 dias com CPM extremamente baixo (R$ 2,14). O MATOPIBA surpreendeu com 2 compras — algo que não era esperado de uma campanha de engajamento. A frequência está saudável (abaixo de 1,5) em ambos os conjuntos.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== TOPO DE FUNIL ==================== -->
-<section id="topo" class="section">
+<!-- TOPO P1 -->
+<section id="topo-p1" class="section">
   <div class="container">
     <div class="section-title">
       <span style="color: var(--blue);">&#128309;</span>
@@ -816,7 +896,6 @@ tr:last-child td { border-bottom: none; }
       </div>
     </div>
 
-    <!-- Gráficos -->
     <div class="card">
       <div class="card-title">Compras por Conjunto</div>
       <div class="chart-bar-group">
@@ -829,20 +908,8 @@ tr:last-child td { border-bottom: none; }
           <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:25%;">2 compras — R$ 12,68/compra — ROAS 31,5x</div></div>
         </div>
       </div>
-      <div class="chart-bar-group" style="margin-top:24px;">
-        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Receita atribuída</div>
-        <div class="chart-bar-row">
-          <div class="chart-bar-label">Oeste Baiano</div>
-          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">R$ 3.120</div></div>
-        </div>
-        <div class="chart-bar-row">
-          <div class="chart-bar-label">MATOPIBA</div>
-          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:25.6%;">R$ 800</div></div>
-        </div>
-      </div>
     </div>
 
-    <!-- Gráficos de engajamento -->
     <div class="card">
       <div class="card-title">Comparativo de Engajamento</div>
       <div class="chart-bar-group">
@@ -872,21 +939,21 @@ tr:last-child td { border-bottom: none; }
     <div class="alert alert-green">
       <span class="alert-icon">&#127942;</span>
       <div>
-        <strong>Melhor campanha até o momento.</strong> O Topo de Funil Oeste Baiano é o destaque absoluto: 8 compras em 2 dias com CPA de R$ 4,87 e ROAS de 80x. Isso valida a hipótese da divisão geográfica — a proximidade com o evento (LEM e região) gera muito mais conversão. O CTR de 2,2% em ambos os conjuntos indica que o vídeo institucional está funcionando bem como criativo de prospecção. A frequência está saudável. Dados ainda iniciais (2 dias), mas o sinal é excelente.
+        <strong>Melhor campanha até o momento.</strong> O Topo de Funil Oeste Baiano é o destaque absoluto: 8 compras em 2 dias com CPA de R$ 4,87 e ROAS de 80x. Isso valida a hipótese da divisão geográfica — a proximidade com o evento (LEM e região) gera muito mais conversão. O CTR de 2,2% em ambos os conjuntos indica que o vídeo institucional está funcionando bem como criativo de prospecção.
       </div>
     </div>
 
     <div class="alert alert-blue">
       <span class="alert-icon">&#128200;</span>
       <div>
-        <strong>Ticket médio rastreado.</strong> A receita atribuída pelo Pixel indica um valor médio por compra de ~R$ 390 a R$ 400 — superior ao preço do ingresso individual (R$ 180). Isso sugere que algumas compras incluem mais de 1 ingresso por transação, o que é positivo: o público está levando colegas e companheiros de trabalho.
+        <strong>Ticket médio rastreado.</strong> A receita atribuída pelo Pixel indica um valor médio por compra de ~R$ 390 a R$ 400 — superior ao preço do ingresso individual (R$ 180). Isso sugere que algumas compras incluem mais de 1 ingresso por transação.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== MEIO DE FUNIL ==================== -->
-<section id="meio" class="section">
+<!-- MEIO P1 -->
+<section id="meio-p1" class="section">
   <div class="container">
     <div class="section-title">
       <span style="color: var(--purple);">&#128995;</span>
@@ -983,7 +1050,6 @@ tr:last-child td { border-bottom: none; }
       </div>
     </div>
 
-    <!-- Gráfico de compras -->
     <div class="card">
       <div class="card-title">Compras por Conjunto</div>
       <div class="chart-bar-group">
@@ -999,7 +1065,6 @@ tr:last-child td { border-bottom: none; }
       </div>
     </div>
 
-    <!-- Gráficos de engajamento -->
     <div class="card">
       <div class="card-title">Comparativo de Engajamento</div>
       <div class="chart-bar-group">
@@ -1029,21 +1094,21 @@ tr:last-child td { border-bottom: none; }
     <div class="alert alert-red">
       <span class="alert-icon">&#128680;</span>
       <div>
-        <strong>Anomalia de tracking detectada.</strong> O Pixel registrou 1 compra no Oeste Baiano com valor de conversão de R$ 43.192 — um valor incompatível com o preço do ingresso (R$ 180). Isso indica um possível erro na configuração do evento Purchase na Congresse.me: o Pixel pode estar enviando um valor acumulado em vez do valor da transação individual. <strong>Recomendação:</strong> verificar a implementação do Pixel na Congresse.me para garantir que o evento Purchase dispara com o valor correto de cada transação.
+        <strong>Anomalia de tracking detectada.</strong> O Pixel registrou 1 compra no Oeste Baiano com valor de conversão de R$ 43.192 — um valor incompatível com o preço do ingresso (R$ 180). O Pixel pode estar enviando um valor acumulado em vez do valor da transação individual. Verificar a implementação do evento Purchase na Congresse.me.
       </div>
     </div>
 
     <div class="alert alert-yellow">
       <span class="alert-icon">&#128161;</span>
       <div>
-        <strong>Análise.</strong> O Meio de Funil está com 2 dias de dados — é cedo para avaliar. A frequência do Oeste Baiano (2,07) já está no limite; por se tratar de público personalizado (audiência morna), a base é menor e satura mais rápido. O CTR do Oeste Baiano (1,13%) é superior ao MATOPIBA (0,79%), o que faz sentido: o público morno próximo ao evento tem mais interesse. O MATOPIBA ainda não gerou compras, mas 29 visualizações de página indicam que há tráfego qualificado chegando. Manter ativo e reavaliar com 7 dias de dados.
+        <strong>Análise.</strong> O Meio de Funil está com 2 dias de dados — é cedo para avaliar. A frequência do Oeste Baiano (2,07) já está no limite; por se tratar de público personalizado (audiência morna), a base é menor e satura mais rápido. O CTR do Oeste Baiano (1,13%) é superior ao MATOPIBA (0,79%). Manter ativo e reavaliar com 7 dias de dados.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== COMPARATIVO GERAL ==================== -->
-<section id="comparativo" class="section">
+<!-- COMPARATIVO P1 -->
+<section id="comparativo-p1" class="section">
   <div class="container">
     <div class="section-title">Comparativo Geral — Oeste Baiano vs. MATOPIBA</div>
     <p class="section-desc">Visão consolidada da performance por região geográfica em todas as campanhas.</p>
@@ -1118,7 +1183,6 @@ tr:last-child td { border-bottom: none; }
       <div class="card-title">Distribuição de Compras por Campanha e Região</div>
       <div class="chart-bar-group">
         <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.5px;">Compras rastreadas pelo Pixel</div>
-
         <div style="margin-bottom:16px;">
           <div style="font-size:0.75rem; color:var(--gray-400); margin-bottom:6px;">Topão de Funil (ThruPlay)</div>
           <div class="chart-bar-row">
@@ -1132,7 +1196,6 @@ tr:last-child td { border-bottom: none; }
             <div class="chart-bar-value" style="color:var(--green);">R$ 800</div>
           </div>
         </div>
-
         <div style="margin-bottom:16px;">
           <div style="font-size:0.75rem; color:var(--gray-400); margin-bottom:6px;">Topo de Funil (Conversão)</div>
           <div class="chart-bar-row">
@@ -1146,7 +1209,6 @@ tr:last-child td { border-bottom: none; }
             <div class="chart-bar-value" style="color:var(--green);">R$ 800</div>
           </div>
         </div>
-
         <div>
           <div style="font-size:0.75rem; color:var(--gray-400); margin-bottom:6px;">Meio de Funil (Conversão)</div>
           <div class="chart-bar-row">
@@ -1166,85 +1228,8 @@ tr:last-child td { border-bottom: none; }
   </div>
 </section>
 
-<!-- ==================== SEGMENTAÇÃO ==================== -->
-<section id="segmentacao" class="section">
-  <div class="container">
-    <div class="section-title">Segmentação Atual</div>
-    <p class="section-desc">Configuração de públicos e interesses em cada nível de campanha.</p>
-
-    <!-- Topão + Topo -->
-    <div class="card">
-      <div class="card-title">Topão + Topo de Funil — Interesses</div>
-      <p style="font-size:0.82rem; color:var(--gray-400); margin-bottom:14px;">Mesma configuração de interesses em ambas as campanhas. Modo: Advantage+ (Sua sugestão).</p>
-      <div class="seg-group">
-        <div class="seg-title">&#127919; Interesses incluídos</div>
-        <div class="seg-tags">
-          <span class="seg-tag included">Engenharia agronômica</span>
-          <span class="seg-tag included">Agronomia</span>
-          <span class="seg-tag included">Fertilizante</span>
-          <span class="seg-tag included">Campo (agricultura)</span>
-          <span class="seg-tag included">Solo</span>
-        </div>
-      </div>
-      <div class="seg-group">
-        <div class="seg-title">&#128101; Idade</div>
-        <div class="seg-tags">
-          <span class="seg-tag">22 a 55 anos</span>
-        </div>
-      </div>
-      <div class="seg-group">
-        <div class="seg-title">&#128506; Geolocalização por conjunto</div>
-        <div class="seg-tags">
-          <span class="seg-tag" style="border-color:rgba(59,130,246,0.3); color:var(--blue);">CJ01 — Oeste Baiano (raio 100 km de LEM)</span>
-          <span class="seg-tag" style="border-color:rgba(0,184,148,0.3); color:var(--green);">CJ02 — MATOPIBA (BA + TO + MA + PI)</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Meio de Funil -->
-    <div class="card">
-      <div class="card-title">Meio de Funil — Público Personalizado + Interesses</div>
-      <p style="font-size:0.82rem; color:var(--gray-400); margin-bottom:14px;">Audiência morna: combinação de públicos personalizados + lookalike + interesses. Modo: Advantage+ (Sua sugestão).</p>
-      <div class="seg-group">
-        <div class="seg-title">&#9989; Públicos personalizados incluídos</div>
-        <div class="seg-tags">
-          <span class="seg-tag included">Engajados — FBA, SBSA, CRBA, BAS — 180D</span>
-          <span class="seg-tag included">ENGAJOU INSTA 30D</span>
-          <span class="seg-tag included">VISITOU PERFIL 30D</span>
-          <span class="seg-tag included">ENGAJOU ANUNCIO 30D</span>
-          <span class="seg-tag included">Semelhante (1%) — COMPRADORES 13.07.26</span>
-        </div>
-      </div>
-      <div class="seg-group">
-        <div class="seg-title">&#10060; Públicos personalizados excluídos</div>
-        <div class="seg-tags">
-          <span class="seg-tag excluded">COMPRADORES 13.07.26</span>
-          <span class="seg-tag excluded">PAGE VIEW 30D SBSA 2026</span>
-        </div>
-      </div>
-      <div class="seg-group">
-        <div class="seg-title">&#127919; Interesses incluídos</div>
-        <div class="seg-tags">
-          <span class="seg-tag included">Engenharia agronômica</span>
-          <span class="seg-tag included">Agronomia</span>
-          <span class="seg-tag included">Fertilizante</span>
-          <span class="seg-tag included">Campo (agricultura)</span>
-          <span class="seg-tag included">Solo</span>
-        </div>
-      </div>
-      <div class="seg-group">
-        <div class="seg-title">&#128101; Idade &amp; Gênero</div>
-        <div class="seg-tags">
-          <span class="seg-tag">22 a 55 anos</span>
-          <span class="seg-tag">Todos os gêneros</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== MELHORIAS ==================== -->
-<section id="melhorias" class="section">
+<!-- MELHORIAS P1 -->
+<section id="melhorias-p1" class="section">
   <div class="container">
     <div class="section-title">Diagnóstico e Melhorias</div>
     <p class="section-desc">Pontos de atenção identificados e ações recomendadas para as próximas semanas.</p>
@@ -1254,61 +1239,44 @@ tr:last-child td { border-bottom: none; }
         <div class="reco-number">01</div>
         <span class="badge badge-red" style="margin-bottom:10px;">Urgente</span>
         <div class="reco-title">Verificar Pixel na Congresse.me</div>
-        <div class="reco-text">
-          O Meio de Funil registrou 1 compra com valor de R$ 43.192 — um valor impossível para ingressos de R$ 180. O evento Purchase provavelmente está disparando com valor acumulado ou incorreto. Isso compromete a leitura do ROAS e pode afetar a otimização do algoritmo. Prioridade: verificar com a equipe da Congresse.me qual valor está sendo enviado no data layer do Pixel.
-        </div>
+        <div class="reco-text">O Meio de Funil registrou 1 compra com valor de R$ 43.192 — um valor impossível para ingressos de R$ 180. O evento Purchase provavelmente está disparando com valor acumulado ou incorreto. Prioridade: verificar com a equipe da Congresse.me qual valor está sendo enviado no data layer do Pixel.</div>
       </div>
-
       <div class="reco-card" style="border-color: var(--green);">
         <div class="reco-number">02</div>
         <span class="badge badge-green" style="margin-bottom:10px;">Oportunidade</span>
         <div class="reco-title">Considerar escalar o Topo Oeste Baiano</div>
-        <div class="reco-text">
-          8 compras em 2 dias com CPA de R$ 4,87 é uma performance excepcional. Quando os dados estabilizarem (7+ dias), se o CPA se mantiver abaixo de R$ 15, considerar realocar parte da verba do Topão ou MATOPIBA para este conjunto. Não escalar agora — deixar o algoritmo estabilizar primeiro.
-        </div>
+        <div class="reco-text">8 compras em 2 dias com CPA de R$ 4,87 é uma performance excepcional. Quando os dados estabilizarem (7+ dias), se o CPA se mantiver abaixo de R$ 15, considerar realocar parte da verba do Topão ou MATOPIBA para este conjunto.</div>
       </div>
-
       <div class="reco-card" style="border-color: var(--yellow);">
         <div class="reco-number">03</div>
         <span class="badge badge-yellow" style="margin-bottom:10px;">Atenção</span>
         <div class="reco-title">Monitorar frequência do Meio Oeste Baiano</div>
-        <div class="reco-text">
-          A frequência do Meio de Funil no Oeste Baiano já está em 2,07 com apenas 2 dias de veiculação. Por ser público personalizado (audiência morna), a base é menor e satura mais rápido. Acompanhar: se passar de 3,0 na próxima semana, pausar e diversificar os criativos ou unificar os 2 conjuntos em 1 só.
-        </div>
+        <div class="reco-text">A frequência do Meio de Funil no Oeste Baiano já está em 2,07 com apenas 2 dias de veiculação. Acompanhar: se passar de 3,0 na próxima semana, pausar e diversificar os criativos ou unificar os 2 conjuntos em 1 só.</div>
       </div>
-
       <div class="reco-card" style="border-color: var(--orange);">
         <div class="reco-number">04</div>
         <span class="badge badge-orange" style="margin-bottom:10px;">Produção</span>
         <div class="reco-title">Acelerar entrega dos criativos novos</div>
-        <div class="reco-text">
-          Os criativos novos planejados (21 peças) ainda não foram entregues. Isso impede a ativação do Fundo de Funil e limita a variação de anúncios nas campanhas ativas. Atualmente, o Topão e o Topo rodam apenas 1 criativo (vídeo institucional) e o Meio roda 3 carrosséis de palestrantes. Mais criativos = mais testes = mais oportunidade de escalar o que funciona.
-        </div>
+        <div class="reco-text">Os criativos novos planejados (21 peças) ainda não foram entregues. Isso impede a ativação do Fundo de Funil e limita a variação de anúncios nas campanhas ativas. Mais criativos = mais testes = mais oportunidade de escalar o que funciona.</div>
       </div>
-
       <div class="reco-card" style="border-color: var(--blue);">
         <div class="reco-number">05</div>
         <span class="badge badge-blue" style="margin-bottom:10px;">Próximo passo</span>
         <div class="reco-title">Ativar Fundo de Funil assim que houver criativos</div>
-        <div class="reco-text">
-          O Fundo de Funil (remarketing) ainda não foi ativado. Com o Topão e o Topo alimentando os baldes de público (30 mil alcançados no Topão + visitantes do site), já existe audiência morna suficiente para iniciar o remarketing. Falta apenas os criativos com ângulo de urgência, countdown e preço. Quando os criativos ficarem prontos, o Fundo pode ser ativado imediatamente.
-        </div>
+        <div class="reco-text">Com o Topão e o Topo alimentando os baldes de público (30 mil alcançados no Topão + visitantes do site), já existe audiência morna suficiente para iniciar o remarketing. Falta apenas os criativos com ângulo de urgência, countdown e preço.</div>
       </div>
-
       <div class="reco-card" style="border-color: var(--purple);">
         <div class="reco-number">06</div>
         <span class="badge badge-blue" style="margin-bottom:10px;">Otimização</span>
         <div class="reco-title">Aguardar 7 dias antes de otimizações agressivas</div>
-        <div class="reco-text">
-          O algoritmo do Meta precisa de 7 a 14 dias para sair da fase de aprendizado. Otimizações prematuras (pausar conjuntos, redistribuir verba, trocar criativos) reiniciam o aprendizado e prejudicam a performance. A recomendação é manter a estrutura atual até pelo menos 22/07, quando teremos dados mais confiáveis para tomar decisões estratégicas de redistribuição.
-        </div>
+        <div class="reco-text">O algoritmo do Meta precisa de 7 a 14 dias para sair da fase de aprendizado. A recomendação é manter a estrutura atual até pelo menos 22/07, quando teremos dados mais confiáveis para tomar decisões estratégicas de redistribuição.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== STATUS GERAL ==================== -->
-<section id="status" class="section">
+<!-- STATUS P1 -->
+<section id="status-p1" class="section">
   <div class="container">
     <div class="section-title">Status Geral das Campanhas</div>
     <p class="section-desc">O que está ativo, o que está pendente e quais criativos estão em uso.</p>
@@ -1361,57 +1329,14 @@ tr:last-child td { border-bottom: none; }
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Topão</td>
-              <td>Vídeo institucional</td>
-              <td>Reels/Vídeo</td>
-              <td>Existente no perfil</td>
-              <td class="text-center"><span class="badge badge-green">Ativo</span></td>
-            </tr>
-            <tr>
-              <td>Topo</td>
-              <td>Vídeo institucional</td>
-              <td>Reels/Vídeo</td>
-              <td>Existente no perfil</td>
-              <td class="text-center"><span class="badge badge-green">Ativo</span></td>
-            </tr>
-            <tr>
-              <td>Meio</td>
-              <td>Carrossel palestrantes (1 de 3)</td>
-              <td>Carrossel 5 cards</td>
-              <td>Cards existentes no feed</td>
-              <td class="text-center"><span class="badge badge-green">Ativo</span></td>
-            </tr>
-            <tr>
-              <td>Meio</td>
-              <td>Carrossel palestrantes (2 de 3)</td>
-              <td>Carrossel 5 cards</td>
-              <td>Cards existentes no feed</td>
-              <td class="text-center"><span class="badge badge-green">Ativo</span></td>
-            </tr>
-            <tr>
-              <td>Meio</td>
-              <td>Carrossel palestrantes (3 de 3)</td>
-              <td>Carrossel 5 cards</td>
-              <td>Cards existentes no feed</td>
-              <td class="text-center"><span class="badge badge-green">Ativo</span></td>
-            </tr>
-            <tr>
-              <td>Fundo</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td class="text-center"><span class="badge badge-gray">Pendente</span></td>
-            </tr>
+            <tr><td>Topão</td><td>Vídeo institucional</td><td>Reels/Vídeo</td><td>Existente no perfil</td><td class="text-center"><span class="badge badge-green">Ativo</span></td></tr>
+            <tr><td>Topo</td><td>Vídeo institucional</td><td>Reels/Vídeo</td><td>Existente no perfil</td><td class="text-center"><span class="badge badge-green">Ativo</span></td></tr>
+            <tr><td>Meio</td><td>Carrossel palestrantes (1 de 3)</td><td>Carrossel 5 cards</td><td>Cards existentes no feed</td><td class="text-center"><span class="badge badge-green">Ativo</span></td></tr>
+            <tr><td>Meio</td><td>Carrossel palestrantes (2 de 3)</td><td>Carrossel 5 cards</td><td>Cards existentes no feed</td><td class="text-center"><span class="badge badge-green">Ativo</span></td></tr>
+            <tr><td>Meio</td><td>Carrossel palestrantes (3 de 3)</td><td>Carrossel 5 cards</td><td>Cards existentes no feed</td><td class="text-center"><span class="badge badge-green">Ativo</span></td></tr>
+            <tr><td>Fundo</td><td>—</td><td>—</td><td>—</td><td class="text-center"><span class="badge badge-gray">Pendente</span></td></tr>
           </tbody>
         </table>
-      </div>
-
-      <div class="alert alert-yellow" style="margin-top:16px;">
-        <span class="alert-icon">&#128197;</span>
-        <div>
-          <strong>Criativos novos (21 peças planejadas):</strong> ainda em produção pela equipe de design. Quando entregues, serão distribuídos pelas 4 campanhas conforme o planejamento de criativos — permitindo testes A/B e ativação do Fundo de Funil com ângulos de urgência, countdown e prova social.
-        </div>
       </div>
     </div>
 
@@ -1437,13 +1362,930 @@ tr:last-child td { border-bottom: none; }
   </div>
 </section>
 
+</div><!-- /data-p1 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║               PERÍODO 2 — 17 a 24/jul                       ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+<div id="data-p2" class="period-data active">
+
+<!-- RESUMO P2 -->
+<section id="resumo-p2" class="section">
+  <div class="container">
+    <div class="section-title">Resumo Executivo</div>
+    <p class="section-desc">Consolidado de todas as campanhas ativas no Meta Ads. Período: 17 a 24/07/2026 (7 dias).</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card highlight">
+        <div class="kpi-label">Compras no site</div>
+        <div class="kpi-value orange">25</div>
+        <div class="kpi-sub">Topo (23) + Meio (2)</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Receita estimada</div>
+        <div class="kpi-value green">R$ 4.500</div>
+        <div class="kpi-sub">25 compras × R$ 180</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Total investido</div>
+        <div class="kpi-value">R$ 987</div>
+        <div class="kpi-sub">3 campanhas ativas</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">CPA médio</div>
+        <div class="kpi-value blue">R$ 39,48</div>
+        <div class="kpi-sub">Meta: R$ 25-50</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Alcance combinado</div>
+        <div class="kpi-value">72.907</div>
+        <div class="kpi-sub">Com sobreposição entre campanhas</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Cliques no link</div>
+        <div class="kpi-value">865</div>
+        <div class="kpi-sub">Para a Congresse.me</div>
+      </div>
+    </div>
+
+    <div class="alert alert-green">
+      <span class="alert-icon">&#9989;</span>
+      <div>
+        <strong>Campanha saudável.</strong> 25 compras em 7 dias com CPA de R$ 39,48 — dentro da meta de R$ 25 a R$ 50. O Topo de Funil segue como a máquina de conversão da campanha (23 das 25 compras). A receita estimada de R$ 4.500 gera um ROAS real de 4,56x sobre o investimento de R$ 987.
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      <span class="alert-icon">&#128680;</span>
+      <div>
+        <strong>Alerta: Meio de Funil em situação crítica.</strong> O Meio investiu R$ 388 para gerar apenas 2 compras (CPA R$ 194). Na mesma semana, o Topo gerou 23 compras com investimento similar (R$ 409). A frequência do Meio Oeste Baiano chegou a 6,69 — fadiga severa. Recomendação: realocar orçamento do Meio para o Topo.
+      </div>
+    </div>
+
+    <div class="alert alert-yellow">
+      <span class="alert-icon">&#9888;&#65039;</span>
+      <div>
+        <strong>Anomalia de Pixel persistente.</strong> O Topo Oeste Baiano registra receita de R$ 36.750 para 14 compras (R$ 2.625/compra) — incompatível com o ingresso de R$ 180. Os valores de receita e ROAS do Pixel estão inflados. Usar o número de compras como métrica principal.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPÃO P2 -->
+<section id="topao-p2" class="section">
+  <div class="container">
+    <div class="section-title">
+      <span style="color: var(--gray-400);">&#9899;</span>
+      Topão de Funil — Compra de Dados
+    </div>
+    <p class="section-desc">Objetivo: ThruPlay (Engajamento) · Período: 17 a 24/jul · 7 dias · Criativo: vídeo institucional</p>
+
+    <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+      <div class="kpi-card">
+        <div class="kpi-label">Investido</div>
+        <div class="kpi-value" style="font-size:1.4rem;">R$ 190,62</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">ThruPlays</div>
+        <div class="kpi-value" style="font-size:1.4rem;">10.170</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Custo/ThruPlay</div>
+        <div class="kpi-value green" style="font-size:1.4rem;">R$ 0,019</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Alcance</div>
+        <div class="kpi-value" style="font-size:1.4rem;">52.621</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Compras</div>
+        <div class="kpi-value" style="font-size:1.4rem;">0</div>
+        <div class="kpi-sub">Conforme esperado</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Desempenho por Conjunto</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Conjunto</th>
+              <th class="text-right">Investido</th>
+              <th class="text-right">ThruPlays</th>
+              <th class="text-right">CPV</th>
+              <th class="text-right">CPM</th>
+              <th class="text-right">Alcance</th>
+              <th class="text-right">Freq.</th>
+              <th class="text-right">Cliques</th>
+              <th class="text-right">CTR</th>
+              <th class="text-right">Views</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-blue">Oeste Baiano</span></td>
+              <td class="text-right">R$ 115,74</td>
+              <td class="text-right val-bold">4.033</td>
+              <td class="text-right">R$ 0,029</td>
+              <td class="text-right">R$ 3,02</td>
+              <td class="text-right">25.330</td>
+              <td class="text-right">1,51</td>
+              <td class="text-right">87</td>
+              <td class="text-right">0,23%</td>
+              <td class="text-right">50</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-green">MATOPIBA</span></td>
+              <td class="text-right">R$ 74,88</td>
+              <td class="text-right val-bold">6.137</td>
+              <td class="text-right val-green">R$ 0,012</td>
+              <td class="text-right val-green">R$ 2,39</td>
+              <td class="text-right">27.291</td>
+              <td class="text-right val-green">1,15</td>
+              <td class="text-right">76</td>
+              <td class="text-right">0,24%</td>
+              <td class="text-right">44</td>
+            </tr>
+            <tr class="row-total">
+              <td>Total</td>
+              <td class="text-right">R$ 190,62</td>
+              <td class="text-right">10.170</td>
+              <td class="text-right">R$ 0,019</td>
+              <td class="text-right">R$ 2,74</td>
+              <td class="text-right">52.621</td>
+              <td class="text-right">1,32</td>
+              <td class="text-right">163</td>
+              <td class="text-right">0,23%</td>
+              <td class="text-right">94</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comparativo: Oeste Baiano vs. MATOPIBA</div>
+      <div class="chart-bar-group">
+        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">ThruPlays</div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:66%;">4.033</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:100%;">6.137</div></div>
+        </div>
+      </div>
+      <div class="chart-bar-group">
+        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Cliques no link</div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">87</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:87%;">76</div></div>
+        </div>
+      </div>
+      <div class="chart-bar-group">
+        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">CPM (menor é melhor)</div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">R$ 3,02</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:79%;">R$ 2,39 &#9989;</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-green">
+      <span class="alert-icon">&#128161;</span>
+      <div>
+        <strong>Topão saudável.</strong> Frequências baixas (abaixo de 1,5), alcance de 52 mil pessoas em 7 dias. O MATOPIBA entrega 52% mais ThruPlays gastando 35% menos — melhor custo-benefício da campanha. O CPV de R$ 0,012 no MATOPIBA é excepcionalmente baixo. A campanha está cumprindo perfeitamente sua função de alimentar os baldes de remarketing.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPO P2 -->
+<section id="topo-p2" class="section">
+  <div class="container">
+    <div class="section-title">
+      <span style="color: var(--blue);">&#128309;</span>
+      Topo de Funil — Prospecção Fria
+    </div>
+    <p class="section-desc">Objetivo: Compras no site (Purchase) · Período: 17 a 24/jul · 7 dias · Criativo: vídeo institucional</p>
+
+    <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+      <div class="kpi-card highlight">
+        <div class="kpi-label">Compras</div>
+        <div class="kpi-value orange" style="font-size:1.4rem;">23</div>
+        <div class="kpi-sub">Em 7 dias</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">CPA</div>
+        <div class="kpi-value green" style="font-size:1.4rem;">R$ 17,77</div>
+        <div class="kpi-sub">Meta: R$ 25-50</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Investido</div>
+        <div class="kpi-value" style="font-size:1.4rem;">R$ 408,67</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">CTR</div>
+        <div class="kpi-value" style="font-size:1.4rem;">1,22%</div>
+        <div class="kpi-sub">Acima da média</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Freq. média</div>
+        <div class="kpi-value yellow" style="font-size:1.4rem;">2,92</div>
+        <div class="kpi-sub">Monitorar</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Desempenho por Conjunto</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Conjunto</th>
+              <th class="text-right">Investido</th>
+              <th class="text-right">Compras</th>
+              <th class="text-right">CPA</th>
+              <th class="text-right">Receita*</th>
+              <th class="text-right">ROAS*</th>
+              <th class="text-right">Alcance</th>
+              <th class="text-right">CPM</th>
+              <th class="text-right">Freq.</th>
+              <th class="text-right">Cliques</th>
+              <th class="text-right">CTR</th>
+              <th class="text-right">Views</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-blue">Oeste Baiano</span></td>
+              <td class="text-right">R$ 236,86</td>
+              <td class="text-right val-orange">14</td>
+              <td class="text-right val-green">R$ 16,92</td>
+              <td class="text-right" style="color:var(--gray-500);">R$ 36.750*</td>
+              <td class="text-right" style="color:var(--gray-500);">155,2x*</td>
+              <td class="text-right">5.001</td>
+              <td class="text-right">R$ 12,79</td>
+              <td class="text-right val-orange">3,70</td>
+              <td class="text-right">219</td>
+              <td class="text-right">1,18%</td>
+              <td class="text-right">171</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-green">MATOPIBA</span></td>
+              <td class="text-right">R$ 171,81</td>
+              <td class="text-right val-orange">9</td>
+              <td class="text-right val-green">R$ 19,09</td>
+              <td class="text-right">R$ 3.700</td>
+              <td class="text-right val-green">21,5x</td>
+              <td class="text-right">6.376</td>
+              <td class="text-right val-green">R$ 11,69</td>
+              <td class="text-right">2,30</td>
+              <td class="text-right">187</td>
+              <td class="text-right">1,27%</td>
+              <td class="text-right">145</td>
+            </tr>
+            <tr class="row-total">
+              <td>Total</td>
+              <td class="text-right">R$ 408,67</td>
+              <td class="text-right">23</td>
+              <td class="text-right">R$ 17,77</td>
+              <td class="text-right" colspan="2" style="color:var(--gray-500); font-size:0.75rem;">Pixel com anomalia*</td>
+              <td class="text-right">11.377</td>
+              <td class="text-right">R$ 12,30</td>
+              <td class="text-right">2,92</td>
+              <td class="text-right">406</td>
+              <td class="text-right">1,22%</td>
+              <td class="text-right">316</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size:0.72rem; color:var(--gray-500); margin-top:8px;">* Receita e ROAS do Oeste Baiano inflados por anomalia no Pixel — usar número de compras como métrica principal</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Compras por Conjunto</div>
+      <div class="chart-bar-group">
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">14 compras — R$ 16,92/compra</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:64%;">9 compras — R$ 19,09/compra</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comparativo de Engajamento</div>
+      <div class="chart-bar-group">
+        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Cliques no link</div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">219 cliques — CTR 1,18%</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:85%;">187 cliques — CTR 1,27%</div></div>
+        </div>
+      </div>
+      <div class="chart-bar-group" style="margin-top:24px;">
+        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Visualizações da página de destino</div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">171 visualizações</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:85%;">145 visualizações</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-green">
+      <span class="alert-icon">&#127942;</span>
+      <div>
+        <strong>Melhor campanha.</strong> 23 compras a R$ 17,77/compra é excelente — CPA bem abaixo da meta (R$ 25-50). O Topo de Funil concentra 92% de todas as conversões da semana. O Oeste Baiano domina com 14 compras (61%) e o menor CPA (R$ 16,92), confirmando que a proximidade com o evento gera mais conversão.
+      </div>
+    </div>
+
+    <div class="alert alert-yellow">
+      <span class="alert-icon">&#9888;&#65039;</span>
+      <div>
+        <strong>Atenção: frequência do Oeste Baiano em 3,70.</strong> Está se aproximando do limite de saturação. Criativos novos são necessários para renovar a atenção do público e manter a performance. Se a frequência ultrapassar 4,0 sem novos criativos, esperar queda no CTR e aumento do CPA.
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      <span class="alert-icon">&#128680;</span>
+      <div>
+        <strong>Anomalia de Pixel.</strong> Receita atribuída de R$ 36.750 para 14 compras no Oeste Baiano (R$ 2.625/compra) é incompatível com o ingresso de R$ 180. Considerar o número de compras como métrica principal, não o ROAS reportado pelo Pixel.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEIO P2 -->
+<section id="meio-p2" class="section">
+  <div class="container">
+    <div class="section-title">
+      <span style="color: var(--purple);">&#128995;</span>
+      Meio de Funil — Audiência Morna
+    </div>
+    <p class="section-desc">Objetivo: Compras no site (Purchase) · Período: 17 a 24/jul · 7 dias · Criativos: 3 carrosséis de palestrantes</p>
+
+    <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+      <div class="kpi-card" style="border-color: var(--red);">
+        <div class="kpi-label">Compras</div>
+        <div class="kpi-value red" style="font-size:1.4rem;">2</div>
+        <div class="kpi-sub">Performance crítica</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Investido</div>
+        <div class="kpi-value" style="font-size:1.4rem;">R$ 387,75</div>
+      </div>
+      <div class="kpi-card" style="border-color: var(--red);">
+        <div class="kpi-label">CPA</div>
+        <div class="kpi-value red" style="font-size:1.4rem;">R$ 193,88</div>
+        <div class="kpi-sub">4x acima da meta</div>
+      </div>
+      <div class="kpi-card" style="border-color: var(--red);">
+        <div class="kpi-label">Freq. média</div>
+        <div class="kpi-value red" style="font-size:1.4rem;">5,07</div>
+        <div class="kpi-sub">Fadiga detectada</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">ROAS</div>
+        <div class="kpi-value red" style="font-size:1.4rem;">1,70x</div>
+        <div class="kpi-sub">Quase no prejuízo</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Desempenho por Conjunto</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Conjunto</th>
+              <th class="text-right">Investido</th>
+              <th class="text-right">Compras</th>
+              <th class="text-right">CPA</th>
+              <th class="text-right">Receita</th>
+              <th class="text-right">ROAS</th>
+              <th class="text-right">Alcance</th>
+              <th class="text-right">Impr.</th>
+              <th class="text-right">CPM</th>
+              <th class="text-right">Freq.</th>
+              <th class="text-right">Cliques</th>
+              <th class="text-right">CPC</th>
+              <th class="text-right">CTR</th>
+              <th class="text-right">Views</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-blue">Oeste Baiano</span></td>
+              <td class="text-right">R$ 232,95</td>
+              <td class="text-right">1</td>
+              <td class="text-right val-red">R$ 232,95</td>
+              <td class="text-right">R$ 220</td>
+              <td class="text-right val-red">0,94x</td>
+              <td class="text-right">3.957</td>
+              <td class="text-right">26.480</td>
+              <td class="text-right">R$ 8,80</td>
+              <td class="text-right val-red">6,69</td>
+              <td class="text-right">154</td>
+              <td class="text-right">R$ 1,51</td>
+              <td class="text-right">0,58%</td>
+              <td class="text-right">115</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-green">MATOPIBA</span></td>
+              <td class="text-right">R$ 154,80</td>
+              <td class="text-right">1</td>
+              <td class="text-right val-red">R$ 154,80</td>
+              <td class="text-right">R$ 440</td>
+              <td class="text-right val-orange">2,84x</td>
+              <td class="text-right">4.952</td>
+              <td class="text-right">18.693</td>
+              <td class="text-right">R$ 8,28</td>
+              <td class="text-right val-orange">3,77</td>
+              <td class="text-right">142</td>
+              <td class="text-right">R$ 1,09</td>
+              <td class="text-right">0,76%</td>
+              <td class="text-right">100</td>
+            </tr>
+            <tr class="row-total">
+              <td>Total</td>
+              <td class="text-right">R$ 387,75</td>
+              <td class="text-right">2</td>
+              <td class="text-right">R$ 193,88</td>
+              <td class="text-right">R$ 660</td>
+              <td class="text-right">1,70x</td>
+              <td class="text-right">8.909</td>
+              <td class="text-right">45.173</td>
+              <td class="text-right">R$ 8,58</td>
+              <td class="text-right">5,07</td>
+              <td class="text-right">296</td>
+              <td class="text-right">R$ 1,31</td>
+              <td class="text-right">0,66%</td>
+              <td class="text-right">215</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Compras por Conjunto</div>
+      <div class="chart-bar-group">
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:50%;">1 compra — R$ 232,95/compra — ROAS 0,94x</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:50%;">1 compra — R$ 154,80/compra — ROAS 2,84x</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Frequência por Conjunto</div>
+      <div class="chart-bar-group">
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill red" style="width:100%;">6,69 — Fadiga severa</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill yellow" style="width:56%;">3,77 — Atenção</div></div>
+        </div>
+      </div>
+      <div style="font-size:0.72rem; color:var(--gray-500); margin-top:8px;">Frequência acima de 3,0 indica saturação. Acima de 5,0 é fadiga severa — o público ignora o anúncio.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comparativo de Engajamento</div>
+      <div class="chart-bar-group">
+        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Cliques no link</div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">154 cliques — CTR 0,58%</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:92%;">142 cliques — CTR 0,76%</div></div>
+        </div>
+      </div>
+      <div class="chart-bar-group" style="margin-top:24px;">
+        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Visualizações da página de destino</div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Oeste Baiano</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">115 visualizações</div></div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">MATOPIBA</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:87%;">100 visualizações</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      <span class="alert-icon">&#128680;</span>
+      <div>
+        <strong>Situação crítica.</strong> Frequência do Oeste Baiano em 6,69 — cada pessoa viu o anúncio quase 7 vezes. Fadiga total. ROAS do Oeste abaixo de 1 (0,94x) — está gerando prejuízo. Cada real investido no Meio Oeste retorna menos de R$ 1 em receita.
+      </div>
+    </div>
+
+    <div class="alert alert-yellow">
+      <span class="alert-icon">&#128161;</span>
+      <div>
+        <strong>Comparação direta.</strong> O Meio investiu R$ 387,75 para gerar 2 compras. Na mesma semana, o Topo gerou 23 compras com investimento similar (R$ 408,67). Cada real no Topo rende 10x mais que no Meio. Recomendação: realocar orçamento do Meio para o Topo até haver criativos novos.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO P2 -->
+<section id="comparativo-p2" class="section">
+  <div class="container">
+    <div class="section-title">Comparativo Geral — Oeste Baiano vs. MATOPIBA</div>
+    <p class="section-desc">Visão consolidada da performance por região geográfica em todas as campanhas. Período: 17 a 24/jul.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card winner">
+        <div class="compare-label">&#128205; Oeste Baiano (raio 100km de LEM)</div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">Investido</span>
+          <span class="compare-metric-value">R$ 585,55</span>
+        </div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">Compras</span>
+          <span class="compare-metric-value" style="color:var(--orange);">15</span>
+        </div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">CPA</span>
+          <span class="compare-metric-value">R$ 39,04</span>
+        </div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">Alcance</span>
+          <span class="compare-metric-value">34.288</span>
+        </div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">Cliques</span>
+          <span class="compare-metric-value">460</span>
+        </div>
+        <div class="compare-metric" style="border-bottom:none; padding-top:12px;">
+          <span class="compare-metric-label"></span>
+          <span class="badge badge-green">Melhor performance</span>
+        </div>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-label">&#127758; MATOPIBA (BA + TO + MA + PI)</div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">Investido</span>
+          <span class="compare-metric-value">R$ 401,49</span>
+        </div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">Compras</span>
+          <span class="compare-metric-value" style="color:var(--orange);">10</span>
+        </div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">CPA</span>
+          <span class="compare-metric-value">R$ 40,15</span>
+        </div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">Alcance</span>
+          <span class="compare-metric-value">38.619</span>
+        </div>
+        <div class="compare-metric">
+          <span class="compare-metric-label">Cliques</span>
+          <span class="compare-metric-value">405</span>
+        </div>
+        <div class="compare-metric" style="border-bottom:none; padding-top:12px;">
+          <span class="compare-metric-label"></span>
+          <span class="badge badge-yellow">CPA similar ao Oeste</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="card-title">Distribuição de Compras por Campanha e Região</div>
+      <div class="chart-bar-group">
+        <div style="font-size:0.78rem; font-weight:600; color:var(--gray-500); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.5px;">Compras rastreadas pelo Pixel</div>
+        <div style="margin-bottom:16px;">
+          <div style="font-size:0.75rem; color:var(--gray-400); margin-bottom:6px;">Topão de Funil (ThruPlay)</div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-label">Oeste Baiano</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill gray" style="width:5%;">&nbsp;</div></div>
+            <div class="chart-bar-value" style="color:var(--gray-500);">0</div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-label">MATOPIBA</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill gray" style="width:5%;">&nbsp;</div></div>
+            <div class="chart-bar-value" style="color:var(--gray-500);">0</div>
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div style="font-size:0.75rem; color:var(--gray-400); margin-bottom:6px;">Topo de Funil (Conversão)</div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-label">Oeste Baiano</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill blue" style="width:100%;">14</div></div>
+            <div class="chart-bar-value" style="color:var(--green);">R$ 16,92/compra</div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-label">MATOPIBA</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill green" style="width:64%;">9</div></div>
+            <div class="chart-bar-value" style="color:var(--green);">R$ 19,09/compra</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.75rem; color:var(--gray-400); margin-bottom:6px;">Meio de Funil (Conversão)</div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-label">Oeste Baiano</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill purple" style="width:7%;">1</div></div>
+            <div class="chart-bar-value" style="color:var(--red);">R$ 232,95/compra</div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-label">MATOPIBA</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill purple" style="width:7%;">1</div></div>
+            <div class="chart-bar-value" style="color:var(--red);">R$ 154,80/compra</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MELHORIAS P2 -->
+<section id="melhorias-p2" class="section">
+  <div class="container">
+    <div class="section-title">Diagnóstico e Melhorias</div>
+    <p class="section-desc">Pontos de atenção e ações recomendadas com base nos dados de 17 a 24/jul.</p>
+
+    <div class="reco-grid">
+      <div class="reco-card" style="border-color: var(--red);">
+        <div class="reco-number">01</div>
+        <span class="badge badge-red" style="margin-bottom:10px;">Urgente</span>
+        <div class="reco-title">Pausar ou reduzir Meio Oeste Baiano</div>
+        <div class="reco-text">Frequência 6,69 com ROAS abaixo de 1. Cada real investido no Meio Oeste está gerando prejuízo. Pausar este conjunto até haver criativos novos. O público já viu os carrosséis quase 7 vezes — mais impressões só queimam verba.</div>
+      </div>
+
+      <div class="reco-card" style="border-color: var(--red);">
+        <div class="reco-number">02</div>
+        <span class="badge badge-red" style="margin-bottom:10px;">Urgente</span>
+        <div class="reco-title">Realocar orçamento do Meio para o Topo</div>
+        <div class="reco-text">O Topo gera compras a R$ 17,77. O Meio gera a R$ 193,88. Mover parte do orçamento do Meio para o Topo enquanto criativos novos não chegam. A diferença de eficiência é de 10x — cada real transferido rende 10x mais no Topo.</div>
+      </div>
+
+      <div class="reco-card" style="border-color: var(--yellow);">
+        <div class="reco-number">03</div>
+        <span class="badge badge-yellow" style="margin-bottom:10px;">Atenção</span>
+        <div class="reco-title">Frequência do Topo Oeste em 3,70</div>
+        <div class="reco-text">Está se aproximando do limite de saturação. Criativos novos são necessários para renovar a atenção do público e evitar que a performance caia. Se ultrapassar 4,0 sem novos criativos, esperar queda no CTR e aumento do CPA.</div>
+      </div>
+
+      <div class="reco-card" style="border-color: var(--yellow);">
+        <div class="reco-number">04</div>
+        <span class="badge badge-yellow" style="margin-bottom:10px;">Atenção</span>
+        <div class="reco-title">Anomalia de Pixel persistente</div>
+        <div class="reco-text">O Pixel continua reportando valores de conversão inflados (R$ 36.750 para 14 compras). Usar o número de compras como métrica principal. Verificar configuração do evento Purchase na Congresse.me para corrigir o valor enviado.</div>
+      </div>
+
+      <div class="reco-card" style="border-color: var(--orange);">
+        <div class="reco-number">05</div>
+        <span class="badge badge-orange" style="margin-bottom:10px;">Produção</span>
+        <div class="reco-title">Criativos novos são prioridade absoluta</div>
+        <div class="reco-text">Sem criativos novos: o Meio não se recupera, o Topo vai começar a saturar, e o Fundo não pode ser ativado. A produção dos criativos é o principal gargalo da campanha. Tudo depende dessa entrega.</div>
+      </div>
+
+      <div class="reco-card" style="border-color: var(--blue);">
+        <div class="reco-number">06</div>
+        <span class="badge badge-blue" style="margin-bottom:10px;">Próximo passo</span>
+        <div class="reco-title">Ativar Fundo de Funil</div>
+        <div class="reco-text">Com 25 compras na semana e uma base crescente de visitantes do site, já existe audiência suficiente para remarketing. Falta apenas os criativos de urgência/countdown. Quando chegarem, o Fundo pode ser ativado imediatamente.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS P2 -->
+<section id="status-p2" class="section">
+  <div class="container">
+    <div class="section-title">Status Geral das Campanhas</div>
+    <p class="section-desc">O que está ativo, o que está pendente e quais criativos estão em uso. Atualizado em 24/07/2026.</p>
+
+    <div class="card">
+      <div class="card-title">Campanhas Ativas</div>
+      <div class="status-grid">
+        <div class="status-item">
+          <div class="status-dot active"></div>
+          <div>
+            <div style="font-weight:700; font-size:0.85rem;">Topão de Funil</div>
+            <div style="font-size:0.75rem; color:var(--gray-500);">Desde 13/07 · 12 dias</div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-dot active"></div>
+          <div>
+            <div style="font-weight:700; font-size:0.85rem;">Topo de Funil</div>
+            <div style="font-size:0.75rem; color:var(--gray-500);">Desde 15/07 · 10 dias</div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-dot pending"></div>
+          <div>
+            <div style="font-weight:700; font-size:0.85rem;">Meio de Funil</div>
+            <div style="font-size:0.75rem; color:var(--yellow);">Desde 15/07 · 10 dias · Requer ação</div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-dot off"></div>
+          <div>
+            <div style="font-weight:700; font-size:0.85rem;">Fundo de Funil</div>
+            <div style="font-size:0.75rem; color:var(--gray-500);">Aguardando criativos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Criativos em Uso</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Campanha</th>
+              <th>Criativo</th>
+              <th>Formato</th>
+              <th>Origem</th>
+              <th class="text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Topão</td><td>Vídeo institucional</td><td>Reels/Vídeo</td><td>Existente no perfil</td><td class="text-center"><span class="badge badge-green">Ativo</span></td></tr>
+            <tr><td>Topo</td><td>Vídeo institucional</td><td>Reels/Vídeo</td><td>Existente no perfil</td><td class="text-center"><span class="badge badge-green">Ativo</span></td></tr>
+            <tr><td>Meio</td><td>Carrossel palestrantes (1 de 3)</td><td>Carrossel 5 cards</td><td>Cards existentes no feed</td><td class="text-center"><span class="badge badge-yellow">Saturado</span></td></tr>
+            <tr><td>Meio</td><td>Carrossel palestrantes (2 de 3)</td><td>Carrossel 5 cards</td><td>Cards existentes no feed</td><td class="text-center"><span class="badge badge-yellow">Saturado</span></td></tr>
+            <tr><td>Meio</td><td>Carrossel palestrantes (3 de 3)</td><td>Carrossel 5 cards</td><td>Cards existentes no feed</td><td class="text-center"><span class="badge badge-yellow">Saturado</span></td></tr>
+            <tr><td>Fundo</td><td>—</td><td>—</td><td>—</td><td class="text-center"><span class="badge badge-gray">Pendente</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert alert-yellow" style="margin-top:16px;">
+        <span class="alert-icon">&#128197;</span>
+        <div>
+          <strong>Criativos novos (21 peças planejadas):</strong> ainda em produção pela equipe de design. A entrega desses criativos é o principal gargalo da campanha — sem eles, não há como renovar o Meio, escalar o Topo ou ativar o Fundo de Funil.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Utilização do Orçamento — Julho/2026</div>
+      <p style="font-size:0.82rem; color:var(--gray-400); margin-bottom:16px;">Orçamento total Meta Ads: R$ 3.500 (19 dias — 13 a 31/jul)</p>
+      <div class="chart-bar-group">
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Investido até 24/07</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill orange" style="width:28.2%;">R$ 987</div></div>
+          <div class="chart-bar-value">28,2%</div>
+        </div>
+        <div class="chart-bar-row">
+          <div class="chart-bar-label">Orçamento restante</div>
+          <div class="chart-bar-track"><div class="chart-bar-fill gray" style="width:71.8%;">R$ 2.513</div></div>
+          <div class="chart-bar-value">71,8%</div>
+        </div>
+      </div>
+      <div style="font-size:0.82rem; color:var(--gray-400); margin-top:12px;">
+        Restam 7 dias de veiculação (25 a 31/07). Orçamento diário médio necessário para consumir a verba: <strong style="color:#fff;">~R$ 359/dia</strong>. Isso exige aumento significativo no investimento diário. A ativação do Fundo de Funil ajudará a distribuir esse volume.
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /data-p2 -->
+
+
+<!-- ==================== SEGMENTAÇÃO (compartilhada) ==================== -->
+<section id="segmentacao" class="section">
+  <div class="container">
+    <div class="section-title">Segmentação Atual</div>
+    <p class="section-desc">Configuração de públicos e interesses em cada nível de campanha.</p>
+
+    <div class="card">
+      <div class="card-title">Topão + Topo de Funil — Interesses</div>
+      <p style="font-size:0.82rem; color:var(--gray-400); margin-bottom:14px;">Mesma configuração de interesses em ambas as campanhas. Modo: Advantage+ (Sua sugestão).</p>
+      <div class="seg-group">
+        <div class="seg-title">&#127919; Interesses incluídos</div>
+        <div class="seg-tags">
+          <span class="seg-tag included">Engenharia agronômica</span>
+          <span class="seg-tag included">Agronomia</span>
+          <span class="seg-tag included">Fertilizante</span>
+          <span class="seg-tag included">Campo (agricultura)</span>
+          <span class="seg-tag included">Solo</span>
+        </div>
+      </div>
+      <div class="seg-group">
+        <div class="seg-title">&#128101; Idade</div>
+        <div class="seg-tags">
+          <span class="seg-tag">22 a 55 anos</span>
+        </div>
+      </div>
+      <div class="seg-group">
+        <div class="seg-title">&#128506; Geolocalização por conjunto</div>
+        <div class="seg-tags">
+          <span class="seg-tag" style="border-color:rgba(59,130,246,0.3); color:var(--blue);">CJ01 — Oeste Baiano (raio 100 km de LEM)</span>
+          <span class="seg-tag" style="border-color:rgba(0,184,148,0.3); color:var(--green);">CJ02 — MATOPIBA (BA + TO + MA + PI)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Meio de Funil — Público Personalizado + Interesses</div>
+      <p style="font-size:0.82rem; color:var(--gray-400); margin-bottom:14px;">Audiência morna: combinação de públicos personalizados + lookalike + interesses. Modo: Advantage+ (Sua sugestão).</p>
+      <div class="seg-group">
+        <div class="seg-title">&#9989; Públicos personalizados incluídos</div>
+        <div class="seg-tags">
+          <span class="seg-tag included">Engajados — FBA, SBSA, CRBA, BAS — 180D</span>
+          <span class="seg-tag included">ENGAJOU INSTA 30D</span>
+          <span class="seg-tag included">VISITOU PERFIL 30D</span>
+          <span class="seg-tag included">ENGAJOU ANUNCIO 30D</span>
+          <span class="seg-tag included">Semelhante (1%) — COMPRADORES 13.07.26</span>
+        </div>
+      </div>
+      <div class="seg-group">
+        <div class="seg-title">&#10060; Públicos personalizados excluídos</div>
+        <div class="seg-tags">
+          <span class="seg-tag excluded">COMPRADORES 13.07.26</span>
+          <span class="seg-tag excluded">PAGE VIEW 30D SBSA 2026</span>
+        </div>
+      </div>
+      <div class="seg-group">
+        <div class="seg-title">&#127919; Interesses incluídos</div>
+        <div class="seg-tags">
+          <span class="seg-tag included">Engenharia agronômica</span>
+          <span class="seg-tag included">Agronomia</span>
+          <span class="seg-tag included">Fertilizante</span>
+          <span class="seg-tag included">Campo (agricultura)</span>
+          <span class="seg-tag included">Solo</span>
+        </div>
+      </div>
+      <div class="seg-group">
+        <div class="seg-title">&#128101; Idade &amp; Gênero</div>
+        <div class="seg-tags">
+          <span class="seg-tag">22 a 55 anos</span>
+          <span class="seg-tag">Todos os gêneros</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
   <div class="container">
-    <p>Relatório gerado em 17/07/2026 · ADS Company · IV Simpósio Brasileiro de Solos Arenosos</p>
-    <p style="margin-top:4px;">Dados extraídos do Gerenciador de Anúncios do Meta — período: até 16/07/2026</p>
+    <p>Relatório atualizado em 24/07/2026 · ADS Company · IV Simpósio Brasileiro de Solos Arenosos</p>
+    <p style="margin-top:4px;">Dados extraídos do Gerenciador de Anúncios do Meta</p>
   </div>
 </footer>
+
+<script>
+var currentPeriod = 'p2';
+
+function showPeriod(id) {
+  currentPeriod = id;
+  document.querySelectorAll('.period-data').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.period-btn').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('data-' + id).classList.add('active');
+  document.getElementById('btn-' + id).classList.add('active');
+  var periodText = document.getElementById('btn-' + id).getAttribute('data-period');
+  document.getElementById('period-display').textContent = periodText;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goTo(section) {
+  var el = document.getElementById(section + '-' + currentPeriod);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+</script>
 
 </body>
 </html>
